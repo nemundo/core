@@ -1,0 +1,17 @@
+{
+  "name": "nemundo/core",
+  "description": "",
+  "authors": [
+    {
+      "name": "Urs Lang",
+      "email": "urs.lang@gmail.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Nemundo\\Core\\": "src/"
+    }
+  }
+}
