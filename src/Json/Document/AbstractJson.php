@@ -7,6 +7,7 @@ use Nemundo\Core\Base\AbstractBase;
 
 class AbstractJson extends AbstractBase
 {
+
     protected $data = array();
 
     public function addRow($data)

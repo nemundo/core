@@ -1,6 +1,7 @@
 {
   "name": "nemundo/core",
-  "description": "",
+  "description": "Core Function",
+  "license": "MIT",
   "authors": [
     {
       "name": "Urs Lang",

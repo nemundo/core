@@ -3,8 +3,8 @@
 namespace Nemundo\Core\Json\Document;
 
 
-use Nemundo\Web\Http\Response\ContentType;
-use Nemundo\Web\Http\Response\HttpResponse;
+use Nemundo\Core\Http\Response\ContentType;
+use Nemundo\Core\Http\Response\HttpResponse;
 
 class JsonResponse extends AbstractJson
 {
