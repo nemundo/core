@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Core\File;
+namespace Nemundo\Core\TextFile\Reader;
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Core\Directory\TextDirectory;
@@ -15,7 +15,7 @@ class TextFileReader extends AbstractDataSource
     /**
      * @var string
      */
-    public $filename;
+    private $filename;
 
     /**
      * @var bool
@@ -28,10 +28,15 @@ class TextFileReader extends AbstractDataSource
     public $trimLine = true;
 
 
+    public function __construct($filename)
+    {
+        $this->filename = $filename;
+    }
+
     protected function loadData()
     {
 
-        $this->checkProperty('filename');
+        //$this->checkProperty('filename');
 
 
         // Ist Datei vorhanden
@@ -58,7 +63,10 @@ class TextFileReader extends AbstractDataSource
                     $line = trim($line);
                 }
 
-                $this->list[] = $line;
+                $this->addItem($line);
+
+                //$this->list[] = $line;
+
             }
             fclose($file);
         } else {

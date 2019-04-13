@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Core\File;
+namespace Nemundo\Core\TextFile\Reader;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Log\LogMessage;

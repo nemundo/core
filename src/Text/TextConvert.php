@@ -87,9 +87,9 @@ class TextConvert extends AbstractBaseClass
     //static function convertToCamelVariable()
 
 
-    static function convertToUrl($text)
+    public function convertToUrl($text)
     {
-        $text = TextConvert::convertToCode($text);
+        $text =$this->convertToCode($text);
         $text = str_replace("_", "-", $text);
         return $text;
     }
