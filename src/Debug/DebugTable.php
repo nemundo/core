@@ -54,8 +54,8 @@ class DebugTable extends AbstractBase
                     if ((new UrlValidation())->isUrl($item)) {
                         $link = new Hyperlink($tableRow);
                         $link->content = $item;
-                        $link->url = $item;
-                        $link->openNewWindow = true;
+                        $link->href = $item;
+                        //$link->openNewWindow = true;
 
                     } else {
                         $tableRow->addText($item);

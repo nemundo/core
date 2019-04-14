@@ -3,7 +3,7 @@
 namespace Nemundo\Core\Csv\Reader;
 
 
-use Nemundo\Core\File\TextFileReader;
+use Nemundo\Core\TextFile\Reader\TextFileReader;
 
 class FixWidthCsvReader extends AbstractCsvReader
 {
@@ -20,8 +20,7 @@ class FixWidthCsvReader extends AbstractCsvReader
     protected function loadData()
     {
 
-        $file = new TextFileReader();
-        $file->filename = $this->filename;
+        $file = new TextFileReader($this->filename);
         $file->utf8Encode = $this->utf8Encode;
 
         $count = 0;

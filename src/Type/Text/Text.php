@@ -3,7 +3,6 @@
 namespace Nemundo\Core\Type\Text;
 
 
-use Nemundo\Core\Text\TextUtility;
 use Nemundo\Core\Type\AbstractType;
 
 class Text extends AbstractType
