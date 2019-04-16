@@ -3,8 +3,6 @@
 namespace Nemundo\Core\Directory;
 
 
-use Nemundo\Core\Debug\Debug;
-
 class TextDirectory extends AbstractDirectory
 {
 
@@ -59,7 +57,7 @@ class TextDirectory extends AbstractDirectory
     public function getClosestTextList($text, $minPercent = 60)
     {
 
-        $closestWordList =[];
+        $closestWordList = [];
 
         foreach ($this->getData() as $word) {
 
@@ -68,7 +66,7 @@ class TextDirectory extends AbstractDirectory
             //(new Debug())->write($percent);
 
             if ($percent > $minPercent) {
-                $closestWordList[]= $word;
+                $closestWordList[] = $word;
             }
 
         }
@@ -76,7 +74,5 @@ class TextDirectory extends AbstractDirectory
         return $closestWordList;
 
     }
-
-
 
 }

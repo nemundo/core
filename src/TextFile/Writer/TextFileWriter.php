@@ -31,6 +31,13 @@ class TextFileWriter extends AbstractTextFileWriter
     private $lineList = [];
 
 
+    public function __destruct()
+    {
+
+        // check if file was saved ???
+        // TODO: Implement __destruct() method.
+    }
+
     public function addLine($line)
     {
 

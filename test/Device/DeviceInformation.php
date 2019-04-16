@@ -1,6 +1,6 @@
 <?php
 
-require '../../../../../config.php';
+require __DIR__ . '/../config.php';
 
 
 $deviceInformation = new \Nemundo\Core\Device\DeviceInformation();

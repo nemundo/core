@@ -102,6 +102,19 @@ abstract class AbstractDirectory extends AbstractBaseClass
     }
 
 
+    public function isEmpty()
+    {
+
+        $value = false;
+        if ($this->getCount() == 0) {
+            $value = true;
+        }
+
+        return $value;
+
+    }
+
+
     public function getStatisticList()
     {
 
