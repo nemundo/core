@@ -4,7 +4,6 @@ namespace Nemundo\Core\Config;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\File\TextFile;
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
 
 class ConfigWriter extends AbstractBase
