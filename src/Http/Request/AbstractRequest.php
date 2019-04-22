@@ -28,6 +28,8 @@ abstract class AbstractRequest extends AbstractBaseClass
 
     }
 
+
+    /*
     public function exists()
     {
 
@@ -37,7 +39,7 @@ abstract class AbstractRequest extends AbstractBaseClass
         }
         return $returnValue;
 
-    }
+    }*/
 
 
     public function notExists()

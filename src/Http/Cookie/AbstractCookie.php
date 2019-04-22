@@ -4,7 +4,7 @@ namespace Nemundo\Core\Http\Cookie;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Web\Http\Session\SessionStart;
+use Nemundo\Core\Http\Session\SessionStart;
 use Nemundo\Web\WebConfig;
 
 abstract class AbstractCookie extends AbstractBaseClass

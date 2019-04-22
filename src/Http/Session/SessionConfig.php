@@ -11,4 +11,10 @@ class SessionConfig
      */
     public static $sessionName = 'nemundo_session';
 
+    /**
+     * @var string
+     */
+    public static $path;
+
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Core\Http;
+namespace Nemundo\Core\Http\Domain;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;

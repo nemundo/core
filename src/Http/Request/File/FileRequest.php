@@ -3,7 +3,6 @@
 namespace Nemundo\Core\Http\Request\File;
 
 
-
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\File\UniqueFilename;
@@ -14,10 +13,6 @@ use Nemundo\Core\Type\File\File;
 
 class FileRequest extends AbstractRequest
 {
-
-
-
-
 
 
     /**
@@ -46,18 +41,19 @@ class FileRequest extends AbstractRequest
     public $errorCode;
 
 
-
-    public function __construct($requestName)
+    public function __construct($requestName = null)
     {
         parent::__construct($requestName);
 
-        $this->filename = $_FILES[$this->requestName]['name'];
-        $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
-        $this->fileSize = $_FILES[$this->requestName]['size'];
-        $this->errorCode = $_FILES[$this->requestName]['error'];
+        if ($requestName !== null) {
+            $this->filename = $_FILES[$this->requestName]['name'];
+            $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
+            $this->fileSize = $_FILES[$this->requestName]['size'];
+            $this->errorCode = $_FILES[$this->requestName]['error'];
 
-        $file = new File($this->filename);
-        $this->filenameExtension = $file->getFileExtension();
+            $file = new File($this->filename);
+            $this->filenameExtension = $file->getFileExtension();
+        }
 
     }
 
@@ -87,7 +83,7 @@ class FileRequest extends AbstractRequest
         // File kopieren
         if ($this->isDownloadSuccesful()) {
             if (!move_uploaded_file($this->tmpFileName, $filename)) {
-                (new LogMessage())->writeError('move_uploaded_file Error. From: '.$this->tmpFileName.' to '. $filename);
+                (new LogMessage())->writeError('move_uploaded_file Error. From: ' . $this->tmpFileName . ' to ' . $filename);
             }
         }
 
@@ -174,7 +170,6 @@ class FileRequest extends AbstractRequest
         }
         return $message;
     }
-
 
 
 }

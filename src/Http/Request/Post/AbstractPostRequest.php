@@ -8,6 +8,10 @@ use Nemundo\Core\Http\Request\AbstractRequest;
 class AbstractPostRequest extends AbstractRequest
 {
 
+    /**
+     * @var string
+     */
+    public $defaultValue;
 
     public function getValue()
     {
@@ -26,25 +30,29 @@ class AbstractPostRequest extends AbstractRequest
             }
         }*/
 
-
+        $value = $this->defaultValue;
+        if ($this->existsRequest()) {
         $value = $_POST[$this->requestName];
+        }
+
         return $value;
 
     }
 
 
 
-    public function existsParameter()
+    public function existsRequest()
     {
-        $value = isset($_GET[$this->parameterName]);
+        $value = isset($_POST[$this->requestName]);
         return $value;
     }
 
 
+    /*
     protected function valueParamter()
     {
         $value = $_GET[$this->parameterName];
         return $value;
-    }
+    }*/
 
 }

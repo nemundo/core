@@ -1,9 +1,12 @@
 <?php
 
-namespace Nemundo\Core\Http;
+namespace Nemundo\Core\Http\Request;
 
 
-class RequestMethod
+use Nemundo\Core\Base\AbstractBase;
+
+
+class RequestMethod extends AbstractBase
 {
 
 

@@ -9,8 +9,15 @@ class AbstractGetRequest extends AbstractRequest  // AbstractGetPostParameter
 {
 
 
+
+    public $defaultValue;
+
+
     public function getValue()
     {
+
+
+        $value = $this->defaultValue;
 
         /*
         $value = $this->value;
@@ -18,6 +25,7 @@ class AbstractGetRequest extends AbstractRequest  // AbstractGetPostParameter
             $value = $this->defaultValue;
         }
 
+        /*
         if ($this->value === null) {
             if ($this->existsParameter() ) {
                 //if (isset($_REQUEST[$this->parameterName])) {
@@ -27,24 +35,34 @@ class AbstractGetRequest extends AbstractRequest  // AbstractGetPostParameter
         }*/
 
 
-        $value = $_GET[$this->requestName];
+        //$value = $this->defaultValue;
+        if ($this->existsRequest() ) {
+            //if (isset($_REQUEST[$this->parameterName])) {
+            //$value = $this->valueParamter();  // $_REQUEST[$this->parameterName];
+            //$value = trim($value);
+            $value =trim( $_GET[$this->requestName]);
+
+        }
+
+
         return $value;
 
     }
 
 
 
-    public function existsParameter()
+    public function existsRequest()
     {
-        $value = isset($_GET[$this->parameterName]);
+        $value = isset($_GET[$this->requestName]);
         return $value;
     }
 
 
+    /*
     protected function valueParamter()
     {
         $value = $_GET[$this->parameterName];
         return $value;
-    }
+    }*/
 
 }
