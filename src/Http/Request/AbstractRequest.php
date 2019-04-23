@@ -15,14 +15,8 @@ abstract class AbstractRequest extends AbstractBaseClass
     protected $requestName;
 
 
-    //abstract protected function loadParameter();
-
-    //abstract public function getUrl();
-
-
     public function __construct($requestName)
     {
-        //$this->loadParameter();
 
         $this->requestName = $requestName;
 

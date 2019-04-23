@@ -3,36 +3,23 @@
 namespace Nemundo\Core\Http\Request\Post;
 
 
+use Nemundo\Core\Http\Request\AbstractGetPostRequest;
 use Nemundo\Core\Http\Request\AbstractRequest;
 
-class AbstractPostRequest extends AbstractRequest
+class AbstractPostRequest extends AbstractGetPostRequest
 {
 
     /**
      * @var string
      */
-    public $defaultValue;
+    //public $defaultValue;
 
     public function getValue()
     {
 
-        /*
-        $value = $this->value;
-        if ($value === null) {
-            $value = $this->defaultValue;
-        }
-
-        if ($this->value === null) {
-            if ($this->existsParameter() ) {
-                //if (isset($_REQUEST[$this->parameterName])) {
-                $value = $this->valueParamter();  // $_REQUEST[$this->parameterName];
-                $value = trim($value);
-            }
-        }*/
-
         $value = $this->defaultValue;
         if ($this->existsRequest()) {
-        $value = $_POST[$this->requestName];
+        $value = trim($_POST[$this->requestName]);
         }
 
         return $value;

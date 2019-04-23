@@ -1,23 +1,27 @@
 <?php
 
-namespace Nemundo\Core\Http\Request\Get;
+namespace Nemundo\Core\Http\Request;
 
 
-use Nemundo\Core\Http\Request\AbstractGetPostRequest;
 use Nemundo\Core\Http\Request\AbstractRequest;
 
-class AbstractGetRequest extends AbstractGetPostRequest
+class AbstractGetPostRequest extends AbstractRequest
 {
 
-    //public $defaultValue='';
+    /**
+     * @var string
+     */
+    public $defaultValue='';
 
 
+
+    /*
     public function getValue()
     {
 
         $value = $this->defaultValue;
         if ($this->existsRequest()) {
-            $value = trim($_GET[$this->requestName]);
+        $value = trim($_POST[$this->requestName]);
         }
 
         return $value;
@@ -25,9 +29,10 @@ class AbstractGetRequest extends AbstractGetPostRequest
     }
 
 
+
     public function existsRequest()
     {
-        $value = isset($_GET[$this->requestName]);
+        $value = isset($_POST[$this->requestName]);
         return $value;
     }
 

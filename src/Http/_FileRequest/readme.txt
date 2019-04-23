@@ -1,3 +1,0 @@
-andere benennung!!!
-
-AbstractFileRequest
