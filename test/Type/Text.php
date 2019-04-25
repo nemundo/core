@@ -1,8 +1,9 @@
 <?php
 
-require '../../../../../config.php';
+require '../config.php';
 
-$text = new \Nemundo\Core\Type\Text('hello world');
+
+$text = new \Nemundo\Core\Type\Text\Text('hello world');
 
 $text->changeToLowercase();
 $text->changeToUppercase();
