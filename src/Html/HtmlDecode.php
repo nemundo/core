@@ -22,6 +22,9 @@ class HtmlDecode extends AbstractBase
 
         $html = strip_tags($html);
         $html = html_entity_decode($html);
+
+        // utf8
+
         return $html;
 
     }
