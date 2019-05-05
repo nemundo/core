@@ -5,6 +5,7 @@ namespace Nemundo\Core\Debug;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Console\ConsoleConfig;
+use Nemundo\Core\Console\ConsoleMode;
 use Nemundo\Core\Log\LogConfig;
 
 class Debug extends AbstractBaseClass
@@ -13,6 +14,12 @@ class Debug extends AbstractBaseClass
 
     public function write($text = '')
     {
+
+        $consoleMode = (new ConsoleMode())->isConsole();
+
+        /*if ((php_sapi_name() == 'cli')) {
+            $consoleMode = true;
+        }*/
 
 
         if ($text === null) {
@@ -32,7 +39,8 @@ class Debug extends AbstractBaseClass
         }
 
 
-        if (!ConsoleConfig::$consoleMode) {
+        //if (!ConsoleConfig::$consoleMode) {
+        if (!$consoleMode) {
             echo '<pre>';
         }
 
@@ -43,7 +51,8 @@ class Debug extends AbstractBaseClass
         }
 
 
-        if (!ConsoleConfig::$consoleMode) {
+        //if (!ConsoleConfig::$consoleMode) {
+        if (!$consoleMode) {
             echo '</pre>';
         } else {
             echo PHP_EOL;

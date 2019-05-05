@@ -6,6 +6,7 @@ namespace Nemundo\Core\Http\Session;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Console\ConsoleConfig;
 
+use Nemundo\Core\Console\ConsoleMode;
 use Nemundo\Web\WebConfig;
 
 class SessionStart extends AbstractBaseClass
@@ -16,8 +17,8 @@ class SessionStart extends AbstractBaseClass
 
         if (session_status() == PHP_SESSION_NONE) {
 
-            if (!ConsoleConfig::$consoleMode) {
-
+            //if (!ConsoleConfig::$consoleMode) {
+                if (!(new ConsoleMode())->isConsole()) {
                 session_set_cookie_params(0, WebConfig::$webUrl);
                 session_name(SessionConfig::$sessionName);
                 session_start();

@@ -69,7 +69,7 @@ class DebugTable extends AbstractBase
 
         }
 
-        echo $table->getHtml();
+        echo $table->getContent();
 
     }
 

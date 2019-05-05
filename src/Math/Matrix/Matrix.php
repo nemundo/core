@@ -119,7 +119,7 @@ class Matrix extends AbstractBase
         }
 
 
-        echo $table->getHtml();
+        echo $table->getContent();
 
     }
 

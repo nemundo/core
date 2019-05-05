@@ -9,7 +9,7 @@ class ConsoleConfig
     /**
      * @var bool
      */
-    public static $consoleMode = false;
+    //public static $consoleMode = false;
 
 
     /**
