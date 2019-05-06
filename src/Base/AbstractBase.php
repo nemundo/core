@@ -74,7 +74,7 @@ abstract class AbstractBase
 
         if ($returnValue) {
             if (!is_a($object, $className)) {
-                (new LogMessage())->writeError($propertyName . ' wurde nicht der korrekte Datentype geliefert. Datentyp: ' . $className);
+                (new LogMessage())->writeError($propertyName . ' did not get the correct Datentype. Datentype: ' . $className);
                 $returnValue = false;
             }
         }
