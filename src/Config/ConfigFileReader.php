@@ -7,8 +7,7 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 
-// ConfigFileReader
-class ConfigReader extends AbstractBaseClass
+class ConfigFileReader extends AbstractBaseClass
 {
 
     /**
@@ -18,7 +17,7 @@ class ConfigReader extends AbstractBaseClass
 
     private $loaded = false;
 
-    private $dataList = array();
+    private $dataList =[];
 
 
     public function getValue($variable, $defaultValue = null)
