@@ -5,6 +5,7 @@ namespace Nemundo\Core\Csv\Writer;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Csv\CsvSeperator;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
@@ -73,7 +74,7 @@ class CsvWriter extends AbstractBase
     public function closeFile()
     {
 
-        if (!is_resource($this->file)) {
+        if (is_resource($this->file)) {
             fclose($this->file);
         }
 
