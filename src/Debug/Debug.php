@@ -17,11 +17,6 @@ class Debug extends AbstractBaseClass
 
         $consoleMode = (new ConsoleMode())->isConsole();
 
-        /*if ((php_sapi_name() == 'cli')) {
-            $consoleMode = true;
-        }*/
-
-
         if ($text === null) {
             $text = '(NULL)';
         }
@@ -38,8 +33,6 @@ class Debug extends AbstractBaseClass
             $text = '(FALSE)';
         }
 
-
-        //if (!ConsoleConfig::$consoleMode) {
         if (!$consoleMode) {
             echo '<pre>';
         }
@@ -50,17 +43,13 @@ class Debug extends AbstractBaseClass
             echo $text;
         }
 
-
-        //if (!ConsoleConfig::$consoleMode) {
         if (!$consoleMode) {
             echo '</pre>';
         } else {
             echo PHP_EOL;
         }
 
-
         if (ConsoleConfig::$fileMode) {
-
 
             if ((is_object($text) || (is_array($text)))) {
                 print_r($text);
@@ -74,7 +63,6 @@ class Debug extends AbstractBaseClass
 
         }
 
-
     }
 
 
@@ -86,6 +74,14 @@ class Debug extends AbstractBaseClass
         } else {
             $this->write('No');
         }
+
+    }
+
+
+    public function writeHtml($html)
+    {
+
+        echo htmlspecialchars($html);
 
     }
 

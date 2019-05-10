@@ -61,7 +61,11 @@ class HttpResponse extends AbstractResponse
             }
             $content = trim($content);
             echo $content;
-            exit;
+
+            // braucht es dieses exit???
+            //exit;
+
+
         }
 
     }
