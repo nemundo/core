@@ -62,12 +62,19 @@ class TextFileWriter extends AbstractTextFileWriter
             return;
         }
 
+        /*
         if (!file_exists($this->filename)) {
             $file = new File($this->filename);
             (new Path())
                 ->addPath($file->getPath())
                 ->createDirectory();
-        }
+        }*/
+
+
+        (new Path())
+            ->addPath($file->getPath())
+            ->createDirectory();
+
 
         $content = implode(PHP_EOL, $this->lineList);
 
@@ -87,8 +94,14 @@ class TextFileWriter extends AbstractTextFileWriter
         }
 
         $file = fopen($this->filename, $mode);
-        fwrite($file, $content);
-        fclose($file);
+
+
+        if ($file !== false) {
+            fwrite($file, $content);
+            fclose($file);
+        } else {
+            (new LogMessage())->writeError('TextFileWriter Error. Filename: '.$this->filename);
+        }
 
     }
 
