@@ -25,7 +25,7 @@ abstract class AbstractLargeReader extends AbstractBase
     public $abortLimit = 500;
 
 
-    abstract public function startData();
+    abstract protected function loadData();
 
     protected function preDataLoading()
     {
@@ -34,6 +34,15 @@ abstract class AbstractLargeReader extends AbstractBase
 
     protected function afterDataLoading()
     {
+
+    }
+
+
+    public function startData() {
+
+        $this->preDataLoading();
+        $this->loadData();
+        $this->afterDataLoading();
 
     }
 

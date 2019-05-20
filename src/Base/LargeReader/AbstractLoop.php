@@ -20,7 +20,7 @@ abstract class AbstractLoop extends AbstractLargeReader
     abstract protected function onData($number);
 
 
-    public function startData()
+    protected function loadData()
     {
 
 
