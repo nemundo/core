@@ -15,16 +15,12 @@ class UtcDateTime extends DateTime
 
         $this->timezone = Timezone::UTC;
         parent::__construct($date);
-        //$this->date->setTimezone((new \DateTimeZone(Timezone::UTC)));
 
     }
 
 
     public function getLocalDateTime($timezone)
     {
-
-        //$dateTime = clone($this->date);
-        //$dateTime->setTimeZone(new \DateTimeZone($timezone));
 
         $dateTime = new DateTime($this->getIsoDateFormat());
         $dateTime->setTimezone($timezone);
