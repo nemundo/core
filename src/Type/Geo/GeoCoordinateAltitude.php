@@ -9,7 +9,7 @@ class GeoCoordinateAltitude extends GeoCoordinate
     /**
      * @var float
      */
-    public $altitude;  // = 0;
+    public $altitude;
 
 
     public function fromGeoCoordinate(GeoCoordinate $geoCoordinate = null)
@@ -22,6 +22,8 @@ class GeoCoordinateAltitude extends GeoCoordinate
     }
 
 
+    // getLabel
+    // getText
     public function toString()
     {
         $text = $this->latitude . ',' . $this->longitude . ',' . $this->altitude;
