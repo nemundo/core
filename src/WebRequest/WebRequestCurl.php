@@ -90,6 +90,7 @@ class WebRequestCurl extends AbstractWebRequest
         $httpCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
         if ($httpCode !== 200) {
             $this->writeError('Curl. Http Code: ' . $httpCode . ' Url: ' . $url);
+            $html = '';
         }
 
         if ($this->delayRequest) {
