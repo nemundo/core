@@ -8,14 +8,16 @@ use Nemundo\Core\Type\AbstractType;
 class YesNo extends AbstractType
 {
 
-
     public function getText()
     {
 
-        $text = ($this->value) ? 'true' : 'false';
+        $text = 'false';
+        if ($this->value) {
+            $text = 'true';
+        }
+
         return $text;
 
     }
-
 
 }
