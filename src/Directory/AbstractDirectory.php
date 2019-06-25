@@ -13,7 +13,10 @@ abstract class AbstractDirectory extends AbstractBaseClass
      */
     public $sorted = false;
 
-    protected $list = array();
+    /**
+     * @var int[]
+     */
+    protected $list = [];
 
 
     public function __construct($value = null)
