@@ -27,7 +27,7 @@ class GeoCoordinate extends AbstractBaseClass
 
     }
 
-    public function toString()
+    public function getText()
     {
         $text = $this->latitude . ',' . $this->longitude;
         return $text;

@@ -22,13 +22,10 @@ class GeoCoordinateAltitude extends GeoCoordinate
     }
 
 
-    // getLabel
-    // getText
-    public function toString()
+    public function getText()
     {
         $text = $this->latitude . ',' . $this->longitude . ',' . $this->altitude;
         return $text;
     }
-
 
 }
