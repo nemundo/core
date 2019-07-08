@@ -16,10 +16,15 @@ class NumberDirectory extends AbstractDirectory
     }
 
 
-    public function getAverage()
+    public function getAverage($roundNumber=null)
     {
 
         $average = array_sum($this->list) / count($this->list);
+
+        if ($roundNumber!==null) {
+            $average =  round($average, $roundNumber);
+        }
+
         return $average;
 
     }
