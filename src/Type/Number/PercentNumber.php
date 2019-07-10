@@ -19,6 +19,8 @@ class PercentNumber extends AbstractType
     public $roundDigit = 2;
 
 
+    // getText
+
     public function getValue()
     {
 
