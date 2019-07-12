@@ -20,4 +20,11 @@ class YesNo extends AbstractType
 
     }
 
+
+    public function invertValue()
+    {
+        $this->value = !$this->value;
+        return $this;
+    }
+
 }
