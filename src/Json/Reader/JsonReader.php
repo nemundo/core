@@ -27,6 +27,8 @@ class JsonReader extends AbstractDataSource
 
         $file = new TextFileReader($filename);
         $this->text = $file->getText();
+
+
         return $this;
 
     }
@@ -51,6 +53,8 @@ class JsonReader extends AbstractDataSource
 
     protected function loadData()
     {
+
+
 
 
         $this->list = json_decode($this->text, true);
