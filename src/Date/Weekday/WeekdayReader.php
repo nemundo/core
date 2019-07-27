@@ -9,6 +9,9 @@ use Nemundo\Core\Structure\ForLoop;
 class WeekdayReader extends AbstractDataSource
 {
 
+    // only weekday
+    // hide weekend
+
 
     /**
      * @return WeekdayItem[]
@@ -30,9 +33,9 @@ class WeekdayReader extends AbstractDataSource
             $weekdayItem->weekdayNumber = $weekdayNumber;
             $weekdayItem->weekday = (new Weekday())->getWeekday($weekdayNumber);
             $this->addItem($weekdayItem);
+
         }
 
     }
-
 
 }
