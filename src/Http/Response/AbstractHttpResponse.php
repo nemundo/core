@@ -3,30 +3,30 @@
 namespace Nemundo\Core\Http\Response;
 
 
-class HttpResponse extends AbstractHttpResponse  // AbstractResponse
+abstract class AbstractHttpResponse extends AbstractResponse
 {
 
     /**
      * @var string
      */
-    public $content;
+    protected $content;
 
     /**
      * @var string
      */
-    public $contentType = ContentType::HTML;
+    protected $contentType = ContentType::HTML;
 
     /**
      * @var string
      */
-    public $attachmentFilename;
+    protected $attachmentFilename;
 
 
-    public $filesize;
+    protected $filesize;
 
 
     // render()
-    /*public function sendResponse()
+    public function sendResponse()
     {
 
         header('Content-type: ' . $this->contentType . '; charset=utf-8');
@@ -68,6 +68,6 @@ class HttpResponse extends AbstractHttpResponse  // AbstractResponse
 
         }
 
-    }*/
+    }
 
 }
