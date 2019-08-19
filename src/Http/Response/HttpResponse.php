@@ -3,7 +3,7 @@
 namespace Nemundo\Core\Http\Response;
 
 
-class HttpResponse extends AbstractResponse
+class HttpResponse extends AbstractHttpResponse  // AbstractResponse
 {
 
     /**
@@ -12,7 +12,7 @@ class HttpResponse extends AbstractResponse
     public $content;
 
     /**
-     * @var ContentType
+     * @var string
      */
     public $contentType = ContentType::HTML;
 
@@ -26,7 +26,7 @@ class HttpResponse extends AbstractResponse
 
 
     // render()
-    public function sendResponse()
+    /*public function sendResponse()
     {
 
         header('Content-type: ' . $this->contentType . '; charset=utf-8');
@@ -61,9 +61,13 @@ class HttpResponse extends AbstractResponse
             }
             $content = trim($content);
             echo $content;
-            exit;
+
+            // braucht es dieses exit???
+            //exit;
+
+
         }
 
-    }
+    }*/
 
 }

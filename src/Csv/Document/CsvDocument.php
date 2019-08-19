@@ -7,8 +7,8 @@ use Nemundo\Core\Base\AbstractDocument;
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
-use Nemundo\Web\Http\Response\ContentType;
-use Nemundo\Web\Http\Response\HttpResponse;
+use Nemundo\Core\Http\Response\ContentType;
+use Nemundo\Core\Http\Response\HttpResponse;
 
 
 class CsvDocument extends AbstractDocument

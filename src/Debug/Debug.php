@@ -5,6 +5,7 @@ namespace Nemundo\Core\Debug;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Console\ConsoleConfig;
+use Nemundo\Core\Console\ConsoleMode;
 use Nemundo\Core\Log\LogConfig;
 
 class Debug extends AbstractBaseClass
@@ -14,6 +15,7 @@ class Debug extends AbstractBaseClass
     public function write($text = '')
     {
 
+        $consoleMode = (new ConsoleMode())->isConsole();
 
         if ($text === null) {
             $text = '(NULL)';
@@ -31,8 +33,7 @@ class Debug extends AbstractBaseClass
             $text = '(FALSE)';
         }
 
-
-        if (!ConsoleConfig::$consoleMode) {
+        if (!$consoleMode) {
             echo '<pre>';
         }
 
@@ -42,16 +43,13 @@ class Debug extends AbstractBaseClass
             echo $text;
         }
 
-
-        if (!ConsoleConfig::$consoleMode) {
+        if (!$consoleMode) {
             echo '</pre>';
         } else {
             echo PHP_EOL;
         }
 
-
         if (ConsoleConfig::$fileMode) {
-
 
             if ((is_object($text) || (is_array($text)))) {
                 print_r($text);
@@ -65,7 +63,6 @@ class Debug extends AbstractBaseClass
 
         }
 
-
     }
 
 
@@ -77,6 +74,14 @@ class Debug extends AbstractBaseClass
         } else {
             $this->write('No');
         }
+
+    }
+
+
+    public function writeHtml($html)
+    {
+
+        echo htmlspecialchars($html);
 
     }
 

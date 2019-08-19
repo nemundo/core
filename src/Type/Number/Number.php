@@ -51,10 +51,10 @@ class Number extends AbstractType
     }
 
 
-    function formatNumber()
+    function formatNumber($decimalNumber = 0)
     {
 
-        $value = number_format($this->getValue(), 0, '.', '\'');
+        $value = number_format($this->getValue(), $decimalNumber, '.', '\'');
         return $value;
 
     }

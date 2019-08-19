@@ -3,9 +3,10 @@
 namespace Nemundo\Core\Config;
 
 
-use Nemundo\Core\File\TextFile;
+use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\TextFile\Writer\TextFileWriter;
 
-class ConfigWriter
+class ConfigWriter extends AbstractBase
 {
 
     /**
@@ -19,25 +20,26 @@ class ConfigWriter
     public $overwriteExistingFile = false;
 
     /**
-     * @var TextFile
+     * @var TextFileWriter
      */
     private $textFile;
 
     private $data;
 
-    public function __construct()
+    public function __construct($filename)
     {
-        $this->textFile = new TextFile();
+        $this->textFile = new TextFileWriter($filename);
     }
 
     public function add($name, $value = '')
     {
 
-        $this->textFile->filename = $this->filename;
+        //$this->textFile->filename = $this->filename;
 
         $this->data[] = $name . '=' . $value;
         $this->textFile->addLine($name . '=' . $value);
     }
+
 
     public function getData()
     {
@@ -48,8 +50,8 @@ class ConfigWriter
     {
 
 /*        $this->textFile->filename = $this->filename;
-        $this->textFile->overwriteExistingFile = $this->overwriteExistingFile;
-        $this->textFile->saveFile();*/
+        $this->textFile->overwriteExistingFile = $this->overwriteExistingFile;*/
+        $this->textFile->saveFile();
 
     }
 

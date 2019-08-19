@@ -4,6 +4,7 @@ namespace Nemundo\Core\Log;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Console\ConsoleConfig;
+use Nemundo\Core\Console\ConsoleMode;
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\Type\DateTime\Date;
@@ -21,7 +22,8 @@ class LogMessage extends AbstractBase
             $message = implode(' - ', $message);
         }
 
-        if (ConsoleConfig::$consoleMode) {
+        //if (ConsoleConfig::$consoleMode) {
+        if ((new ConsoleMode())->isConsole()) {
             LogConfig::$logType = [LogType::CONSOLE];
         }
 

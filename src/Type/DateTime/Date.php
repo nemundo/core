@@ -132,7 +132,7 @@ class Date extends AbstractBaseClass
         return $this;
     }
 
-    public function fromDbFormat($dateTime)
+    public function fromIsoFormat($dateTime)
     {
         $this->date = new \DateTime($dateTime);
         return $this;
@@ -224,6 +224,7 @@ class Date extends AbstractBaseClass
 
 
 
+    // getIsoDate
     public function getIsoDateFormat()
     {
         $value = (string)$this->getFormat('Y-m-d');

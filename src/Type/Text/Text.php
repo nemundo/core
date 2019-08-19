@@ -3,7 +3,6 @@
 namespace Nemundo\Core\Type\Text;
 
 
-use Nemundo\Core\Text\TextUtility;
 use Nemundo\Core\Type\AbstractType;
 
 class Text extends AbstractType
@@ -209,6 +208,9 @@ class Text extends AbstractType
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function removeHtmlTags()
     {
         $this->value = strip_tags($this->value);
@@ -223,6 +225,9 @@ class Text extends AbstractType
     }
 
 
+    /**
+     * @return $this
+     */
     public function utf8Encode()
     {
         $this->value = utf8_encode($this->value);

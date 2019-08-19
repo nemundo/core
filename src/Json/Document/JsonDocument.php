@@ -2,7 +2,9 @@
 
 namespace Nemundo\Core\Json\Document;
 
-use Nemundo\Core\File\TextFile;
+
+
+use Nemundo\Core\TextFile\Writer\TextFileWriter;
 
 class JsonDocument extends AbstractJson
 {
@@ -21,11 +23,10 @@ class JsonDocument extends AbstractJson
     public function writeFile()
     {
 
-        $json = new TextFile();
+        $json = new TextFileWriter($this->filename);
         $json->overwriteExistingFile = true;
-        $json->filename = $this->filename;
         $json->addLine($this->getContent());
-        //$json->saveFile();
+        $json->saveFile();
 
     }
 

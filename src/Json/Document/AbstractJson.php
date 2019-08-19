@@ -10,9 +10,14 @@ class AbstractJson extends AbstractBase
 
     protected $data = array();
 
-    public function addRow($data)
+    public function addRow($row)
     {
-        $this->data[] = $data;
+        $this->data[] = $row;
+    }
+
+
+    public function addData($data) {
+        $this->data = $data;
     }
 
 

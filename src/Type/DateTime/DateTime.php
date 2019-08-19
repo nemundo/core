@@ -102,17 +102,16 @@ class DateTime extends Date
     }
 
 
-    // getIsoTime
-    /*public function getIsoTimeFormat()
+    public function getIsoTime()
+    {
+        return $this->getFormat('G:i');
+    }
+
+
+    public function getIsoTimeWithSecond()
     {
         return $this->getFormat('G:i:s');
-    }*/
-
-
-     public function getIsoTime()
-     {
-         return $this->getFormat('G:i:s');
-     }
+    }
 
 
     public function getLongFormat()
@@ -139,8 +138,6 @@ class DateTime extends Date
     }
 
 
-
-
     public function roundToNearestMinuteInterval($minuteInterval = 10)
     {
 
@@ -148,7 +145,6 @@ class DateTime extends Date
 
         /** @var \DateTime $dateTime */
         $dateTime = clone($this->date);
-
 
         $dateTime->setTime(
             $dateTime->format('H'),

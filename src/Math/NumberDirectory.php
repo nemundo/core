@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Math;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Directory\AbstractDirectory;
 
 class NumberDirectory extends AbstractDirectory
@@ -15,10 +16,15 @@ class NumberDirectory extends AbstractDirectory
     }
 
 
-    public function getAverage()
+    public function getAverage($roundNumber=null)
     {
 
         $average = array_sum($this->list) / count($this->list);
+
+        if ($roundNumber!==null) {
+            $average =  round($average, $roundNumber);
+        }
+
         return $average;
 
     }
@@ -36,13 +42,16 @@ class NumberDirectory extends AbstractDirectory
     public function getMedian()
     {
 
-        $count = count($this->list); //total numbers in array
+        $tmpList = $this->list;
+        sort($tmpList);
+
+        $count = count($tmpList); //total numbers in array
         $middleval = floor(($count - 1) / 2); // find the middle value, or the lowest middle value
         if ($count % 2) { // odd number, middle is the median
-            $median = $this->list[$middleval];
+            $median = $tmpList[$middleval];
         } else { // even number, calculate avg of 2 medians
-            $low = $this->list[$middleval];
-            $high = $this->list[$middleval + 1];
+            $low = $tmpList[$middleval];
+            $high = $tmpList[$middleval + 1];
             $median = (($low + $high) / 2);
         }
         return $median;

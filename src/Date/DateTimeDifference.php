@@ -61,8 +61,13 @@ class DateTimeDifference extends AbstractBaseClass
     public function getDifferenceInDay()
     {
 
-        $day = date_diff(new \DateTime($this->dateFrom->getIsoDateFormat()), new \DateTime($this->dateUntil->getIsoDateFormat()));
-        return $day->days;
+        $diff = date_diff(new \DateTime($this->dateFrom->getIsoDateFormat()), new \DateTime($this->dateUntil->getIsoDateFormat()),false);
+        $day = $diff->days;
+        if ($diff->invert ==1) {
+            $day = $day*-1;
+        }
+
+        return $day;// $day->days;
 
     }
 

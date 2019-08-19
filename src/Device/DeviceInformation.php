@@ -15,7 +15,6 @@ class DeviceInformation extends AbstractBase
 
         // Laden der Information
 
-
     }
 
 // getBrowserAgent
@@ -33,6 +32,7 @@ class DeviceInformation extends AbstractBase
     }
 
 
+    // getBrowserLanguage
     public function getLanguage()
     {
         $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -40,6 +40,7 @@ class DeviceInformation extends AbstractBase
     }
 
 
+    /*
     public function isMobile()
     {
         $detect = new \Mobile_Detect();
@@ -50,6 +51,6 @@ class DeviceInformation extends AbstractBase
     {
         $detect = new \Mobile_Detect();
         return $detect->isTablet();
-    }
+    }*/
 
 }
