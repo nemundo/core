@@ -1,10 +1,9 @@
 <?php
 
-namespace Nemundo\Core\Image;
+namespace Nemundo\Core\Image\Cropping;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Package\CropperJs\CroppingDimension;
 
 class ImageCropping extends AbstractBase
 {
