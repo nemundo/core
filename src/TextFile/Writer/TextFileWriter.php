@@ -13,11 +13,6 @@ class TextFileWriter extends AbstractTextFileWriter
     /**
      * @var bool
      */
-    //public $utf8Encode = false;
-
-    /**
-     * @var bool
-     */
     public $overwriteExistingFile = false;
 
     /**
@@ -30,13 +25,6 @@ class TextFileWriter extends AbstractTextFileWriter
      */
     private $lineList = [];
 
-
-    public function __destruct()
-    {
-
-        // check if file was saved ???
-        // TODO: Implement __destruct() method.
-    }
 
     public function addLine($line)
     {
@@ -58,18 +46,9 @@ class TextFileWriter extends AbstractTextFileWriter
         $file = new File($this->filename);
 
         if (!$this->overwriteExistingFile && $file->exists()) {
-            (new LogMessage())->writeError('File already exists');
+            (new LogMessage())->writeError('File already exists. Filename: '.$this->filename);
             return;
         }
-
-        /*
-        if (!file_exists($this->filename)) {
-            $file = new File($this->filename);
-            (new Path())
-                ->addPath($file->getPath())
-                ->createDirectory();
-        }*/
-
 
         (new Path())
             ->addPath($file->getPath())
