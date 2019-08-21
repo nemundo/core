@@ -11,20 +11,28 @@ class BoldText
     /**
      * @var string
      */
-    public $keyword;
+    //public $keyword;
 
 
-    public $keywordList=[];
+    /**
+     * @var string[]
+     */
+    public $keywordList = [];
 
 
-    public function addKeyword($keyword) {
-
+    public function addKeyword($keyword)
+    {
+        $this->keywordList[] = $keyword;
     }
 
 
-    public function getBoldText($text) {
+    public function getBoldText($text)
+    {
 
-        $text = preg_replace('/(' . $this->keyword . ')/i', '<b>$1</b>', $text);
+        foreach ($this->keywordList as $keyword) {
+            $text = preg_replace('/(' . $keyword . ')/i', '<b>$1</b>', $text);
+        }
+
         return $text;
 
     }
