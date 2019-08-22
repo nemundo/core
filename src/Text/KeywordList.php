@@ -54,11 +54,11 @@ class KeywordList extends AbstractBaseClass
             if ($keyword !== '') {
 
                 if ($this->lowerCase) {
-                    $keyword = strtolower($keyword);
+                    $keyword = mb_strtolower($keyword);
                 }
 
                 if ($this->hashAsId) {
-                    $id = md5($keyword);
+                    $id = md5(mb_strtolower($keyword));
                     $valueList[$id] = $keyword;
                 } else {
                     $valueList[] = $keyword;
