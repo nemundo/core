@@ -58,21 +58,6 @@ class FileRequest extends AbstractRequest
     }
 
 
-    /*
-   public function __construct( name)
-   {
-
-       $this->filename = $_FILES[$name]['name'];
-       $this->tmpFileName = $_FILES[$name]['tmp_name'];
-       $this->fileSize = $_FILES[$name]['size'];
-       $this->errorCode = $_FILES[$name]['error'];
-
-       $file = new File($this->filename);
-       $this->filenameExtension = $file->getFileExtension();
-
-   }*/
-
-
     public function saveFile($filename)
     {
 
@@ -122,6 +107,19 @@ class FileRequest extends AbstractRequest
         } else {
             return false;
         }
+
+    }
+
+
+    public function hasValue()
+    {
+
+        $value = false;
+        if ($this->errorCode == 0) {
+            $value = true;
+        }
+
+        return $value;
 
     }
 

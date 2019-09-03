@@ -8,7 +8,12 @@ use Nemundo\Core\Base\AbstractBase;
 class AbstractJson extends AbstractBase
 {
 
-    protected $data = array();
+    /**
+     * @var bool
+     */
+    public $formatJson = true;
+
+    protected $data = [];
 
     public function addRow($row)
     {
@@ -16,14 +21,25 @@ class AbstractJson extends AbstractBase
     }
 
 
-    public function addData($data) {
+    // brauchts es das
+    public function addData($data)
+    {
         $this->data = $data;
     }
 
 
     protected function getContent()
     {
-        $content = json_encode($this->data, JSON_PRETTY_PRINT);
+
+        $option = null;
+
+        if ($this->formatJson) {
+            $option = JSON_PRETTY_PRINT;
+        }
+
+        //$content = json_encode($this->data, JSON_PRETTY_PRINT);
+        $content = json_encode($this->data, $option);
+
         return $content;
     }
 

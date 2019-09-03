@@ -79,4 +79,15 @@ class Path extends AbstractBase
 
     }
 
+
+    public function emptyDirectory()
+    {
+
+        $dir = new Directory($this->getPath());
+        $dir->deleteDirectory(true);
+
+        return $this;
+
+    }
+
 }
