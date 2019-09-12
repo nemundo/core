@@ -25,4 +25,7 @@ class ContentType
     const KMZ = 'application/vnd.google-earth.kmz';
 
     const EXCEL = 'application/vnd.ms-excel';
+
+    const PDF = 'application/pdf';
+
 }

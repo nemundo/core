@@ -44,23 +44,25 @@ class FileResponse extends AbstractResponse
             $this->responseFilename = $file->filename;
         }
 
-
-        //header('Content-Description: File Transfer');
         $this->sendStatusCode();
 
-        // Content Type
-        /*switch ($file->getFileExtension()) {
-            case "pdf":
-                header('Content-Type: application/pdf');
+        $contentType = 'application/octet-stream';
+        switch ($file->getFileExtension()) {
+            case 'pdf':
+                $contentType = ContentType::PDF;
                 break;
 
+            case 'png':
+                $contentType = 'image/png';
+                break;
 
-            default:
-                header('Content-Type: application/octet-stream');
-        }*/
+            case 'svg':
+                $contentType = 'image/svg+xml';
+                break;
 
-        header('Content-type: ' . $this->contentType);
+        }
 
+        header('Content-type: ' . $contentType);
         header('Content-Disposition: attachment; filename="' . $this->responseFilename . '"');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
