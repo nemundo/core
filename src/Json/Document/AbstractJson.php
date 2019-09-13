@@ -37,10 +37,10 @@ class AbstractJson extends AbstractBase
             $option = JSON_PRETTY_PRINT;
         }
 
-        //$content = json_encode($this->data, JSON_PRETTY_PRINT);
         $content = json_encode($this->data, $option);
 
         return $content;
+
     }
 
 }
