@@ -12,7 +12,7 @@ abstract class AbstractDataSource extends AbstractBaseClass
      */
     public $reverse = false;
 
-    protected $list = array();
+    protected $list = [];
 
     protected $loaded = false;
 
@@ -49,6 +49,14 @@ abstract class AbstractDataSource extends AbstractBaseClass
         $this->getData();
         $count = sizeof($this->list);
         return $count;
+    }
+
+
+    public function getTotalCount() {
+
+        $count = $this->getCount();
+        return $count;
+
     }
 
 
