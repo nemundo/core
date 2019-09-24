@@ -21,7 +21,7 @@ trait PaginationTrait
     /**
      * @var int
      */
-    public $currentPage;  // = 1;
+    public $currentPage;
 
     /**
      * @var string
@@ -32,6 +32,7 @@ trait PaginationTrait
      * @var int
      */
     public $count;
+
 
 
     protected function loadPageRequest() {
@@ -54,12 +55,7 @@ trait PaginationTrait
 
     public function getFrom()
     {
-
-        //(new Debug())->write('current page: '.$this->currentPage);
-        //(new Debug())->write('current page: '.$this->paginationLimit);
-
         $from = ($this->currentPage * $this->paginationLimit) + 1;
-        //$from = 11;
         return $from;
     }
 
@@ -163,9 +159,5 @@ trait PaginationTrait
         return $value;
 
     }
-
-
-
-
 
 }

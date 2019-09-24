@@ -32,6 +32,9 @@ class KeywordList extends AbstractBaseClass
     public function getKeywordList($text)
     {
 
+
+        // '
+
         $text = trim($text);
         $keywordList = preg_split('~[^\p{L}\p{N}\']+~u', $text);
 

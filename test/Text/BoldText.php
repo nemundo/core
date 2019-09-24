@@ -8,7 +8,7 @@ $keywordList[]= 'zrh';
 $keywordList[]='switzerland';
 
 
-$boldText = new \Nemundo\Core\Text\BoldText();
+$boldText = new \Nemundo\Core\Text\TextBold();
 $boldText->keywordList=$keywordList;
 //$boldText->keyword = 'zrh';
 $output = $boldText->getBoldText('Airport ZRH LSZH Switzerland');

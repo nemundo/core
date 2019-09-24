@@ -225,6 +225,13 @@ class Text extends AbstractType
     }
 
 
+    public function removeNewline()
+    {
+        $this->value = str_replace(array("\n", "\r"), '', $this->value);
+        return $this;
+    }
+
+
     /**
      * @return $this
      */
@@ -240,6 +247,7 @@ class Text extends AbstractType
         $this->value = html_entity_decode($this->value);
         return $this;
     }
+
 
     public function replaceNewLineToHtmlBreak()
     {

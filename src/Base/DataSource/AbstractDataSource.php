@@ -16,6 +16,11 @@ abstract class AbstractDataSource extends AbstractBaseClass
 
     protected $loaded = false;
 
+    /**
+     * @var int
+     */
+    protected $totalCount;
+
     abstract protected function loadData();
 
     /**
