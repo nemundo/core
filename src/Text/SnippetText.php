@@ -118,8 +118,14 @@ class SnippetText extends AbstractBase
      * @param bool $highlight
      * @return string
      */
-    public function createSnippet(string $query, string $text, bool $highlight = true)
+    public function createSnippet(string $query, $text, bool $highlight = true)
     {
+
+        if ($text == null) {
+            $text = '';
+        }
+
+
         $query = htmlspecialchars($query);
         $text = strip_tags($text);
         $sentences = $this->breakIntoSentences($text);
