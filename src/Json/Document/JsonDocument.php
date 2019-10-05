@@ -2,8 +2,6 @@
 
 namespace Nemundo\Core\Json\Document;
 
-
-
 use Nemundo\Core\TextFile\Writer\TextFileWriter;
 
 class JsonDocument extends AbstractJson
@@ -29,17 +27,5 @@ class JsonDocument extends AbstractJson
         $json->saveFile();
 
     }
-
-
-    /*
-    public function sendToBrowser() {
-
-        $response = new HttpResponse();
-        //$response->contentType = ContentType::JSON;
-        $response->content = json_encode($this->data);
-        $response->sendResponse();
-
-    }*/
-
 
 }

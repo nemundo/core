@@ -9,7 +9,6 @@ use Nemundo\Core\Http\Response\HttpResponse;
 class JsonResponse extends AbstractJson
 {
 
-
     public function render()
     {
 
@@ -19,6 +18,5 @@ class JsonResponse extends AbstractJson
         $response->sendResponse();
 
     }
-
 
 }
