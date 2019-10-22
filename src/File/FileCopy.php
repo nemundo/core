@@ -33,13 +33,14 @@ class FileCopy extends AbstractBase
         }
 
         if (!file_exists($this->sourceFilename)) {
-            (new LogMessage())->writeError('Source Filename does not exist. Filename: ' . $this->sourceFilename);
+            (new LogMessage())->writeError('Source Filen does not exist. Filename: ' . $this->sourceFilename);
             return;
         }
 
 
         if (!$this->overwriteExistingFile) {
             if (file_exists($this->destinationFilename)) {
+                (new LogMessage())->writeError('Destination Filen already exists. Filename: '.$this->destinationFilename);
                 return;
             }
         }

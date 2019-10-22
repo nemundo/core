@@ -23,19 +23,6 @@ abstract class AbstractRequest extends AbstractBaseClass
     }
 
 
-    /*
-    public function exists()
-    {
-
-        $returnValue = false;
-        if (isset($_REQUEST[$this->requestName])) {
-            $returnValue = true;
-        }
-        return $returnValue;
-
-    }*/
-
-
     public function notExists()
     {
 
@@ -44,11 +31,10 @@ abstract class AbstractRequest extends AbstractBaseClass
 
     }
 
+
     public function getRequestName()
     {
         return $this->requestName;
     }
-
-
 
 }
