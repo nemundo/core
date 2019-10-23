@@ -12,6 +12,8 @@ class ValidationType
 
     const IS_URL = 'isUrl';
 
+    const IS_FILE = 'isFile';
+
     const IS_NUMBER = 'isNumber';
 
     const IS_DATE = 'isDate';
