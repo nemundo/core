@@ -282,6 +282,7 @@ class Date extends AbstractBaseClass
         //return $dayOfYear;
     }
 
+    // getCalendarWeek
     public function getWeekNumber()
     {
 
