@@ -2,14 +2,12 @@
 
 namespace Nemundo\Core\WebRequest;
 
-
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\System\Delay;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Project\ProjectConfig;
-
 
 class WebRequestCurl extends AbstractWebRequest
 {
@@ -62,12 +60,7 @@ class WebRequestCurl extends AbstractWebRequest
     public function addHeader($header)
     {
 
-        //$this->header = $header;
-
         $this->header[] = $header;
-
-        //curl_setopt($this->curl, CURLOPT_HTTPHEADER, $header);
-
         return $this;
 
     }
@@ -136,30 +129,11 @@ class WebRequestCurl extends AbstractWebRequest
         }
 
         curl_setopt($this->curl, CURLOPT_FILE, $fp);
-
-        //curl_setopt($this->curl, CURLOPT_HEADER, 1); // return HTTP headers with response
-        //curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1); // return the response rather than output it
-
         $response = curl_exec($this->curl);
 
-
         if ($response === false) {
-            //(new LogMessage())->writeError();
-
             $this->writeError('Curl Download Fehler: ' . curl_error($this->curl));
-
         }
-
-
-        //(new Debug())->write($response);  //curl_getinfo($this->curl));
-        //exit;
-
-        //$new_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-        //$realUrl = curl_getinfo($this->curl, CURLINFO_EFFECTIVE_URL);
-
-        //(new Debug())->write($realUrl);
-
-        //(new Debug())->write($response);
 
     }
 
