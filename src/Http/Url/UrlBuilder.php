@@ -4,9 +4,6 @@ namespace Nemundo\Core\Http\Url;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
-use Nemundo\Core\Type\Text\Text;
-use Nemundo\Web\Parameter\AbstractUrlParameter;
-use Nemundo\Web\WebConfig;
 
 
 class UrlBuilder extends AbstractBaseClass
@@ -38,8 +35,6 @@ class UrlBuilder extends AbstractBaseClass
         parse_str(parse_url($this->url, PHP_URL_QUERY), $this->requestList);
 
     }
-
-
 
 
     public function addRequestValue($requestName, $value = '')
@@ -76,12 +71,34 @@ class UrlBuilder extends AbstractBaseClass
         $url = strtok($this->url, '?');
 
         if (sizeof($this->requestList) > 0) {
-            $query_string = http_build_query($this->requestList);
-            $url = $url . '?' . $query_string;
+            $queryString = http_build_query($this->requestList);
+            $url = $url . '?' . $queryString;
         }
 
         return $url;
 
     }
+
+
+    public function getUrlWithoutEncoding()
+    {
+
+
+        $url = strtok($this->url, '?');
+
+        if (sizeof($this->requestList) > 0) {
+            $queryString = '';
+            foreach ($this->requestList as $key => $value) {
+                $queryString = $queryString . $key . '=' . $value . '&';
+            }
+
+            $url = $url . '?' . $queryString;
+        }
+
+        return $url;
+
+
+    }
+
 
 }
