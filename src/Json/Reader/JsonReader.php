@@ -44,6 +44,7 @@ class JsonReader extends AbstractDataSource
     }
 
 
+    // fromContent
     public function fromText($text)
     {
         $this->text = $text;
@@ -53,9 +54,6 @@ class JsonReader extends AbstractDataSource
 
     protected function loadData()
     {
-
-
-
 
         $this->list = json_decode($this->text, true);
 

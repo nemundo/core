@@ -12,6 +12,12 @@ use Nemundo\Core\Type\File\File;
 class WebRequest extends AbstractWebRequest
 {
 
+
+    /**
+     * @var string
+     */
+    public $authorization;
+
     /**
      * @var bool
      */
@@ -107,6 +113,20 @@ class WebRequest extends AbstractWebRequest
         if (!$this->loaded) {
             $this->loaded = true;
             $option = array('http' => array('user_agent' => $this->userAgent));
+
+            if ($this->authorization !== null) {
+
+                $option['http']['header'] = 'Authorization:' . $this->authorization;
+            }
+
+
+            /*$context = stream_context_create([
+    "http" => [
+        "header" => "Authorization: Token token=" . $token
+    ]
+]);*/
+
+
             $this->context = stream_context_create($option);
         }
 

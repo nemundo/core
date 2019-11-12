@@ -4,6 +4,7 @@ namespace Nemundo\Core\Check;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Log\LogMessage;
 
 class ValueCheck extends AbstractBase
 {
@@ -17,6 +18,16 @@ class ValueCheck extends AbstractBase
         }
 
         return $returnValue;
+
+    }
+
+
+    public function hasValueOrExit($value, $errorMessage='') {
+
+        if (!$this->hasValue($value)) {
+            (new LogMessage())->writeError('No Value. '.$errorMessage);
+            exit;
+        }
 
     }
 
