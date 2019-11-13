@@ -5,6 +5,7 @@ namespace Nemundo\Core\Sorting;
 
 use Nemundo\Core\Base\AbstractBase;
 
+// ObjectSorting
 class SortingListOfObject extends AbstractBase
 {
 
@@ -24,6 +25,9 @@ class SortingListOfObject extends AbstractBase
 
     public function getSortedListOfObject()
     {
+
+        $this->checkProperty('objectList');
+        $this->checkProperty('sortingProperty');
 
         if (sizeof($this->objectList) > 0) {
 

@@ -8,7 +8,7 @@ $file = new \Nemundo\Core\Type\File\File($filename);
 
 (new \Nemundo\Core\Debug\Debug())->write($file->fullFilename);
 
-if ($file->exists()) {
+if ($file->fileExists()) {
     (new \Nemundo\Core\Debug\Debug())->write('File exists');
 } else {
     (new \Nemundo\Core\Debug\Debug())->write('File does not exist');

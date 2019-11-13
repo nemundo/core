@@ -35,7 +35,7 @@ class FileResponse extends AbstractResponse
         $file = new File($this->filename);
 
 
-        if (!$file->exists()) {
+        if (!$file->fileExists()) {
             (new LogMessage())->writeError('File ' . $this->filename . ' does not exists.');
             return;
         }

@@ -45,7 +45,7 @@ class TextFileWriter extends AbstractTextFileWriter
 
         $file = new File($this->filename);
 
-        if (!$this->overwriteExistingFile && $file->exists()) {
+        if (!$this->overwriteExistingFile && $file->fileExists()) {
             (new LogMessage())->writeError('File already exists. Filename: '.$this->filename);
             return;
         }

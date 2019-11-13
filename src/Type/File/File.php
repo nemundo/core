@@ -148,8 +148,7 @@ class File extends AbstractType
     }
 
 
-    // fileExists
-    public function exists()
+    public function fileExists()
     {
 
         $returnValue = false;
@@ -165,9 +164,25 @@ class File extends AbstractType
     }
 
 
+    public function directoryExists()
+    {
+
+        $returnValue = false;
+
+        if ($this->isDirectory()) {
+            if (file_exists($this->fullFilename)) {
+                $returnValue = true;
+            }
+        }
+
+        return $returnValue;
+
+    }
+
+
     public function notExists() {
 
-        $value = !$this->exists();
+        $value = !$this->fileExists();
         return $value;
 
     }
@@ -202,7 +217,7 @@ class File extends AbstractType
         $directory->createDirectory();
 
 
-        if ($this->exists()) {
+        if ($this->fileExists()) {
             if (!@copy($this->fullFilename, $filename)) {
                 $error = error_get_last();
                 (new LogMessage())->writeError($error['type'] . $error['message']);
@@ -223,7 +238,7 @@ class File extends AbstractType
 
     public function deleteFile()
     {
-        if ($this->exists()) {
+        if ($this->fileExists()) {
             if (!@unlink($this->fullFilename)) {
                 (new LogMessage())->writeError(error_get_last()['message'] . ' Filename:' . $this->fullFilename);
             }
@@ -237,7 +252,7 @@ class File extends AbstractType
     {
 
         $hash = null;
-        if ($this->exists()) {
+        if ($this->fileExists()) {
             $hash = md5_file($this->fullFilename);
         } else {
             (new LogMessage())->writeError('File does not exist');

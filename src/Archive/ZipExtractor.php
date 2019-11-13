@@ -19,7 +19,7 @@ class ZipExtractor extends AbstractExtractor
         }
 
 
-        if (!(new File($this->archiveFilename))->exists()) {
+        if (!(new File($this->archiveFilename))->fileExists()) {
             (new LogMessage())->writeError('Zip Filename does not exist. Filename: '.$this->archiveFilename);
             return;
         }

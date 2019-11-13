@@ -42,7 +42,7 @@ class ConfigFileReader extends AbstractBaseClass
 
         if (!$this->loaded) {
 
-            if (!(new File($this->filename))->exists()) {
+            if (!(new File($this->filename))->fileExists()) {
                 (new LogMessage())->writeError('Config File does not exist. Filename: ' . $this->filename);
                 return;
             }

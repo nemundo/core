@@ -2,12 +2,18 @@
 
 namespace Nemundo\Core\Image;
 
-
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 
-// ImageFile
-class Image extends File
+
+// gibt es schon unter Type !!!
+
+// ImageProperty
+// ImageType
+// ImageReader
+
+class ImageProperty extends AbstractBase  // File
 {
 
     /**
@@ -26,15 +32,12 @@ class Image extends File
     public $imageType;
 
 
-    public function __construct($value)
+    public function __construct($filename)
     {
-        parent::__construct($value);
-
-        $filename = $this->getValue();
 
         $file = new File($filename);
 
-        if (!$file->exists()) {
+        if (!$file->fileExists()) {
             (new LogMessage())->writeError('Image: File does not exists. Filename: ' . $filename);
             return;
         }
@@ -43,7 +46,14 @@ class Image extends File
             return;
         }
 
-        $dimension = getimagesize($this->getValue());
+        $dimension = getimagesize($filename);
+
+        //$dimensionList = getimagesize($this->getValue());
+
+        /*$dimension = new ImageDimension();
+        $dimension->width = $dimensionList[0];
+        $dimension->height = $dimensionList[1];*/
+
 
         $this->width = $dimension[0];
         $this->height = $dimension[1];

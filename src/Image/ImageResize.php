@@ -4,6 +4,7 @@ namespace Nemundo\Core\Image;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\Image\Format\AbstractImageFormat;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
@@ -48,24 +49,19 @@ class ImageResize extends AbstractBaseClass
             exit;
         }
 
-
         $file = new File($this->destinationFilename);
 
         $dir = new Directory();
         $dir->path = $file->getPath();
         $dir->createDirectory();
 
-
         $sourceFile = new File($this->sourceFilename);
-        if (!$sourceFile->exists()) {
+        if (!$sourceFile->fileExists()) {
             (new LogMessage())->writeError('Image Resize: File ' . $this->sourceFilename . ' does not exist.');
             return;
         }
 
-
-        //$fileExtension = $file->getFileExtension();
-
-        $image = new Image($this->sourceFilename);
+        $image = new ImageProperty($this->sourceFilename);
         if ($image->width == 0 || $image->height == 0) {
             (new LogMessage())->writeError('Width Image Dimension is 0');
         }
@@ -100,11 +96,10 @@ class ImageResize extends AbstractBaseClass
         $sourceWidth = imageSX($imageSource);
         $sourceHeight = imageSY($imageSource);
 
-
         switch ($this->format->getClassName()) {
 
             case AutoSizeImageFormat::class:
-                if ($sourceWidth > $sourceHeight) {
+                if ($sourceWidth >= $sourceHeight) {
                     $destinationWidth = $this->format->size;
                     $destinationHeight = $this->format->size * ($sourceHeight / $sourceWidth);
                 }
@@ -135,8 +130,10 @@ class ImageResize extends AbstractBaseClass
         imagefilledrectangle($imageDestination, 0, 0, $destinationWidth, $destinationHeight, $transparent);
         imagecopyresampled($imageDestination, $imageSource, 0, 0, 0, 0, $destinationWidth, $destinationHeight, $sourceWidth, $sourceHeight);
 
-
-
+        if (!is_resource($imageDestination)) {
+            (new Debug())->write('No Resource. Filename: '.$this->sourceFilename);
+            exit;
+        }
 
         if (preg_match('/jpg|jpeg/', $fileExtension)) {
             imagejpeg($imageDestination, $this->destinationFilename, $this->jpegQuality);
@@ -154,4 +151,5 @@ class ImageResize extends AbstractBaseClass
         imagedestroy($imageSource);
 
     }
+
 }

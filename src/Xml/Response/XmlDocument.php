@@ -89,7 +89,7 @@ class XmlDocument extends AbstractDocument
 
         $path = (new File($this->filename))->getPath();
 
-        if (!(new File($path))->exists()) {
+        if (!(new File($path))->fileExists()) {
             (new Directory($path))->createDirectory();
         }
 

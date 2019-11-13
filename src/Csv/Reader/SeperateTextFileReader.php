@@ -47,7 +47,7 @@ class SeperateTextFileReader extends AbstractCsvReader  // AbstractDataSource
         if (!(new UrlValidation())->isUrl($this->filename)) {
 
             $file = new File($this->filename);
-            if (!$file->exists()) {
+            if (!$file->fileExists()) {
                 (new LogMessage())->writeError('File ' . $this->filename . ' does not exist.');
                 return;
             }
