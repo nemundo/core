@@ -61,7 +61,7 @@ class Exif extends AbstractImage
         $gps_int = array(-1, -1);*/
 
         if (exif_imagetype($imageFilename) == IMAGETYPE_JPEG) {
-            $exif = exif_read_data($imageFilename);
+            $exif = @exif_read_data($imageFilename);
         }
 
         // Description
