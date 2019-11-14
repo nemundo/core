@@ -5,6 +5,7 @@ namespace Nemundo\Core\Random;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 
+// TextRandom
 class RandomText extends AbstractBaseClass
 {
 
