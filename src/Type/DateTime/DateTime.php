@@ -134,7 +134,7 @@ class DateTime extends Date
 
     public function getShortDateTimeWithSecondLeadingZeroFormat()
     {
-        return $this->getFormat('d.m.Y G:i:s');
+        return $this->getFormat('d.m.Y H:i:s');
     }
 
 
