@@ -4,6 +4,7 @@ namespace Nemundo\Core\Base\DataSource;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 
 abstract class AbstractRow extends AbstractBaseClass
@@ -51,6 +52,7 @@ abstract class AbstractRow extends AbstractBaseClass
             $value = array_values($this->data)[$number];
         } else {
             (new LogMessage())->writeError('Row Field Number ' . $number . ' does not exist.');
+            (new Debug())->write($this->data);
         }
 
         return $value;
