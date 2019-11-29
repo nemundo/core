@@ -44,7 +44,7 @@ class ZipArchive extends AbstractBaseClass
     }
 
 
-    public function addPath($path)
+    public function addPath($path, $destinationPath = '')
     {
 
         $reader = new DirectoryReader();
@@ -61,7 +61,7 @@ class ZipArchive extends AbstractBaseClass
 
                 $tmpFilename = new Text($file->fullFilename);
                 $tmpFilename->removeLeft($path);
-                $item->internalFilename = $tmpFilename->getValue();
+                $item->internalFilename = $destinationPath . $tmpFilename->getValue();
 
                 $this->fileItemList[] = $item;
 
