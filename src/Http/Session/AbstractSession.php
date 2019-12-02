@@ -55,7 +55,6 @@ abstract class AbstractSession extends AbstractBaseClass
 
     public function setValue($value)
     {
-        //(new Debug())->write($this->sessionName);
         $_SESSION[$this->sessionName] = $value;
     }
 

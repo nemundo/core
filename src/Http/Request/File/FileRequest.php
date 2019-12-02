@@ -5,6 +5,7 @@ namespace Nemundo\Core\Http\Request\File;
 
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\FileUtility;
+use Nemundo\Core\File\Path;
 use Nemundo\Core\File\UniqueFilename;
 use Nemundo\Core\Http\Request\AbstractRequest;
 use Nemundo\Core\Log\LogMessage;
@@ -90,6 +91,8 @@ class FileRequest extends AbstractRequest
 
     public function saveAsOrginalFilename($path)
     {
+
+        (new Path($path))->createDirectory();
 
         $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
         $fullFilename = $path . $this->filename;

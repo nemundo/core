@@ -14,9 +14,14 @@ class Path extends AbstractBase
      */
     private $path;
 
-    public function __construct()
+    public function __construct($path = null)
     {
         $this->path = new TextDirectory();
+
+        if ($path!==null) {
+        $this->addPath($path);
+        }
+
     }
 
 
