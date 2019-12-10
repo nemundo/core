@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Type\Number;
 
 use Nemundo\Core\Log\LogFile;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 
 class Number extends AbstractType
@@ -17,7 +18,7 @@ class Number extends AbstractType
             //(new LogMessage())->writeError('Number is not valid');
 
             $message = 'Number is not valid. Value: ' . $value;
-            (new LogFile())->writeError($message);
+            (new LogMessage())->writeError($message);
             //throw new \Exception($message);
 
         }
@@ -64,12 +65,8 @@ class Number extends AbstractType
     {
 
         $value = round($this->value, $anzahlDezimalStellen);
-
-        //$value = number_format($this->getValue(), 0, '.', '\'');
-
         return $value;
 
     }
-
 
 }
