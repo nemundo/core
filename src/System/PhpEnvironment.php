@@ -57,4 +57,20 @@ class PhpEnvironment extends AbstractBase
     }
 
 
+    public function getMaxPostSize()
+    {
+        //$maxFileUpload = ini_get('post_max_size');
+        //return $maxFileUpload;
+
+        $value = $this->getValue('post_max_size');
+        return $value;
+
+    }
+
+
+    private function getValue($parameter) {
+        $value = ini_get($parameter);
+        return $value;
+    }
+
 }
