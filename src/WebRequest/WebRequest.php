@@ -119,14 +119,6 @@ class WebRequest extends AbstractWebRequest
                 $option['http']['header'] = 'Authorization:' . $this->authorization;
             }
 
-
-            /*$context = stream_context_create([
-    "http" => [
-        "header" => "Authorization: Token token=" . $token
-    ]
-]);*/
-
-
             $this->context = stream_context_create($option);
         }
 

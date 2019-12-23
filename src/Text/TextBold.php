@@ -39,6 +39,21 @@ class TextBold extends AbstractBase
     }
 
 
+    public function getKeywordList() {
+        return $this->keywordList;
+    }
+
+
+    public function getWordIdList() {
+
+        $list=[];
+foreach ($this->getKeywordList() as $keyword) {
+        $list[]=md5(mb_strtolower( $keyword));
+}
+        return $list;
+
+    }
+
     public function getBoldText($text)
     {
 
