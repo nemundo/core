@@ -58,7 +58,7 @@ class CsvReader extends AbstractCsvReader
             if ($count >= $this->lineOfStart) {
 
                 // Clean Csv
-                $data = array();
+                $data = [];
                 foreach ($line as $item) {
 
                     if ($this->utf8Encode) {
@@ -85,7 +85,7 @@ class CsvReader extends AbstractCsvReader
                     } else {
 
                         // Daten anfügen
-                        $dataNew = array();
+                        $dataNew = [];
                         $rowCount = 0;
                         foreach ($dataHeader as $rowHeader) {
                             $dataNew[trim($rowHeader)] = $data[$rowCount];
@@ -97,13 +97,19 @@ class CsvReader extends AbstractCsvReader
 
                     }
                 } else {
+
                     $this->list[] = new CsvRow($data);
+
                 }
+
             }
+
             $count++;
+
         }
 
         fclose($file);
 
     }
+
 }
