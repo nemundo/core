@@ -3,6 +3,8 @@
 namespace Nemundo\Core\Type\File;
 
 use Nemundo\Core\File\Directory;
+use Nemundo\Core\File\FileInformation;
+use Nemundo\Core\File\FileName;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 
@@ -96,12 +98,15 @@ class File extends AbstractType
     public function getFileExtension()
     {
 
+        /*
         $filename = strtolower($this->filename);
         $extensionList = explode('.', $filename);
         $pointCount = count($extensionList) - 1;
         $extension = $extensionList[$pointCount];
 
-        return $extension;
+        return $extension;*/
+
+       return (new FileInformation($this->filename))->getExtension();
 
     }
 
