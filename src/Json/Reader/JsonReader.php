@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Json\Reader;
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\TextFile\Reader\TextFileReader;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\WebRequest\WebRequest;
@@ -27,7 +28,6 @@ class JsonReader extends AbstractDataSource
 
         $file = new TextFileReader($filename);
         $this->text = $file->getText();
-
 
         return $this;
 
