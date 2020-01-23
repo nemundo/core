@@ -37,7 +37,7 @@ class Stopwatch extends AbstractBaseClass
 
     public function stopAndPrintOutput()
     {
-        (new Debug())->write($this->logName . ': ' . $this->stop());
+        (new Debug())->write($this->logName . ': ' . $this->stop().' sec');
     }
 
 }
