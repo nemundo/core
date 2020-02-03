@@ -37,7 +37,6 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-
         switch ($this->getExtension()) {
 
             case 'jpeg':
@@ -52,6 +51,20 @@ class FileInformation extends AbstractBase
 
         return $value;
 
+
+    }
+
+
+    public function isPdf()
+    {
+
+        $value = false;
+
+        if ($this->getExtension() == 'pdf') {
+            $value = true;
+        }
+
+        return $value;
 
     }
 
