@@ -53,6 +53,23 @@ abstract class AbstractBase
     }
 
 
+    protected function checkPropertyOnNull($propertyName)
+    {
+        $returnValue = true;
+
+
+            if ($this->$propertyName === null) {
+                (new LogMessage())->writeError('Property ' . $propertyName . ' is not defined.');
+                $returnValue = false;
+            }
+
+            return $returnValue;
+
+
+    }
+
+
+
     protected function checkBooleanProperty($propertyName)
     {
 
