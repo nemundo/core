@@ -141,12 +141,13 @@ class Url extends AbstractBaseClass
     }
 
 
+    /*
     public function redirect()
     {
 
         (new UrlRedirect())->redirect($this->getUrl());
 
-    }
+    }*/
 
 
     public function getUrlWithoutParameter()
