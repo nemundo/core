@@ -304,6 +304,7 @@ class Date extends AbstractBaseClass
         return $this->getFormat('N');
     }
 
+    // getMonthLabel
     public function getMonth()
     {
         $month = (new Month())->getMonth($this->getMonthNumber());
@@ -311,6 +312,7 @@ class Date extends AbstractBaseClass
     }
 
 
+    // getMonath
     public function getMonthNumber()
     {
         return $this->getFormat('n');
