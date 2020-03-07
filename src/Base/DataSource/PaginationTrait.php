@@ -4,6 +4,7 @@
 namespace Nemundo\Core\Base\DataSource;
 
 
+use Nemundo\Admin\Parameter\PageParameter;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Request\Get\GetRequest;
 use Nemundo\Core\Http\Url\Url;
@@ -26,7 +27,7 @@ trait PaginationTrait
     /**
      * @var string
      */
-    public $parameterName = 'page';
+    //public $parameterName = 'page';
 
     /**
      * @var int
@@ -37,9 +38,9 @@ trait PaginationTrait
 
     protected function loadPageRequest() {
 
-        $parameter = new GetRequest('page');
-        $parameter->defaultValue = 0;
-        $this->currentPage = $parameter->getValue();
+        //$parameter = new GetRequest('page');
+        //$parameter->defaultValue = 0;
+        $this->currentPage = (new PageParameter())->getValue();  // $parameter->getValue();
 
 
     }
@@ -108,10 +109,12 @@ trait PaginationTrait
     public function getPreviousUrl()
     {
 
-        $parameter = new UrlParameter();
+        //$parameter = new UrlParameter();
 
-        $parameter->parameterName = 'page';
-        $parameter->setValue($this->currentPage-1);
+        //$parameter->parameterName = 'page';
+        //$parameter->setValue($this->currentPage-1);
+
+        $parameter = new PageParameter($this->currentPage-1);
 
         $url = new Site();  // Url();
         $url->addParameter($parameter);
@@ -136,9 +139,12 @@ trait PaginationTrait
     public function getNextUrl()
     {
 
-        $parameter = new UrlParameter();
-        $parameter->parameterName = $this->parameterName;
-        $parameter->setValue($this->currentPage+1);
+        //$parameter = new UrlParameter();
+        //$parameter->parameterName = $this->parameterName;
+        //$parameter->setValue($this->currentPage+1);
+
+        $parameter = new PageParameter($this->currentPage+1);
+
 
         $url = new \Nemundo\Web\Url\Url();  // new Site(); // new Url();
         $url->addParameter($parameter);
