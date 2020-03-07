@@ -138,6 +138,7 @@ class DateTime extends Date
     }
 
 
+    // auslagern in eigenständige Class !!!
     public function roundToNearestMinuteInterval($minuteInterval = 10)
     {
 

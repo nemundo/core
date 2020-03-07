@@ -125,6 +125,12 @@ class Date extends AbstractBaseClass
         }
     }
 
+
+    public function fromDateTime(DateTime $dateTime) {
+        $this->fromIsoFormat($dateTime->getIsoDateTimeFormat());
+        return $this;
+    }
+
     public function fromTimestamp($timestamp)
     {
         $this->date = new \DateTime();
