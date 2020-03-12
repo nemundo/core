@@ -10,6 +10,7 @@ class Text extends AbstractType
 
     public function __construct($value = '')
     {
+        $value=trim($value);
         parent::__construct($value);
     }
 
