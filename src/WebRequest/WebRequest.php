@@ -76,9 +76,11 @@ class WebRequest extends AbstractWebRequest
     {
 
         $file = new File($destinationFilename);
-        $directory = new Directory();
+
+
+        /*$directory = new Directory();
         $directory->path = $file->path;
-        $directory->createDirectory();
+        $directory->createDirectory();*/
 
         $this->load();
 
@@ -87,11 +89,13 @@ class WebRequest extends AbstractWebRequest
 
             $errorMessage = 'Http Download Error. Message: ' . error_get_last()['message'];
 
-            if ($this->throwException) {
+            /*if ($this->throwException) {
                 (new LogFile())->writeError($errorMessage);
             } else {
                 (new LogMessage())->writeError($errorMessage);
-            }
+            }*/
+
+            (new LogMessage())->writeError($errorMessage);
 
             return null;
         }
