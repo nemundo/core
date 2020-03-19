@@ -5,10 +5,6 @@ namespace Nemundo\Core\Base\DataSource;
 
 
 use Nemundo\Admin\Parameter\PageParameter;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\Http\Request\Get\GetRequest;
-use Nemundo\Core\Http\Url\Url;
-use Nemundo\Web\Parameter\UrlParameter;
 use Nemundo\Web\Site\Site;
 
 trait PaginationTrait
@@ -25,23 +21,15 @@ trait PaginationTrait
     public $currentPage;
 
     /**
-     * @var string
-     */
-    //public $parameterName = 'page';
-
-    /**
      * @var int
      */
     public $count;
 
 
+    protected function loadPageRequest()
+    {
 
-    protected function loadPageRequest() {
-
-        //$parameter = new GetRequest('page');
-        //$parameter->defaultValue = 0;
-        $this->currentPage = (new PageParameter())->getValue();  // $parameter->getValue();
-
+        $this->currentPage = (new PageParameter())->getValue();
 
     }
 
@@ -53,7 +41,6 @@ trait PaginationTrait
     }
 
 
-
     public function getFrom()
     {
         $from = ($this->currentPage * $this->paginationLimit) + 1;
@@ -63,7 +50,7 @@ trait PaginationTrait
 
     public function getTo()
     {
-        $to = ($this->currentPage+1) * $this->paginationLimit;
+        $to = ($this->currentPage + 1) * $this->paginationLimit;
 
         if ($to > $this->getTotalCount()) {
             $to = $this->getTotalCount();
@@ -109,14 +96,9 @@ trait PaginationTrait
     public function getPreviousUrl()
     {
 
-        //$parameter = new UrlParameter();
+        $parameter = new PageParameter($this->currentPage - 1);
 
-        //$parameter->parameterName = 'page';
-        //$parameter->setValue($this->currentPage-1);
-
-        $parameter = new PageParameter($this->currentPage-1);
-
-        $url = new Site();  // Url();
+        $url = new Site();
         $url->addParameter($parameter);
 
         return $url->getUrl();
@@ -139,14 +121,9 @@ trait PaginationTrait
     public function getNextUrl()
     {
 
-        //$parameter = new UrlParameter();
-        //$parameter->parameterName = $this->parameterName;
-        //$parameter->setValue($this->currentPage+1);
+        $parameter = new PageParameter($this->currentPage + 1);
 
-        $parameter = new PageParameter($this->currentPage+1);
-
-
-        $url = new \Nemundo\Web\Url\Url();  // new Site(); // new Url();
+        $url = new \Nemundo\Web\Url\Url();
         $url->addParameter($parameter);
 
         return $url->getUrl();
