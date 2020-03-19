@@ -217,10 +217,12 @@ class File extends AbstractType
     public function saveAs($filename)
     {
 
+        /*
+         * soll beim Setup erstellt werden!
         $directory = new Directory();
         $directory->path = dirname($filename);
         $directory->createDirectory();
-
+*/
 
         if ($this->fileExists()) {
             if (!@copy($this->fullFilename, $filename)) {
