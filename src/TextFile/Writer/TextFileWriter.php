@@ -50,9 +50,10 @@ class TextFileWriter extends AbstractTextFileWriter
             return;
         }
 
+        /*
         (new Path())
             ->addPath($file->getPath())
-            ->createDirectory();
+            ->createDirectory();*/
 
 
         $content = implode(PHP_EOL, $this->lineList);

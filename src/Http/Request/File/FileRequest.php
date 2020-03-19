@@ -62,11 +62,11 @@ class FileRequest extends AbstractRequest
     public function saveFile($filename)
     {
 
-        $directory = new Directory();
+        // muss im Setup ausgeführt werden
+        /*$directory = new Directory();
         $directory->path = dirname($filename);
-        $directory->createDirectory();
+        $directory->createDirectory();*/
 
-        // File kopieren
         if ($this->isDownloadSuccesful()) {
             if (!move_uploaded_file($this->tmpFileName, $filename)) {
                 (new LogMessage())->writeError('move_uploaded_file Error. From: ' . $this->tmpFileName . ' to ' . $filename);
