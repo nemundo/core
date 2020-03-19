@@ -20,6 +20,8 @@ class TextFileWriter extends AbstractTextFileWriter
      */
     public $appendToExistingFile = false;
 
+    public $createDirectory=false;
+
     /**
      * @var string[]
      */
@@ -50,10 +52,11 @@ class TextFileWriter extends AbstractTextFileWriter
             return;
         }
 
-        /*
+        if ($this->createDirectory) {
         (new Path())
             ->addPath($file->getPath())
-            ->createDirectory();*/
+            ->createDirectory();
+        }
 
 
         $content = implode(PHP_EOL, $this->lineList);
