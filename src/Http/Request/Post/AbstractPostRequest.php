@@ -21,6 +21,20 @@ class AbstractPostRequest extends AbstractGetPostRequest
 
     }
 
+    public function hasValue()
+    {
+
+        $returnValue = true;
+
+        $value = $this->getValue();
+        if (($value == '') || ($value == '0')) {
+            $returnValue = false;
+        }
+
+        return $returnValue;
+
+    }
+
 
     public function existsRequest()
     {
