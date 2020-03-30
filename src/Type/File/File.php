@@ -4,7 +4,7 @@ namespace Nemundo\Core\Type\File;
 
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\FileInformation;
-use Nemundo\Core\File\FileName;
+
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 

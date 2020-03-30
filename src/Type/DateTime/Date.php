@@ -307,7 +307,7 @@ class Date extends AbstractBaseClass
 
     public function getWeekdayNumber()
     {
-        return $this->getFormat('N');
+        return (int)$this->getFormat('N');
     }
 
     // getMonthLabel
