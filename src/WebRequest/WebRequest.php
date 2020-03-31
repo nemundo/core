@@ -75,7 +75,7 @@ class WebRequest extends AbstractWebRequest
     public function downloadUrl($url, $destinationFilename)
     {
 
-        $file = new File($destinationFilename);
+        //$file = new File($destinationFilename);
 
 
         /*$directory = new Directory();
