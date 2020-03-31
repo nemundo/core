@@ -20,7 +20,7 @@ class TextFileWriter extends AbstractTextFileWriter
      */
     public $appendToExistingFile = false;
 
-    public $createDirectory=false;
+    public $createDirectory = false;
 
     /**
      * @var string[]
@@ -48,14 +48,16 @@ class TextFileWriter extends AbstractTextFileWriter
         $file = new File($this->filename);
 
         if (!$this->overwriteExistingFile && $file->fileExists()) {
-            (new LogMessage())->writeError('File already exists. Filename: '.$this->filename);
-            return;
+            if (!$this->appendToExistingFile) {
+                (new LogMessage())->writeError('File already exists. Filename: ' . $this->filename);
+                return;
+            }
         }
 
         if ($this->createDirectory) {
-        (new Path())
-            ->addPath($file->getPath())
-            ->createDirectory();
+            (new Path())
+                ->addPath($file->getPath())
+                ->createDirectory();
         }
 
 
@@ -83,7 +85,7 @@ class TextFileWriter extends AbstractTextFileWriter
             fwrite($file, $content);
             fclose($file);
         } else {
-            (new LogMessage())->writeError('TextFileWriter Error. Filename: '.$this->filename);
+            (new LogMessage())->writeError('TextFileWriter Error. Filename: ' . $this->filename);
         }
 
     }
