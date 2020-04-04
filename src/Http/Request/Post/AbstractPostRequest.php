@@ -21,6 +21,8 @@ class AbstractPostRequest extends AbstractGetPostRequest
 
     }
 
+
+    /*
     public function hasValue()
     {
 
@@ -33,7 +35,7 @@ class AbstractPostRequest extends AbstractGetPostRequest
 
         return $returnValue;
 
-    }
+    }*/
 
 
     public function existsRequest()
