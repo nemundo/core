@@ -138,6 +138,12 @@ class DateTime extends Date
     }
 
 
+    public function getShortDateTimeWithSecondMillisecondLeadingZeroFormat()
+    {
+        return $this->getFormat('d.m.Y H:i:s.u');
+    }
+
+
     // auslagern in eigenständige Class !!!
     public function roundToNearestMinuteInterval($minuteInterval = 10)
     {
