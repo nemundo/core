@@ -5,6 +5,7 @@ namespace Nemundo\Core\Http\Response;
 
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
+use Schleuniger\App\Aufgabe\Content\Process\AufgabeProcess;
 
 class FileResponse extends AbstractResponse
 {
@@ -62,12 +63,25 @@ class FileResponse extends AbstractResponse
 
         }
 
+
+        /*if (isset($_SERVER['HTTP_RANGE'])) {
+            //echo "yes";
+
+            $process=new AufgabeProcess();
+            $process->aufgabe = 'http range';
+            $process->saveType();
+
+        }*/
+
+
         header('Content-type: ' . $contentType);
         header('Content-Disposition: attachment; filename="' . $this->responseFilename . '"');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
         header('Content-Length: ' . filesize($file->fullFilename));
+        header("Content-Transfer-Encoding: binary");
+
         readfile($file->fullFilename);
 
     }
