@@ -16,4 +16,13 @@ abstract class AbstractFile extends AbstractBase
         $this->filename=$filename;
     }
 
+
+    // abstract getText()
+
+
+    // class TextFile
+    // class CsvFile
+    // class ImageFile
+
+
 }
