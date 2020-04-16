@@ -109,11 +109,6 @@ class FileResponse extends AbstractResponse
 
         } else {
 
-
-            (new Debug())->write('download');
-            exit;
-
-
             $this->sendStatusCode();
 
             $contentType = 'application/octet-stream';
