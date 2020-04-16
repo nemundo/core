@@ -49,11 +49,11 @@ class ImageResize extends AbstractBaseClass
             exit;
         }
 
-        $file = new File($this->destinationFilename);
+        //$file = new File($this->destinationFilename);
 
-        $dir = new Directory();
+        /*$dir = new Directory();
         $dir->path = $file->getPath();
-        $dir->createDirectory();
+        $dir->createDirectory();*/
 
         $sourceFile = new File($this->sourceFilename);
         if (!$sourceFile->fileExists()) {
