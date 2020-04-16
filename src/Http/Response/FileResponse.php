@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Http\Response;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 
@@ -107,6 +108,11 @@ class FileResponse extends AbstractResponse
 
 
         } else {
+
+
+            (new Debug())->write('download');
+            exit;
+
 
             $this->sendStatusCode();
 
