@@ -3,9 +3,9 @@
 namespace Nemundo\Core\Http\Request\File;
 
 
-use Nemundo\Core\File\Directory;
+use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\File\FileInformation;
 use Nemundo\Core\File\FileUtility;
-use Nemundo\Core\File\Path;
 use Nemundo\Core\File\UniqueFilename;
 use Nemundo\Core\Http\Request\AbstractRequest;
 use Nemundo\Core\Log\LogMessage;
@@ -14,7 +14,6 @@ use Nemundo\Core\Type\File\File;
 
 class FileRequest extends AbstractRequest
 {
-
 
     /**
      * @var string
@@ -44,7 +43,10 @@ class FileRequest extends AbstractRequest
 
     public function __construct($requestName = null)
     {
+
         parent::__construct($requestName);
+
+        //(new Debug())->write('requestname'.$requestName);
 
         if ($requestName !== null) {
             $this->filename = $_FILES[$this->requestName]['name'];
@@ -52,8 +54,14 @@ class FileRequest extends AbstractRequest
             $this->fileSize = $_FILES[$this->requestName]['size'];
             $this->errorCode = $_FILES[$this->requestName]['error'];
 
-            $file = new File($this->filename);
-            $this->filenameExtension = $file->getFileExtension();
+            $file = new FileInformation($this->filename);  // new File($this->filename);
+            $this->filenameExtension = $file->getExtension();  //getFileExtension();
+
+            //(new Debug())->write('filename'.$this->filename);
+
+            //(new Debug())->write($file->getFileExtension());
+
+
         }
 
     }
@@ -78,13 +86,15 @@ class FileRequest extends AbstractRequest
 
     public function saveAsUniqueFilename($path)
     {
+
         $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
 
         $filename = (new UniqueFilename())->getUniqueFilename($this->filenameExtension);
+//        $filename = (new UniqueFilename())->getUniqueFilename('txt');
+
         $fullFilename = $path . $filename;
         $this->saveFile($fullFilename);
         return $fullFilename;
-
 
     }
 
@@ -92,7 +102,7 @@ class FileRequest extends AbstractRequest
     public function saveAsOrginalFilename($path)
     {
 
-        (new Path($path))->createDirectory();
+        //(new Path($path))->createDirectory();
 
         $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
         $fullFilename = $path . $this->filename;
@@ -169,8 +179,9 @@ class FileRequest extends AbstractRequest
                 $message = 'Unknown upload error';
                 break;
         }
-        return $message;
-    }
 
+        return $message;
+
+    }
 
 }

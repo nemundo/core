@@ -2,9 +2,7 @@
 
 namespace Nemundo\Core\Type\File;
 
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\FileInformation;
-
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 
@@ -87,26 +85,28 @@ class File extends AbstractType
     }
 
 
-
     public function getFileSize()
     {
-        $filesize = filesize($this->fullFilename);
-        $filesize = round($filesize / 1024, 0);
+
+        $filesize = null;
+        if ($this->fileExists()) {
+            $filesize = filesize($this->fullFilename);
+            $filesize = round($filesize / 1024, 0);
+        }
+
         return $filesize;
+
     }
 
     public function getFileExtension()
     {
 
-        /*
-        $filename = strtolower($this->filename);
-        $extensionList = explode('.', $filename);
-        $pointCount = count($extensionList) - 1;
-        $extension = $extensionList[$pointCount];
+        $fileExtension = null;
+        if ($this->fileExists()) {
+            $fileExtension = (new FileInformation($this->filename))->getExtension();
+        }
 
-        return $extension;*/
-
-       return (new FileInformation($this->filename))->getExtension();
+        return $fileExtension;
 
     }
 
@@ -185,7 +185,8 @@ class File extends AbstractType
     }
 
 
-    public function notExists() {
+    public function notExists()
+    {
 
         $value = !$this->fileExists();
         return $value;

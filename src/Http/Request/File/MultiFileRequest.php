@@ -4,6 +4,7 @@ namespace Nemundo\Core\Http\Request\File;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\File\FileInformation;
 use Nemundo\Core\Type\File\File;
 
 
@@ -44,8 +45,8 @@ class MultiFileRequest extends AbstractBaseClass
                     $fileUpload->fileSize = $_FILES[$this->name]['size'][$n];
                     $fileUpload->errorCode = $_FILES[$this->name]['error'][$n];
 
-                    $file = new File($fileUpload->filename);
-                    $fileUpload->filenameExtension = $file->getFileExtension();
+                    $file =new FileInformation($fileUpload->filename);  // new File($fileUpload->filename);
+                    $fileUpload->filenameExtension =$file->getExtension();  //  $file->getFileExtension();
 
                     $fileRequestList[] = $fileUpload;
                 }
