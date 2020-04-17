@@ -27,7 +27,7 @@ class FileResponse extends AbstractResponse
 
 
 
-
+/*
     public function sendResponse()
     {
         // TODO: Implement sendResponse() method.
@@ -58,10 +58,10 @@ class FileResponse extends AbstractResponse
         }
 
 
-    }
+    }*/
 
 
-    /*
+
     public function sendResponse()
     {
 
@@ -82,6 +82,7 @@ class FileResponse extends AbstractResponse
         }
 
 
+        /*
         if (isset($_SERVER['HTTP_RANGE'])) {
 
 
@@ -143,7 +144,10 @@ class FileResponse extends AbstractResponse
             fclose($stream);
 
 
-        } else {
+        } else {*/
+
+
+        session_write_close();
 
             $this->sendStatusCode();
 
@@ -175,6 +179,6 @@ class FileResponse extends AbstractResponse
 
         }
 
-    }*/
+    }
 
 }
