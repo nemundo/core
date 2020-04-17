@@ -35,6 +35,9 @@ class FileResponse extends AbstractResponse
         $file = $this->filename;  // 'monkey.gif';
 
         if (file_exists($file)) {
+
+            session_write_close();
+
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename="'.basename($file).'"');
@@ -43,8 +46,9 @@ class FileResponse extends AbstractResponse
             header('Pragma: public');
             header('Content-Length: ' . filesize($file));
 
-            ob_clean();
-            flush();
+            //ob_clean();
+            //flush();
+
             readfile($file);
             exit;
 
