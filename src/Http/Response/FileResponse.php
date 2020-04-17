@@ -177,7 +177,7 @@ class FileResponse extends AbstractResponse
             readfile($file->fullFilename);
 
 
-        }
+        //}
 
     }
 
