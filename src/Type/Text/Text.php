@@ -10,7 +10,7 @@ class Text extends AbstractType
 
     public function __construct($value = '')
     {
-        $value=trim($value);
+        $value = trim($value);
         parent::__construct($value);
     }
 
@@ -19,6 +19,16 @@ class Text extends AbstractType
         $length = strlen($this->value);
         return $length;
     }
+
+
+    public function isNumber()
+    {
+
+
+        return is_numeric($this->value);
+
+    }
+
 
     public function append($text)
     {
@@ -332,6 +342,7 @@ class Text extends AbstractType
     }
 
 
+    // auslagern nach WordList
     public function getWordList()
     {
 

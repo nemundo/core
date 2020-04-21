@@ -45,14 +45,10 @@ class CsvReader extends AbstractCsvReader
             return;
         }
 
-
         $file = fopen($this->filename, 'r');
 
-        // falls Header, assocatives array
         $count = 0;
         $dataHeader = [];
-
-
         while (($line = fgetcsv($file, 0, $this->separator)) !== false) {
 
             if ($count >= $this->lineOfStart) {
@@ -65,12 +61,9 @@ class CsvReader extends AbstractCsvReader
                         $item = utf8_encode($item);
                     }
 
-                    // Leerzeichen entfernen
                     $item = trim($item);
-
                     $item = trim($item, '"');
                     $item = trim($item, '﻿"');
-
 
                     $data[] = $item;
 
@@ -96,6 +89,7 @@ class CsvReader extends AbstractCsvReader
                         $this->list[] = $csvRow;
 
                     }
+
                 } else {
 
                     $this->list[] = new CsvRow($data);
