@@ -7,10 +7,11 @@ namespace Nemundo\Core\File\Pdf;
 class PdfFile extends AbstractFile
 {
 
-    public function getPdfText() {
+    public function getPdfText()
+    {
 
         $command = "pdftotext $this->filename -";
-        $output = shell_exec($command);
+        $text = shell_exec($command);
 
         /*
         if ($output !== null) {
@@ -19,7 +20,11 @@ class PdfFile extends AbstractFile
             $update->updateById($this->dataId);
         }*/
 
-        return $output;
+        if ($text === null) {
+            $text = '';
+        }
+
+        return $text;
 
     }
 
