@@ -3,8 +3,6 @@
 namespace Nemundo\Core\Http\Request;
 
 
-use Nemundo\Core\Http\Request\AbstractRequest;
-
 abstract class AbstractGetPostRequest extends AbstractRequest
 {
 
@@ -12,7 +10,6 @@ abstract class AbstractGetPostRequest extends AbstractRequest
      * @var string
      */
     public $defaultValue = '';
-
 
     abstract public function getValue();
 
@@ -29,6 +26,5 @@ abstract class AbstractGetPostRequest extends AbstractRequest
         return $returnValue;
 
     }
-
 
 }

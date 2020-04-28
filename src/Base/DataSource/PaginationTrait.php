@@ -26,6 +26,7 @@ trait PaginationTrait
     public $count;
 
 
+
     protected function loadPageRequest()
     {
 
