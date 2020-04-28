@@ -15,13 +15,22 @@ abstract class AbstractRequest extends AbstractBaseClass
     protected $requestName;
 
 
-    public function __construct($requestName)
+    abstract protected function loadRequest();
+
+    public function __construct()
     {
-
-        $this->requestName = $requestName;
-
+        $this->loadRequest();
     }
 
+
+    /*
+        public function __construct($requestName)
+        {
+
+            $this->requestName = $requestName;
+
+        }
+    */
 
     public function notExists()
     {

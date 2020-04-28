@@ -6,7 +6,7 @@ namespace Nemundo\Core\Http\Request\Get;
 use Nemundo\Core\Http\Request\AbstractGetPostRequest;
 use Nemundo\Core\Http\Request\AbstractRequest;
 
-class AbstractGetRequest extends AbstractGetPostRequest
+abstract class AbstractGetRequest extends AbstractGetPostRequest
 {
 
     public function getValue()
