@@ -41,10 +41,22 @@ class FileRequest extends AbstractRequest
     public $errorCode;
 
 
+/*
+    public function __construct($requestName)
+    {
+
+        parent::__construct();
+        $this->requestName = $requestName;
+
+    }*/
+
     public function __construct($requestName = null)
     {
 
-        parent::__construct($requestName);
+        parent::__construct();
+
+        $this->requestName = $requestName;
+
 
         //(new Debug())->write('requestname'.$requestName);
 
@@ -64,6 +76,12 @@ class FileRequest extends AbstractRequest
 
         }
 
+    }
+
+
+    protected function loadRequest()
+    {
+        // TODO: Implement loadRequest() method.
     }
 
 
