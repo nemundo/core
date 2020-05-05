@@ -4,6 +4,7 @@ namespace Nemundo\Core\System;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Type\Text\Text;
 
 class OperatingSystem extends AbstractBase
 {
@@ -11,7 +12,7 @@ class OperatingSystem extends AbstractBase
     public function getOperatingSystem()
     {
 
-        $os = PHP_OS;
+        $os = (new Text( PHP_OS))->changeToUppercase()->getValue();
         return $os;
 
     }

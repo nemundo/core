@@ -1,13 +1,9 @@
 <?php
 
-
 namespace Nemundo\Core\File;
-
 
 use Nemundo\Core\Base\AbstractBase;
 
-
-// FileInformation
 class FileInformation extends AbstractBase
 {
 
@@ -61,6 +57,20 @@ class FileInformation extends AbstractBase
         $value = false;
 
         if ($this->getExtension() == 'pdf') {
+            $value = true;
+        }
+
+        return $value;
+
+    }
+
+
+    public function isText()
+    {
+
+        $value = false;
+
+        if ($this->getExtension() == 'txt') {
             $value = true;
         }
 
