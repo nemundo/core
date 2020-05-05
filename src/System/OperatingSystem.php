@@ -12,7 +12,7 @@ class OperatingSystem extends AbstractBase
     public function getOperatingSystem()
     {
 
-        $os = (new Text( PHP_OS))->changeToUppercase()->getValue();
+        $os = (new Text(PHP_OS))->changeToUppercase()->getValue();
         return $os;
 
     }
