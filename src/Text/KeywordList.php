@@ -5,7 +5,7 @@ namespace Nemundo\Core\Text;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 
-
+// WordList
 class KeywordList extends AbstractBaseClass
 {
 

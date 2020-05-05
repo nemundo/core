@@ -11,12 +11,12 @@ class LanguageConfig extends AbstractBase
     /**
      * @var bool
      */
-    public static $multiLanguage = false;
+    //public static $multiLanguage = false;
 
     /**
      * @var string
      */
-    public static $defaultLanguageCode;
+    public static $defaultLanguageCode = LanguageCode::EN;
 
     /**
      * @var string
@@ -24,7 +24,7 @@ class LanguageConfig extends AbstractBase
     public static $currentLanguageCode;
 
 
-    public static $languageList = array();
+    //public static $languageList = array();
 
 
 }

@@ -12,33 +12,33 @@ use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 
 
-class FileRequest extends AbstractFileRequest  //Request
+abstract class AbstractFileRequest extends AbstractRequest
 {
 
     /**
      * @var string
      */
-   // public $filename;
+    public $filename;
 
     /**
      * @var string
      */
-   // public $filenameExtension;
+    public $filenameExtension;
 
     /**
      * @var string
      */
-   // public $fileSize;
+    public $fileSize;
 
     /**
      * @var string
      */
-   // public $tmpFileName;
+    public $tmpFileName;
 
     /**
      * @var string
      */
-    //public $errorCode;
+    public $errorCode;
 
 
 /*
@@ -50,19 +50,17 @@ class FileRequest extends AbstractFileRequest  //Request
 
     }*/
 
-    public function __construct($requestName)  // = null)
+    public function __construct()  //$requestName = null)
     {
 
-        $this->requestName = $requestName;
         parent::__construct();
 
-        /*
-        $this->requestName = $requestName;
+        //$this->requestName = $requestName;
 
 
         //(new Debug())->write('requestname'.$requestName);
 
-        if ($requestName !== null) {
+        //if ($requestName !== null) {
             $this->filename = $_FILES[$this->requestName]['name'];
             $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
             $this->fileSize = $_FILES[$this->requestName]['size'];
@@ -73,7 +71,7 @@ class FileRequest extends AbstractFileRequest  //Request
 
             //(new Debug())->write('filename'.$this->filename);
 
-            //(new Debug())->write($file->getFileExtension());*/
+            //(new Debug())->write($file->getFileExtension());
 
 
         //}
@@ -81,13 +79,13 @@ class FileRequest extends AbstractFileRequest  //Request
     }
 
 
+    /*
     protected function loadRequest()
     {
         // TODO: Implement loadRequest() method.
-    }
+    }*/
 
 
-    /*
     public function saveFile($filename)
     {
 
@@ -96,7 +94,7 @@ class FileRequest extends AbstractFileRequest  //Request
         $directory->path = dirname($filename);
         $directory->createDirectory();*/
 
-    /*    if ($this->isDownloadSuccesful()) {
+        if ($this->isDownloadSuccesful()) {
             if (!move_uploaded_file($this->tmpFileName, $filename)) {
                 (new LogMessage())->writeError('move_uploaded_file Error. From: ' . $this->tmpFileName . ' to ' . $filename);
             }
@@ -203,6 +201,6 @@ class FileRequest extends AbstractFileRequest  //Request
 
         return $message;
 
-    }*/
+    }
 
 }
