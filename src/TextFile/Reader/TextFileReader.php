@@ -36,12 +36,7 @@ class TextFileReader extends AbstractDataSource
     protected function loadData()
     {
 
-        //$this->checkProperty('filename');
-
-
-        // Ist Datei vorhanden
         if (!(new UrlValidation())->isUrl($this->filename)) {
-
             $file = new File($this->filename);
             if (!$file->fileExists()) {
                 (new LogMessage())->writeError('File ' . $this->filename . ' does not exist.');
@@ -49,12 +44,10 @@ class TextFileReader extends AbstractDataSource
             }
         }
 
-        // Datei einlesen
         $file = fopen($this->filename, 'r');
         if ($file) {
             while (($line = fgets($file)) !== false) {
 
-                // Utf8 Encode
                 if ($this->utf8Encode) {
                     $line = utf8_encode($line);
                 }
@@ -64,8 +57,6 @@ class TextFileReader extends AbstractDataSource
                 }
 
                 $this->addItem($line);
-
-                //$this->list[] = $line;
 
             }
             fclose($file);

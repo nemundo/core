@@ -7,7 +7,7 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 
 
-// TextBold
+// BoldText
 class TextBold extends AbstractBase
 {
 

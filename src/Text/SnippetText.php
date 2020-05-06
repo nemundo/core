@@ -10,26 +10,29 @@ use Nemundo\Core\Base\AbstractBase;
 class SnippetText extends AbstractBase
 {
 
+    /*
     public function getSnippet($length = 200) {
 
 
 
 
-    }
+    }*/
 
 
-    protected $specialChars = ['Â', 'Ã', 'Ä', 'À', 'Á', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'Þ', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ð', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'þ', 'ÿ', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    protected $specialReplaces = ['A', 'A', 'A', 'A', 'A', 'A', 'E', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'D', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'Y', 'P', 'B', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'o', 'n', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'b', 'y', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    protected $highlightTemplate = '<span class="highlighted">%word%</span>';
-    protected $minWords = 30;
-    protected $maxWords = 100;
+    private $specialChars = ['Â', 'Ã', 'Ä', 'À', 'Á', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'Þ', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ð', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'þ', 'ÿ', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    private $specialReplaces = ['A', 'A', 'A', 'A', 'A', 'A', 'E', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'D', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'Y', 'P', 'B', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'o', 'n', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'b', 'y', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    private $highlightTemplate = '<b>%word%</b>';
+    private $minWords = 30;
+    private $maxWords = 100;
+    
+    
     /**
      * Break a text into sentences
      *
      * @param string $text
      * @return array
      */
-    public function breakIntoSentences(string $text): array
+    private function breakIntoSentences($text)
     {
         return preg_split('/(?<=[.?!;:])\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
     }
@@ -38,7 +41,7 @@ class SnippetText extends AbstractBase
      *
      * @param int $minWords
      */
-    public function setMinWords(int $minWords)
+   /* public function setMinWords(int $minWords)
     {
         $this->minWords = $minWords;
     }
@@ -47,10 +50,11 @@ class SnippetText extends AbstractBase
      *
      * @param int $maxWords
      */
-    public function setMaxWords(int $maxWords)
+    /*public function setMaxWords(int $maxWords)
     {
         $this->maxWords = (int)$maxWords;
-    }
+    }*/
+    
     /**
      * Returns an array of matched sentences against the words in the query
      * Keys are the original sentence positions
@@ -59,7 +63,7 @@ class SnippetText extends AbstractBase
      * @param array $sentences
      * @return array
      */
-    protected function getMatchedSentences(string $query, array $sentences): array
+    private function getMatchedSentences($query, $sentences)
     {
         $queryWords = str_word_count($query, 1, implode('', $this->specialChars));
         $matchedSentences = [];
@@ -80,13 +84,13 @@ class SnippetText extends AbstractBase
      * @param string $template
      * @throws \RuntimeException
      */
-    public function setHighlightTemplate(string $template)
+    /*public function setHighlightTemplate(string $template)
     {
         if (strpos($template, '%word%') === false) {
             throw new \RuntimeException('HighlightTemplate should contain "%word%"');
         }
         $this->highlightTemplate = $template;
-    }
+    }*/
     /**
      * Highlight words, while keeping casing and accents
      *
@@ -94,7 +98,7 @@ class SnippetText extends AbstractBase
      * @param string $text
      * @return string
      */
-    public function highlightMatches(string $query, string $text): string
+    private function highlightMatches($query,  $text)
     {
         $queryWords = str_word_count($query, 1, implode('', $this->specialChars));
         $snippetWords = str_word_count(str_replace('-', ' ', $text), 1, implode('', $this->specialChars));
@@ -118,12 +122,16 @@ class SnippetText extends AbstractBase
      * @param bool $highlight
      * @return string
      */
-    public function createSnippet(string $query, $text, bool $highlight = true)
+    public function getSnippet($query, $text)
     {
 
+        $highlight = true;
+        
+
+        /*
         if ($text == null) {
             $text = '';
-        }
+        }*/
 
 
         $query = htmlspecialchars($query);
