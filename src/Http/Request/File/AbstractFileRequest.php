@@ -3,13 +3,11 @@
 namespace Nemundo\Core\Http\Request\File;
 
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\File\FileInformation;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\File\UniqueFilename;
 use Nemundo\Core\Http\Request\AbstractRequest;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Core\Type\File\File;
 
 
 abstract class AbstractFileRequest extends AbstractRequest
@@ -41,58 +39,24 @@ abstract class AbstractFileRequest extends AbstractRequest
     public $errorCode;
 
 
-/*
-    public function __construct($requestName)
-    {
-
-        parent::__construct();
-        $this->requestName = $requestName;
-
-    }*/
-
-    public function __construct()  //$requestName = null)
+    public function __construct()
     {
 
         parent::__construct();
 
-        //$this->requestName = $requestName;
+        $this->filename = $_FILES[$this->requestName]['name'];
+        $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
+        $this->fileSize = $_FILES[$this->requestName]['size'];
+        $this->errorCode = $_FILES[$this->requestName]['error'];
 
-
-        //(new Debug())->write('requestname'.$requestName);
-
-        //if ($requestName !== null) {
-            $this->filename = $_FILES[$this->requestName]['name'];
-            $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
-            $this->fileSize = $_FILES[$this->requestName]['size'];
-            $this->errorCode = $_FILES[$this->requestName]['error'];
-
-            $file = new FileInformation($this->filename);  // new File($this->filename);
-            $this->filenameExtension = $file->getExtension();  //getFileExtension();
-
-            //(new Debug())->write('filename'.$this->filename);
-
-            //(new Debug())->write($file->getFileExtension());
-
-
-        //}
+        $file = new FileInformation($this->filename);
+        $this->filenameExtension = $file->getExtension();
 
     }
 
 
-    /*
-    protected function loadRequest()
-    {
-        // TODO: Implement loadRequest() method.
-    }*/
-
-
     public function saveFile($filename)
     {
-
-        // muss im Setup ausgeführt werden
-        /*$directory = new Directory();
-        $directory->path = dirname($filename);
-        $directory->createDirectory();*/
 
         if ($this->isDownloadSuccesful()) {
             if (!move_uploaded_file($this->tmpFileName, $filename)) {
@@ -109,7 +73,6 @@ abstract class AbstractFileRequest extends AbstractRequest
         $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
 
         $filename = (new UniqueFilename())->getUniqueFilename($this->filenameExtension);
-//        $filename = (new UniqueFilename())->getUniqueFilename('txt');
 
         $fullFilename = $path . $filename;
         $this->saveFile($fullFilename);
@@ -120,8 +83,6 @@ abstract class AbstractFileRequest extends AbstractRequest
 
     public function saveAsOrginalFilename($path)
     {
-
-        //(new Path($path))->createDirectory();
 
         $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
         $fullFilename = $path . $this->filename;
@@ -134,6 +95,7 @@ abstract class AbstractFileRequest extends AbstractRequest
 
     public function isDownloadSuccesful()
     {
+
         if ($this->errorCode == 0) {
             return true;
         } else {
