@@ -50,7 +50,7 @@ class FileRequest extends AbstractFileRequest  //Request
 
     }*/
 
-    public function __construct($requestName)  // = null)
+    public function __construct($requestName = null)
     {
 
         $this->requestName = $requestName;
