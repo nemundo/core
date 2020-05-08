@@ -7,6 +7,7 @@ use Nemundo\Core\Base\AbstractBase;
 
 
 // PhpConfig
+// PhpSystem
 class PhpEnvironment extends AbstractBase
 {
 
@@ -59,18 +60,36 @@ class PhpEnvironment extends AbstractBase
 
     public function getMaxPostSize()
     {
-        //$maxFileUpload = ini_get('post_max_size');
-        //return $maxFileUpload;
-
         $value = $this->getValue('post_max_size');
         return $value;
-
     }
 
 
-    private function getValue($parameter) {
+    public function getTimeLimit()
+    {
+        $value = $this->getValue('max_execution_time') . ' sec';
+        return $value;
+    }
+
+
+    public function setTimeLimit($second)
+    {
+        $this->setValue('max_execution_time', $second);
+        return $this;
+    }
+
+    private function getValue($parameter)
+    {
         $value = ini_get($parameter);
         return $value;
     }
+
+
+    private function setValue($parameter, $value)
+    {
+        $value = ini_set($parameter, $value);
+        return $value;
+    }
+
 
 }
