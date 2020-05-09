@@ -23,6 +23,7 @@ class JsonDocument extends AbstractJson
 
         $json = new TextFileWriter($this->filename);
         $json->overwriteExistingFile = true;
+        $json->createDirectory = true;
         $json->addLine($this->getContent());
         $json->saveFile();
 
