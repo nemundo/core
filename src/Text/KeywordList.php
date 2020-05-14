@@ -29,6 +29,23 @@ class KeywordList extends AbstractBaseClass
      */
     public $addInputText = true;
 
+
+    public function getHashList($text) {
+
+        $list = $this->getKeywordList($text);
+
+        $md5List=[];
+        foreach ($list as $word) {
+            $md5List[]= md5(mb_strtolower($word));
+        }
+
+        return $md5List;
+
+
+
+    }
+
+
     public function getKeywordList($text)
     {
 

@@ -31,6 +31,8 @@ class FileInformation extends AbstractBase
     public function isImage()
     {
 
+        // svg
+
         $value = false;
 
         switch ($this->getExtension()) {
@@ -51,12 +53,85 @@ class FileInformation extends AbstractBase
     }
 
 
+
+
+    public function isAudio()
+    {
+
+        $value = false;
+
+        switch ($this->getExtension()) {
+
+            case 'mp3':
+            case 'ogg':
+                $value = true;
+                break;
+
+        }
+
+
+        return $value;
+
+
+    }
+
+
+
+    public function isVideo()
+    {
+
+        $value = false;
+
+        switch ($this->getExtension()) {
+
+            case 'mpeg':
+            case 'mp4':
+                $value = true;
+                break;
+
+        }
+
+
+        return $value;
+
+
+    }
+
+
     public function isPdf()
     {
 
         $value = false;
 
         if ($this->getExtension() == 'pdf') {
+            $value = true;
+        }
+
+        return $value;
+
+    }
+
+
+    public function isExcel()
+    {
+
+        $value = false;
+
+        if ($this->getExtension() == 'xls') {
+            $value = true;
+        }
+
+        return $value;
+
+    }
+
+
+    public function isWord()
+    {
+
+        $value = false;
+
+        if ($this->getExtension() == 'docx') {
             $value = true;
         }
 
