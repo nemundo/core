@@ -10,7 +10,7 @@ class PdfFile extends AbstractFile
     public function getPdfText()
     {
 
-        $command = "pdftotext -eol $this->filename -";
+        $command = "pdftotext -eol unix $this->filename -";
         $text = shell_exec($command);
 
         if ($text === null) {
