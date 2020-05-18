@@ -4,8 +4,6 @@
 namespace Nemundo\Core\File\Pdf;
 
 
-use Nemundo\Core\Debug\Debug;
-
 class PdfFile extends AbstractFile
 {
 
@@ -18,8 +16,7 @@ class PdfFile extends AbstractFile
         if ($text === null) {
             $text = '';
         }
-        (new Debug())->write($text);
-        exit;
+
         return $text;
 
     }
