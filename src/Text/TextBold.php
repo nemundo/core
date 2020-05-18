@@ -28,8 +28,8 @@ class TextBold extends AbstractBase
     public function addSearchQuery($searchQuery)
     {
 
-        $keywordList = new KeywordList();
-        foreach ($keywordList->getKeywordList($searchQuery) as $value) {
+        $keywordList = new WordList($searchQuery);  // new KeywordList();
+        foreach ($keywordList->getWordList() as $value) {
             $this->keywordList[] =$value;
         }
 
