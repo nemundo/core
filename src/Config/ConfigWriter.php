@@ -31,11 +31,9 @@ class ConfigWriter extends AbstractBase
         $this->textFile = new TextFileWriter($filename);
     }
 
+
     public function add($name, $value = '')
     {
-
-        //$this->textFile->filename = $this->filename;
-
         $this->data[] = $name . '=' . $value;
         $this->textFile->addLine($name . '=' . $value);
     }
@@ -46,14 +44,11 @@ class ConfigWriter extends AbstractBase
         return $this->data;
     }
 
+
     public function writeFile()
     {
-
-/*        $this->textFile->filename = $this->filename;
-        $this->textFile->overwriteExistingFile = $this->overwriteExistingFile;*/
         $this->textFile->saveFile();
 
     }
-
 
 }
