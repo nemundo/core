@@ -9,7 +9,7 @@ use Nemundo\Core\System\Delay;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Project\ProjectConfig;
 
-class WebRequestCurl extends AbstractWebRequest
+class CurlWebRequest extends AbstractWebRequest
 {
 
     /**
