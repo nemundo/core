@@ -40,8 +40,8 @@ class FixWidthCsvReader extends AbstractCsvReader
                 // Insert last item
                 $item[] = trim(substr($line, $previousPosition));
 
-
                 $this->list[] = $item;
+
             }
 
             $count++;
