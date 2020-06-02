@@ -8,6 +8,11 @@ use Nemundo\Core\Type\AbstractType;
 class YesNo extends AbstractType
 {
 
+    public function __construct($value= false)
+    {
+        parent::__construct($value);
+    }
+
     public function getText()
     {
 
@@ -25,6 +30,25 @@ class YesNo extends AbstractType
     {
         $this->value = !$this->value;
         return $this;
+    }
+
+
+    public function fromText($text)
+    {
+
+        $text = strtolower($text);
+
+        //$value = null;
+        if ($text === 'false') {
+            $this->value = false;
+        }
+
+        if ($text === 'true') {
+            $this->value = true;
+        }
+
+        return $this;
+
     }
 
 }

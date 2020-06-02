@@ -19,7 +19,8 @@ abstract class AbstractGetPostRequest extends AbstractRequest
         $returnValue = true;
 
         $value = $this->getValue();
-        if (($value == '') || ($value == '0')) {
+        //if (($value == '') || ($value == '0')) {
+        if (($value == '') || ($value == '0') || ($value == null)) {
             $returnValue = false;
         }
 
