@@ -44,4 +44,15 @@ class MovingAverage extends AbstractBase
 
     }
 
+
+    public function getLastAverageNumber() {
+
+        $list = $this->getMovingAverageList();
+        $lastValue = end($list);
+
+        return $lastValue;
+
+    }
+
+
 }
