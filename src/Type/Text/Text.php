@@ -191,10 +191,20 @@ class Text extends AbstractType
     }
 
 
+    public function replaceRegex($regularExpression, $textTo)
+    {
+
+        $this->value = preg_replace('/' . $regularExpression . '/', $textTo, $this->value);
+        return $this;
+
+    }
+
+
     public function removeRegex($regularExpression)
     {
 
-        $this->value = preg_replace('/' . $regularExpression . '/', '', $this->value);
+        //$this->value = preg_replace('/' . $regularExpression . '/', '', $this->value);
+        $this->replaceRegex($regularExpression, '');
         return $this;
 
     }

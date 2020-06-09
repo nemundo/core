@@ -13,7 +13,6 @@ abstract class AbstractLargeReader extends AbstractBase
      */
     protected $count = 0;
 
-
     /**
      * @var bool
      */

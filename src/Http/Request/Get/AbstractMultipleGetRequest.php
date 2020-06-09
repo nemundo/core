@@ -5,7 +5,7 @@ namespace Nemundo\Core\Http\Request\Get;
 
 use Nemundo\Core\Http\Request\AbstractRequest;
 
-class AbstractMultipleGetRequest extends AbstractRequest
+abstract class AbstractMultipleGetRequest extends AbstractRequest
 {
 
 

@@ -8,7 +8,7 @@ use Nemundo\Core\Type\AbstractType;
 class YesNo extends AbstractType
 {
 
-    public function __construct($value= false)
+    public function __construct($value = false)
     {
         parent::__construct($value);
     }
@@ -38,12 +38,11 @@ class YesNo extends AbstractType
 
         $text = strtolower($text);
 
-        //$value = null;
-        if ($text === 'false') {
+        if (($text === 'false') || ($text === '0')) {
             $this->value = false;
         }
 
-        if ($text === 'true') {
+        if (($text === 'true') || ($text === '1')) {
             $this->value = true;
         }
 

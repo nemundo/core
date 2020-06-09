@@ -5,7 +5,7 @@ namespace Nemundo\Core\Http\Request\Post;
 
 use Nemundo\Core\Http\Request\AbstractRequest;
 
-class AbstractMultiplePostRequest extends AbstractRequest
+abstract class AbstractMultiplePostRequest extends AbstractRequest
 {
 
 
