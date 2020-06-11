@@ -153,6 +153,7 @@ class File extends AbstractType
     }
 
 
+    // exists
     public function fileExists()
     {
 
