@@ -74,11 +74,13 @@ class Path extends AbstractBase
     }
 
 
-    public function deleteDirectory()
+    // Directory
+    // $includeBase
+    public function deleteDirectory($includingRoot = true)
     {
 
         $dir = new Directory($this->getPath());
-        $dir->deleteDirectory(true);
+        $dir->deleteDirectory($includingRoot);
 
         return $this;
 
