@@ -98,7 +98,7 @@ abstract class AbstractPath extends AbstractBase
     }
 
 
-    public function createDirectory()
+    public function createPath()
     {
 
         if (!file_exists($this->getPath())) {

@@ -58,7 +58,7 @@ class TextFileWriter extends AbstractTextFileWriter
         if ($this->createDirectory) {
 
             (new PathNew($file->getPath()))
-                ->createDirectory();
+                ->createPath();
 
 
             /*(new Path())
