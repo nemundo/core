@@ -6,7 +6,7 @@ namespace Nemundo\Core\File;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Directory\TextDirectory;
 
-class Path extends AbstractBase
+class _PathOld extends AbstractBase
 {
 
     /**

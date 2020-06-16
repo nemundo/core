@@ -2,9 +2,8 @@
 
 namespace Nemundo\Core\TextFile\Writer;
 
-use Nemundo\Core\File\Path;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Core\Path\PathNew;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 
 
@@ -57,13 +56,9 @@ class TextFileWriter extends AbstractTextFileWriter
 
         if ($this->createDirectory) {
 
-            (new PathNew($file->getPath()))
+            (new Path($file->getPath()))
                 ->createPath();
 
-
-            /*(new Path())
-                ->addPath($file->getPath())
-                ->createDirectory();*/
         }
 
 

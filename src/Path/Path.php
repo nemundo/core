@@ -4,7 +4,7 @@
 namespace Nemundo\Core\Path;
 
 
-class PathNew extends AbstractPath
+class Path extends AbstractPath
 {
 
 }

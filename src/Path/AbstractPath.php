@@ -243,7 +243,7 @@ abstract class AbstractPath extends AbstractBase
                     if (is_dir($fullFilename)) {
 
 
-                        $subpath = new PathNew($fullFilename);
+                        $subpath = new Path($fullFilename);
 
                         //new FileItem
 

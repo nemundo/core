@@ -14,7 +14,7 @@ $filename = (new ModelPath())
 */
 
 
-$path=new \Nemundo\Core\Path\PathNew('C:\test\test123');
+$path=new \Nemundo\Core\Path\Path('C:\test\test123');
 $path->deleteDirectory(true);
 
 //deleteDirectory(true);
