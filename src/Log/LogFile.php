@@ -4,7 +4,7 @@ namespace Nemundo\Core\Log;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\File\Path;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Text;
 
