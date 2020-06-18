@@ -190,24 +190,30 @@ abstract class AbstractPath extends AbstractBase
     private function rmdir($path, $includeBase)
     {
 
-        foreach (scandir($path) as $filename) {
+        if (file_exists($path)) {
+            //return;
+            //}
 
-            if ($filename !== '.' && $filename !== '..') {
+            foreach (scandir($path) as $filename) {
 
-                $fullFilename = FileUtility::appendDirectorySeparatorIfNotExists($path) . $filename;
+                if ($filename !== '.' && $filename !== '..') {
 
-                if (is_dir($fullFilename)) {
-                    $this->rmdir($fullFilename,true);
-                }
+                    $fullFilename = FileUtility::appendDirectorySeparatorIfNotExists($path) . $filename;
 
-                if (is_file($fullFilename)) {
-                    unlink($fullFilename);
+                    if (is_dir($fullFilename)) {
+                        $this->rmdir($fullFilename, true);
+                    }
+
+                    if (is_file($fullFilename)) {
+                        unlink($fullFilename);
+                    }
                 }
             }
-        }
 
-        if ($includeBase) {
-            rmdir($path);
+            if ($includeBase) {
+                rmdir($path);
+            }
+
         }
 
     }
