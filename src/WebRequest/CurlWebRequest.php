@@ -5,6 +5,7 @@ namespace Nemundo\Core\WebRequest;
 use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\System\Delay;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Project\ProjectConfig;
@@ -117,9 +118,12 @@ class CurlWebRequest extends AbstractWebRequest
 
         $file = new File($destinationFilename);
 
+        (new Path($file->getPath()))->createPath();
+
+        /*
         $directory = new Directory();
         $directory->path = $file->getPath();
-        $directory->createDirectory();
+        $directory->createDirectory();*/
 
         $this->load($url);
 

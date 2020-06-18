@@ -36,7 +36,7 @@ foreach ($path->getSubPathList() as $subpath) {
 }
 
 
-$path=new \Nemundo\Core\Path\PathNew('C:\test\xcontest\search\2020');
+$path=new \Nemundo\Core\Path\Path('C:\test\xcontest\search\2020');
 foreach ($path->getSubPathList() as $subpath) {
 
     (new \Nemundo\Core\Debug\Debug())->write($subpath->getPath());

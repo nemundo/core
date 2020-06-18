@@ -342,6 +342,13 @@ class Date extends AbstractBaseClass
         return $this->getFormat('Y');
     }
 
+
+    public function getYear2Digit()
+    {
+        return $this->getFormat('y');
+    }
+
+
     // isWorkingDay
     public function isWeekDay()
     {
