@@ -5,6 +5,7 @@ namespace Nemundo\Core\File;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 
 class FileCopy extends AbstractBase
 {
@@ -46,9 +47,13 @@ class FileCopy extends AbstractBase
         }
 
 
+        /*
         $directory = new Directory();
         $directory->path = dirname($this->destinationFilename);
-        $directory->createDirectory();
+        $directory->createDirectory();*/
+
+        (new Path(dirname($this->destinationFilename)))->createPath();
+
 
         // todo: fehlerbehandlung
         copy($this->sourceFilename, $this->destinationFilename);
