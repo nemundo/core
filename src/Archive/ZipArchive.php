@@ -3,9 +3,9 @@
 namespace Nemundo\Core\Archive;
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\DirectoryReader;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Core\Type\Text\Text;
 
@@ -22,13 +22,6 @@ class ZipArchive extends AbstractBaseClass
      * @var ZipFileItem[]
      */
     private $fileItemList = [];
-
-
-    /*public function addFile(File $file)
-    {
-        $this->addFilename($file->fullFilename);
-        return $this;
-    }*/
 
 
     public function addFilename($filename)
@@ -80,37 +73,14 @@ class ZipArchive extends AbstractBaseClass
         }
 
         $file = new File($this->archiveFilename);
-        $directory = new Directory();
-        $directory->path = $file->getPath();
-        $directory->createDirectory();
+
+        $path = new Path($file->getPath());
+        $path->createPath();
 
         $this->createArchiveInternal($this->archiveFilename);
 
 
     }
-
-
-    /*
-    auslagern nach ZipArchiveResponse/ZipResponse
-    public function sendToBrowser()
-    {
-
-        if ($this->zipFilename == null) {
-            $this->zipFilename = 'file.zip';
-        }
-
-        $tmpFilename = ProjectConfig::$tmpPath . $this->zipFilename;
-        $this->createArchiveInternal($tmpFilename);
-
-        $response = new FileResponse();
-        $response->filename = $tmpFilename;
-        $response->sendResponse();
-
-        $file = new File($tmpFilename);
-        $file->deleteFile();
-
-
-    }*/
 
 
     private function createArchiveInternal($zipFilename)
