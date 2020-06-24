@@ -114,6 +114,12 @@ class DateTime extends Date
     }
 
 
+    public function getTimeLeadingZero()
+    {
+        return $this->getFormat('H:i');
+    }
+
+
     public function getLongFormat()
     {
         return $this->getFormat('j. F Y G:i');

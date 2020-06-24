@@ -61,6 +61,15 @@ class Number extends AbstractType
     }
 
 
+    function getFormatNumberAfterDecimal($decimalNumber = 0)
+    {
+
+        $value = number_format($this->getValue(), $decimalNumber);
+        return $value;
+
+    }
+
+
     function roundNumber($anzahlDezimalStellen = 2)
     {
 
