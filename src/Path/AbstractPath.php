@@ -125,8 +125,6 @@ abstract class AbstractPath extends AbstractBase
         $this->rmdir($this->getPath(), true);
 
 
-
-
         /*
         $path = $this->getPath();
 
@@ -176,23 +174,16 @@ abstract class AbstractPath extends AbstractBase
     public function emptyDirectory()
     {
 
-        //$dir = new Directory($this->getPath());
-        //$dir->deleteDirectory(true);
-
-        //$this->deleteDirectory(false);
         $this->rmdir($this->getPath(), false);
         return $this;
 
     }
 
 
-
     private function rmdir($path, $includeBase)
     {
 
         if (file_exists($path)) {
-            //return;
-            //}
 
             foreach (scandir($path) as $filename) {
 
@@ -217,10 +208,6 @@ abstract class AbstractPath extends AbstractBase
         }
 
     }
-
-
-
-
 
 
     public function getFileList()
