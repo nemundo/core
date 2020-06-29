@@ -6,6 +6,9 @@ namespace Nemundo\Core\Math\Statistic;
 
 use Nemundo\Core\Base\AbstractBase;
 
+
+// extends NumberDirectory
+
 class MovingAverage extends AbstractBase
 {
 
@@ -17,6 +20,7 @@ class MovingAverage extends AbstractBase
 
     private $count = 0;
 
+    // addValue
     public function addNumber($number)
     {
 
@@ -51,6 +55,19 @@ class MovingAverage extends AbstractBase
         $lastValue = end($list);
 
         return $lastValue;
+
+    }
+
+
+    public function getMaxValue() {
+
+        $maxValue = max($this->averageList);
+        return $maxValue;
+
+    }
+
+
+    public function getMinValue() {
 
     }
 
