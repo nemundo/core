@@ -3,6 +3,9 @@
 namespace Nemundo\Core\Http\Request;
 
 
+use Nemundo\Core\Type\Number\YesNo;
+use Nemundo\Model\Type\Number\YesNoType;
+
 abstract class AbstractGetPostRequest extends AbstractRequest
 {
 
@@ -25,6 +28,15 @@ abstract class AbstractGetPostRequest extends AbstractRequest
         }
 
         return $returnValue;
+
+    }
+
+
+    public function getYesNoValue() {
+
+
+        $value = (new YesNo())->fromText($this->getValue())->getValue();  // YesNoType())->get
+        return $value;
 
     }
 
