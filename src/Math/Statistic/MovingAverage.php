@@ -49,7 +49,8 @@ class MovingAverage extends AbstractBase
     }
 
 
-    public function getLastAverageNumber() {
+    public function getLastAverageNumber()
+    {
 
         $list = $this->getMovingAverageList();
         $lastValue = end($list);
@@ -59,15 +60,20 @@ class MovingAverage extends AbstractBase
     }
 
 
-    public function getMaxValue() {
+    public function getMaxValue()
+    {
 
-        $maxValue = max($this->averageList);
+        $maxValue = null;
+        if (sizeof($this->averageList) > 0) {
+            $maxValue = max($this->averageList);
+        }
         return $maxValue;
 
     }
 
 
-    public function getMinValue() {
+    public function getMinValue()
+    {
 
     }
 
