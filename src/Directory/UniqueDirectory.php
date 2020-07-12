@@ -9,22 +9,40 @@ use Nemundo\Core\Base\AbstractBase;
 class UniqueDirectory extends AbstractBase
 {
 
+    public $startId=1;
+
     private $list = [];
+
+
+    private $currentId;
 
     public function addValue($value)
     {
 
+        if ($this->currentId ===null) {
+            $this->currentId=$this->startId;
+        }
+
+        if (!in_array($value,$this->list)) {
+            $this->list[$this->currentId] = $value;
+        }
+
+        $this->currentId++;
+
+        /*
         $this->list[] = $value;
         $this->list = array_unique($this->list);
-        $this->list = array_values($this->list);
+        $this->list = array_values($this->list);*/
 
         return $this;
 
     }
 
-    public function sortList() {
+    public function sortList()
+    {
 
-        sort($this->list);
+        //sort($this->list);
+        asort($this->list);
         return $this;
 
     }
@@ -35,5 +53,11 @@ class UniqueDirectory extends AbstractBase
         return $this->list;
     }
 
+    public function getId($value)
+    {
+
+        $id = array_search($value, $this->list);
+        return $id;
+    }
 
 }

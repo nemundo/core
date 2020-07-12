@@ -3,9 +3,10 @@
 namespace Nemundo\Core\Archive;
 
 
-use Nemundo\Core\File\Directory;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 
 class ZipExtractor extends AbstractExtractor
@@ -20,16 +21,15 @@ class ZipExtractor extends AbstractExtractor
 
 
         if (!(new File($this->archiveFilename))->fileExists()) {
-            (new LogMessage())->writeError('Zip Filename does not exist. Filename: '.$this->archiveFilename);
+            (new LogMessage())->writeError('Zip Filename does not exist. Filename: ' . $this->archiveFilename);
             return;
         }
 
 
         $this->extractPath = FileUtility::appendDirectorySeparatorIfNotExists($this->extractPath);
 
-        $directory = new Directory();
-        $directory->path = $this->extractPath;
-        $directory->createDirectory();
+        (new Path($this->extractPath))
+            ->createPath();
 
 
         $zip = new \ZipArchive();
@@ -38,6 +38,7 @@ class ZipExtractor extends AbstractExtractor
             $zip->close();
         } else {
             (new LogMessage())->writeError('Zip Extract Error');
+            (new Debug())->write( $zip->getStatusString());
         }
 
 

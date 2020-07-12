@@ -24,10 +24,20 @@ class PhpEnvironment extends AbstractBase
         return $limit;
     }
 
+
+
     public function setMemoryLimit($memory)
     {
 
         ini_set('memory_limit', $memory . 'M');
+        return $this;
+
+    }
+
+
+    public function setUnlimitedMemoryLimit() {
+
+        ini_set('memory_limit', '-1');
         return $this;
 
     }

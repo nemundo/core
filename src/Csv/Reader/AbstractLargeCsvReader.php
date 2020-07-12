@@ -1,77 +1,62 @@
 <?php
 
+
 namespace Nemundo\Core\Csv\Reader;
 
 
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Csv\CsvSeperator;
-use Nemundo\Core\Log\LogMessage;
-use Nemundo\Core\Type\File\File;
 
-
-// Ableitung von AbstractLargeCsvReader
-class CsvReader extends AbstractCsvReader
+abstract class AbstractLargeCsvReader extends AbstractBase
 {
+
+    use CsvTrait;
 
     /**
      * @var CsvSeperator
      */
     public $separator = CsvSeperator::SEMICOLON;
 
-    /**
-     * @var int
-     */
-    public $limit;
-
     protected $header=[];
 
-    /**
-     * @return CsvRow[]
-     */
-    public function getData()
-    {
-        return parent::getData();
-    }
+    protected $count=0;
+
+    abstract protected function loadReader();
+
+    abstract protected function onRow(CsvRow $csvRow);
 
 
-    public function getHeader() {
 
-        $this->loadData();
-        return $this->header;
+    protected function getCount() {
+
+        return $this->count;
 
     }
 
 
-    public function getHeaderByNumber($number) {
+    protected function onHeader() {
 
-        $label = $this->getHeader()[$number];
-        return $label;
+    }
+
+    protected function onFinished() {
 
     }
 
 
-    protected function loadData()
-    {
+    public function readData() {
 
-        if (!$this->checkProperty('filename')) {
-            return;
-        }
 
-        // überprüfen, ob Datei vorhanden ist
-        $file = new File($this->filename);
 
-        // bei Url funktioniert dies nicht!!!
-        if (!$file->fileExists()) {
-            (new LogMessage())->writeError('File ' . $this->filename . ' does not exists.');
-            return;
-        }
+
+        $this->loadReader();
 
         $file = fopen($this->filename, 'r');
 
-        $count = 0;
+        //$count = 0;
         //$dataHeader = [];
         while (($line = fgetcsv($file, 0, $this->separator)) !== false) {
 
-            if ($count >= $this->lineOfStart) {
+            if ($this->count >= $this->lineOfStart) {
 
                 // Clean Csv
                 $data = [];
@@ -93,8 +78,11 @@ class CsvReader extends AbstractCsvReader
                 if ($this->useFirstRowAsHeader) {
 
                     // Header anfügen
-                    if ($count == $this->lineOfStart) {
+                    if ($this->count == $this->lineOfStart) {
                         $this->header = $data;
+                        $this->onHeader();
+
+
                     } else {
 
                         // Daten anfügen
@@ -105,32 +93,30 @@ class CsvReader extends AbstractCsvReader
                             $rowCount++;
                         }
 
+                        //$csvRow = new CsvRow($dataNew);
+                        //$this->list[] = $csvRow;
+
                         $csvRow = new CsvRow($dataNew);
-                        $this->list[] = $csvRow;
+                        $this->onRow($csvRow);
 
                     }
 
                 } else {
 
-                    $this->list[] = new CsvRow($data);
+                    //$this->list[] = new CsvRow($data);
+
+                    $csvRow = new CsvRow($data);
+                    $this->onRow($csvRow);
 
                 }
 
             }
 
-            $count++;
-
-            if ($this->limit !==null) {
-
-                if ($count>$this->limit) {
-                    return;
-                }
-
-            }
+            $this->count++;
 
         }
 
-        fclose($file);
+        $this->onFinished();
 
     }
 
