@@ -21,6 +21,11 @@ abstract class AbstractLargeCsvReader extends AbstractBase
 
     protected $count=0;
 
+    /**
+     * @var int
+     */
+    public $limit;
+
     abstract protected function loadReader();
 
     abstract protected function onRow(CsvRow $csvRow);
@@ -109,6 +114,18 @@ abstract class AbstractLargeCsvReader extends AbstractBase
                     $this->onRow($csvRow);
 
                 }
+
+
+                if ($this->limit !==null) {
+
+                    if ($this->getCount() ===$this->limit) {
+                        $this->onFinished();
+                        return;
+
+                    }
+
+                }
+
 
             }
 
