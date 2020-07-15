@@ -44,13 +44,19 @@ abstract class AbstractFileRequest extends AbstractRequest
 
         parent::__construct();
 
-        $this->filename = $_FILES[$this->requestName]['name'];
-        $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
-        $this->fileSize = $_FILES[$this->requestName]['size'];
-        $this->errorCode = $_FILES[$this->requestName]['error'];
+        if (isset($_FILES[$this->requestName])) {
 
-        $file = new FileInformation($this->filename);
-        $this->filenameExtension = $file->getExtension();
+            // das wird ja gar nie ausgeführt!!!
+
+            $this->filename = $_FILES[$this->requestName]['name'];
+            $this->tmpFileName = $_FILES[$this->requestName]['tmp_name'];
+            $this->fileSize = $_FILES[$this->requestName]['size'];
+            $this->errorCode = $_FILES[$this->requestName]['error'];
+
+            $file = new FileInformation($this->filename);
+            $this->filenameExtension = $file->getExtension();
+
+        }
 
     }
 
