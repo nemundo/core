@@ -21,6 +21,10 @@ abstract class AbstractLargeCsvReader extends AbstractBase
 
     protected $count=0;
 
+    private $loadReader = false;
+
+    private $numberOfLines;
+
     /**
      * @var int
      */
@@ -51,7 +55,10 @@ abstract class AbstractLargeCsvReader extends AbstractBase
     public function readData() {
 
 
+        if (!$this->loadReader) {
         $this->loadReader();
+$this->loadReader=true;
+        }
 
         $file = fopen($this->filename, 'r');
 
@@ -132,6 +139,44 @@ abstract class AbstractLargeCsvReader extends AbstractBase
         }
 
         $this->onFinished();
+
+    }
+
+
+    public function getNumberOfLines() {
+
+
+        if ($this->numberOfLines===null) {
+
+        //$this->loadReader();
+
+            if (!$this->loadReader) {
+                $this->loadReader();
+                $this->loadReader=true;
+            }
+
+        /*
+        $linecount = 0;
+        $handle = fopen($this->filename, 'r');
+        while(!feof($handle)) {
+            fgets($handle);
+            $linecount++;
+        }
+
+        fclose($handle);*/
+
+        $f = fopen($this->filename, 'rb');
+        $this->numberOfLines = 0;
+
+        while (!feof($f)) {
+            $this->numberOfLines += substr_count(fread($f, 8192), "\n");
+        }
+
+        fclose($f);
+
+        }
+
+        return $this->numberOfLines;
 
     }
 
