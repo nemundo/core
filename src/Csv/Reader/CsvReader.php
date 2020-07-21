@@ -4,6 +4,7 @@ namespace Nemundo\Core\Csv\Reader;
 
 
 use Nemundo\Core\Csv\CsvSeperator;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 
@@ -71,6 +72,11 @@ class CsvReader extends AbstractCsvReader
         //$dataHeader = [];
         while (($line = fgetcsv($file, 0, $this->separator)) !== false) {
 
+            //(new Debug())->write($count);
+            //(new Debug())->write($line);
+
+            //exit;
+
             if ($count >= $this->lineOfStart) {
 
                 // Clean Csv
@@ -106,13 +112,15 @@ class CsvReader extends AbstractCsvReader
                         }
 
                         $csvRow = new CsvRow($dataNew);
-                        $this->list[] = $csvRow;
+                        //$this->list[] = $csvRow;
+                        $this->addItem($csvRow);
 
                     }
 
                 } else {
 
-                    $this->list[] = new CsvRow($data);
+                    //$this->list[] = new CsvRow($data);
+                    $this->addItem(new CsvRow($data));
 
                 }
 
@@ -123,7 +131,7 @@ class CsvReader extends AbstractCsvReader
             if ($this->limit !==null) {
 
                 if ($count>$this->limit) {
-                    return;
+                   return;
                 }
 
             }
