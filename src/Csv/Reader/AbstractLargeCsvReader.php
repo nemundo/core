@@ -51,8 +51,6 @@ abstract class AbstractLargeCsvReader extends AbstractBase
     public function readData() {
 
 
-
-
         $this->loadReader();
 
         $file = fopen($this->filename, 'r');

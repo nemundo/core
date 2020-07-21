@@ -4,9 +4,10 @@ namespace Nemundo\Core\Directory;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 
 // UniquList
-class UniqueDirectory extends AbstractBase
+abstract class AbstractKeyValueDirectory extends AbstractBase
 {
 
     public $startId=1;
@@ -17,6 +18,17 @@ class UniqueDirectory extends AbstractBase
     private $currentId;
 
 
+    abstract protected function loadDirectory();
+
+    abstract protected function onNotExists($value);
+
+
+    public function __construct()
+    {
+        $this->loadDirectory();
+    }
+
+
     public function addKeyValue($key, $value) {
 
         $this->list[$key]=$value;
@@ -25,6 +37,7 @@ class UniqueDirectory extends AbstractBase
     }
 
 
+    /*
     public function addValue($value)
     {
 
@@ -43,9 +56,9 @@ class UniqueDirectory extends AbstractBase
         $this->list = array_unique($this->list);
         $this->list = array_values($this->list);*/
 
-        return $this;
+     /*   return $this;
 
-    }
+    }*/
 
     public function sortList()
     {
@@ -65,7 +78,18 @@ class UniqueDirectory extends AbstractBase
     public function getId($value)
     {
 
+        //if (isset())
+
         $id = array_search($value, $this->list);
+
+        //(new Debug())->write($id);
+
+        if ($id === false) {
+
+            $this->onNotExists($value);
+            $id = array_search($value, $this->list);
+        }
+
         return $id;
     }
 
