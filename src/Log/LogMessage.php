@@ -9,6 +9,7 @@ use Nemundo\Core\File\Directory;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Text;
+use Nemundo\Project\Path\LogPath;
 
 class LogMessage extends AbstractBase
 {
@@ -102,9 +103,7 @@ class LogMessage extends AbstractBase
     {
 
         if (!file_exists(LogConfig::$logPath)) {
-            $directory = new Directory();
-            $directory->path = LogConfig::$logPath;
-            $directory->createDirectory();
+            (new LogPath())->createPath();
         }
 
         $message = date("Y-m-d H:i:s") . "\t" . $message;

@@ -10,7 +10,7 @@ use Nemundo\Core\Debug\Debug;
 abstract class AbstractKeyValueDirectory extends AbstractBase
 {
 
-    public $startId=1;
+    public $startId = 1;
 
     private $list = [];
 
@@ -29,9 +29,10 @@ abstract class AbstractKeyValueDirectory extends AbstractBase
     }
 
 
-    public function addKeyValue($key, $value) {
+    public function addKeyValue($key, $value)
+    {
 
-        $this->list[$key]=$value;
+        $this->list[$key] = $value;
         return $value;
 
     }
@@ -56,9 +57,9 @@ abstract class AbstractKeyValueDirectory extends AbstractBase
         $this->list = array_unique($this->list);
         $this->list = array_values($this->list);*/
 
-     /*   return $this;
+    /*   return $this;
 
-    }*/
+   }*/
 
     public function sortList()
     {
@@ -75,14 +76,23 @@ abstract class AbstractKeyValueDirectory extends AbstractBase
         return $this->list;
     }
 
+
+    public function existsValue($value)
+    {
+
+        $returnValue = false;
+        if (in_array($value, $this->list)) {
+            $returnValue = true;
+        }
+        return $returnValue;
+
+    }
+
+
     public function getId($value)
     {
 
-        //if (isset())
-
         $id = array_search($value, $this->list);
-
-        //(new Debug())->write($id);
 
         if ($id === false) {
 
@@ -91,6 +101,7 @@ abstract class AbstractKeyValueDirectory extends AbstractBase
         }
 
         return $id;
+
     }
 
 }
