@@ -11,6 +11,12 @@ use Nemundo\Core\Base\AbstractBase;
 class PhpEnvironment extends AbstractBase
 {
 
+
+    public function getTimezone()
+    {
+        return date_default_timezone_get();
+    }
+
     public function getPhpVersion()
     {
         $version = phpversion();
@@ -25,7 +31,6 @@ class PhpEnvironment extends AbstractBase
     }
 
 
-
     public function setMemoryLimit($memory)
     {
 
@@ -35,7 +40,8 @@ class PhpEnvironment extends AbstractBase
     }
 
 
-    public function setUnlimitedMemoryLimit() {
+    public function setUnlimitedMemoryLimit()
+    {
 
         ini_set('memory_limit', '-1');
         return $this;
