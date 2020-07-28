@@ -2,10 +2,10 @@
 
 namespace Nemundo\Core\Csv\Document;
 
-
 use Nemundo\Core\Base\AbstractDocument;
-use Nemundo\Core\File\Directory;
+use Nemundo\Core\Csv\CsvSeperator;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 use Nemundo\Core\Http\Response\ContentType;
 use Nemundo\Core\Http\Response\HttpResponse;
@@ -17,7 +17,7 @@ class CsvDocument extends AbstractDocument
     /**
      * @var string
      */
-    public $separator = ';';
+    public $separator = CsvSeperator::SEMICOLON;
 
     /**
      * @var bool
@@ -40,7 +40,7 @@ class CsvDocument extends AbstractDocument
 
         // Windows Codierung
         if ($this->convertExcel) {
-            $dataNew = array();
+            $dataNew = [];
             foreach ($row as $line) {
                 $dataNew[] = $this->convertToWindowsCharset($line);
             }
@@ -80,9 +80,12 @@ class CsvDocument extends AbstractDocument
             return;
         }
 
-        $directory = new Directory();
+        (new Path((new File($this->filename))->getPath()))
+            ->createPath();
+
+        /*$directory = new Directory();
         $directory->path = (new File($this->filename))->getPath();
-        $directory->createDirectory();
+        $directory->createDirectory();*/
 
         $this->saveFileInternal($this->filename);
 
