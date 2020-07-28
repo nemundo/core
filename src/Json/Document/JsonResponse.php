@@ -14,7 +14,7 @@ class JsonResponse extends AbstractJson
 
         $response = new HttpResponse();
         $response->contentType = ContentType::JSON;
-        $response->content = json_encode($this->data);
+        $response->content = $this->getContent();  // json_encode($this->data,true);
         $response->sendResponse();
 
     }

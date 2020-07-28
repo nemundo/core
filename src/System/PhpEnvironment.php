@@ -17,6 +17,14 @@ class PhpEnvironment extends AbstractBase
         return date_default_timezone_get();
     }
 
+
+    public function setTimezone($timezone)
+    {
+        date_default_timezone_set($timezone);
+        return $this;
+    }
+
+
     public function getPhpVersion()
     {
         $version = phpversion();
