@@ -16,17 +16,14 @@ abstract class AbstractPath extends AbstractBase
      */
     private $path;
 
-    //protected $pathText;
-
     protected function loadPath()
     {
 
     }
 
+
     public function __construct($path = null)
     {
-
-        //$this->pathText=$path;
 
         $this->path = new TextDirectory();
 
@@ -46,6 +43,7 @@ abstract class AbstractPath extends AbstractBase
 
         $this->path->addValue($path);
         return $this;
+
     }
 
 
@@ -54,15 +52,16 @@ abstract class AbstractPath extends AbstractBase
 
         $path = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         return $path;
+
     }
 
 
     public function getFilename()
     {
 
-        //$filename=basename($this->pathText);
         $filename = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR);
         return $filename;
+
     }
 
 
@@ -70,7 +69,6 @@ abstract class AbstractPath extends AbstractBase
     {
 
         $filename = basename($this->path->getTextWithSeperator(DIRECTORY_SEPARATOR));
-        //$filename = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR);
         return $filename;
 
     }
@@ -79,7 +77,6 @@ abstract class AbstractPath extends AbstractBase
     public function getFullFilename()
     {
 
-        //$filename=basename($this->pathText);
         $filename = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR);
         return $filename;
     }
@@ -107,65 +104,15 @@ abstract class AbstractPath extends AbstractBase
             }
         }
 
-
-//        $directory = new Directory($this->getPath());
-//        $directory->createDirectory();
-
         return $this;
 
     }
 
 
-    // Directory
-    // $includeBase
-    public function deleteDirectory()  //$includeBase = true)
+    public function deleteDirectory()
     {
 
-
         $this->rmdir($this->getPath(), true);
-
-
-        /*
-        $path = $this->getPath();
-
-        if (file_exists($path)) {
-
-            foreach (scandir($this->getPath()) as $filename) {
-
-                if ($filename !== '.' && $filename !== '..') {
-
-                    //$fullFilename = FileUtility::appendDirectorySeparatorIfNotExists($this->pathText) . $filename;
-                    $fullFilename = FileUtility::appendDirectorySeparatorIfNotExists($this->getPath()) . $filename;
-
-                    if (is_dir($fullFilename)) {
-                        $this->rmdir($fullFilename);
-
-                    }
-
-                    if (is_file($fullFilename)) {
-                        unlink($fullFilename);
-                    }
-                }
-            }
-
-            if ($includeBase) {
-                rmdir($this->getPath());
-            }
-
-        }*/
-
-
-        /*
-        if (!file_exists($this->pathText)) {
-            return;
-        }*/
-
-        //$this->rmdir($this->pathText, $includeBase);
-
-
-//        $dir = new Directory($this->getPath());
-//        $dir->deleteDirectory($includingRoot);
-
         return $this;
 
     }

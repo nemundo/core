@@ -26,9 +26,17 @@ class Number extends AbstractType
     }
 
 
+    /**
+     * @return int
+     */
     public function getValue()
     {
         return $this->value;
+    }
+
+
+    public function getAbsoluteNumber() {
+        return abs($this->getValue());
     }
 
 

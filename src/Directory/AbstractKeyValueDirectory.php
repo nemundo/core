@@ -7,6 +7,7 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 
 // UniquList
+// KeyValueList
 abstract class AbstractKeyValueDirectory extends AbstractBase
 {
 
