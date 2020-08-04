@@ -90,6 +90,18 @@ class Date extends AbstractBaseClass
     }
 
 
+    public function channgeToLastDayOfMonth() {
+
+        //$date = new DateTime('now');
+        $this->date->modify('last day of this month');
+        return $this;
+        //echo $date->format('Y-m-d');
+
+
+    }
+
+
+
     public function setValue($date)
     {
         $this->date = new \DateTime($date);

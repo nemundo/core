@@ -36,7 +36,8 @@ class CsvReader extends AbstractCsvReader
 
     public function getHeader() {
 
-        $this->loadData();
+        //$this->loadData();
+        $this->getData();
         return $this->header;
 
     }
