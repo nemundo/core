@@ -38,11 +38,11 @@ class YesNo extends AbstractType
 
         $text = strtolower($text);
 
-        if (($text === 'false') || ($text === '0')) {
+        if (($text === 'false') || ($text === '0') || ($text === 'no')) {
             $this->value = false;
         }
 
-        if (($text === 'true') || ($text === '1')) {
+        if (($text === 'true') || ($text === '1') || ($text === 'yes')) {
             $this->value = true;
         }
 
