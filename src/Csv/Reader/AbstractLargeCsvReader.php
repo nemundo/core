@@ -17,9 +17,9 @@ abstract class AbstractLargeCsvReader extends AbstractBase
      */
     public $separator = CsvSeperator::SEMICOLON;
 
-    protected $header=[];
+    protected $header = [];
 
-    protected $count=0;
+    protected $count = 0;
 
     private $loadReader = false;
 
@@ -35,29 +35,31 @@ abstract class AbstractLargeCsvReader extends AbstractBase
     abstract protected function onRow(CsvRow $csvRow);
 
 
-
-    protected function getCount() {
+    protected function getCount()
+    {
 
         return $this->count;
 
     }
 
 
-    protected function onHeader() {
+    protected function onHeader()
+    {
 
     }
 
-    protected function onFinished() {
+    protected function onFinished()
+    {
 
     }
 
 
-    public function readData() {
-
+    public function readData()
+    {
 
         if (!$this->loadReader) {
-        $this->loadReader();
-$this->loadReader=true;
+            $this->loadReader();
+            $this->loadReader = true;
         }
 
         $file = fopen($this->filename, 'r');
@@ -121,9 +123,9 @@ $this->loadReader=true;
                 }
 
 
-                if ($this->limit !==null) {
+                if ($this->limit !== null) {
 
-                    if ($this->getCount() ===$this->limit) {
+                    if ($this->getCount() === $this->limit) {
                         $this->onFinished();
                         return;
 
@@ -143,36 +145,37 @@ $this->loadReader=true;
     }
 
 
-    public function getNumberOfLines() {
+    public function getNumberOfLines()
+    {
 
 
-        if ($this->numberOfLines===null) {
+        if ($this->numberOfLines === null) {
 
-        //$this->loadReader();
+            //$this->loadReader();
 
             if (!$this->loadReader) {
                 $this->loadReader();
-                $this->loadReader=true;
+                $this->loadReader = true;
             }
 
-        /*
-        $linecount = 0;
-        $handle = fopen($this->filename, 'r');
-        while(!feof($handle)) {
-            fgets($handle);
-            $linecount++;
-        }
+            /*
+            $linecount = 0;
+            $handle = fopen($this->filename, 'r');
+            while(!feof($handle)) {
+                fgets($handle);
+                $linecount++;
+            }
 
-        fclose($handle);*/
+            fclose($handle);*/
 
-        $f = fopen($this->filename, 'rb');
-        $this->numberOfLines = 0;
+            $f = fopen($this->filename, 'rb');
+            $this->numberOfLines = 0;
 
-        while (!feof($f)) {
-            $this->numberOfLines += substr_count(fread($f, 8192), "\n");
-        }
+            while (!feof($f)) {
+                $this->numberOfLines += substr_count(fread($f, 8192), "\n");
+            }
 
-        fclose($f);
+            fclose($f);
 
         }
 
