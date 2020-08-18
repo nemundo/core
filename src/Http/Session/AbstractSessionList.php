@@ -12,6 +12,10 @@ use Nemundo\Core\Json\Document\JsonDocument;
 abstract class AbstractSessionList extends AbstractSession
 {
 
+    /**
+     * @var bool
+     */
+    public $uniqueList=false;
 
 
     public function addValue($value) {
@@ -19,15 +23,10 @@ abstract class AbstractSessionList extends AbstractSession
 
         $list = $this->getValueList();
         $list[]=$value;
+        $list=array_unique($list);
 
         $this->setValue(json_encode($list));
         return $this;
-
-        //$content = json_encode($this->data);
-
-        //new JsonDocument()
-
-
 
     }
 
