@@ -105,17 +105,12 @@ abstract class AbstractLargeCsvReader extends AbstractBase
                             $rowCount++;
                         }
 
-                        //$csvRow = new CsvRow($dataNew);
-                        //$this->list[] = $csvRow;
-
                         $csvRow = new CsvRow($dataNew);
                         $this->onRow($csvRow);
 
                     }
 
                 } else {
-
-                    //$this->list[] = new CsvRow($data);
 
                     $csvRow = new CsvRow($data);
                     $this->onRow($csvRow);
@@ -148,25 +143,12 @@ abstract class AbstractLargeCsvReader extends AbstractBase
     public function getNumberOfLines()
     {
 
-
         if ($this->numberOfLines === null) {
-
-            //$this->loadReader();
 
             if (!$this->loadReader) {
                 $this->loadReader();
                 $this->loadReader = true;
             }
-
-            /*
-            $linecount = 0;
-            $handle = fopen($this->filename, 'r');
-            while(!feof($handle)) {
-                fgets($handle);
-                $linecount++;
-            }
-
-            fclose($handle);*/
 
             $f = fopen($this->filename, 'rb');
             $this->numberOfLines = 0;

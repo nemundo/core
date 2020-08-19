@@ -22,11 +22,42 @@ abstract class AbstractSessionList extends AbstractSession
 
 
         $list = $this->getValueList();
+
+        //(new Debug())->write($list);
+        //$list=[];
+
         $list[]=$value;
         $list=array_unique($list);
 
         $this->setValue(json_encode($list));
         return $this;
+
+    }
+
+
+    public function removeValue($value) {
+
+
+        $list = $this->getValueList();
+
+        //(new Debug())->write($list);
+        //exit;
+
+       // $list[]=$value;
+        //$list=array_unique($list);
+
+        if (($key = array_search($value, $list)) !== false) {
+            unset($list[$key]);
+        }
+
+        $list = array_values($list);
+
+        //(new Debug())->write($list);
+        //exit;
+
+        $this->setValue(json_encode($list));
+        return $this;
+
 
     }
 
