@@ -42,6 +42,10 @@ class NumberDirectory extends AbstractDirectory
     public function getMedian()
     {
 
+        $median='No Value';
+
+        if ($this->getCount() >0) {
+
         $tmpList = $this->list;
         sort($tmpList);
 
@@ -54,6 +58,8 @@ class NumberDirectory extends AbstractDirectory
             $high = $tmpList[$middleval + 1];
             $median = (($low + $high) / 2);
         }
+        }
+
         return $median;
 
     }

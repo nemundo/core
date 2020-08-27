@@ -3,10 +3,7 @@
 namespace Nemundo\Core\WebRequest;
 
 
-use Nemundo\Core\File\Directory;
-use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Core\Type\File\File;
 
 
 class WebRequest extends AbstractWebRequest
@@ -26,6 +23,9 @@ class WebRequest extends AbstractWebRequest
     private $loaded = false;
 
     private $context;
+
+
+    // constructor mit url parameter ???
 
 
     public function getUrl($url)
@@ -107,6 +107,16 @@ class WebRequest extends AbstractWebRequest
             $errorMessage = 'Http Download Error. Message: ' . error_get_last()['message'];
             (new LogMessage())->writeError($errorMessage);
         }
+
+    }
+
+
+    public function getResponseCode($url)
+    {
+
+        $responseCode = get_headers($url)[0];
+        $responseCode = (int)substr($responseCode, 9, 3);
+        return $responseCode;
 
     }
 

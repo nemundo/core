@@ -1,12 +1,15 @@
 <?php
 
-require __DIR__.'/../config.php';
+require __DIR__ . '/../config.php';
 
 
-$filename = \Nemundo\Web\WebConfig::$webPath;
+$filename = '';
+
+
 $file = new \Nemundo\Core\Type\File\File($filename);
 
 (new \Nemundo\Core\Debug\Debug())->write($file->fullFilename);
+(new \Nemundo\Core\Debug\Debug())->write($file->getFileExtension());
 
 if ($file->fileExists()) {
     (new \Nemundo\Core\Debug\Debug())->write('File exists');

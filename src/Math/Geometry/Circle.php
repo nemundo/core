@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Core\Math;
+namespace Nemundo\Core\Math\Geometry;
 
 
 class Circle
