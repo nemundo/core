@@ -47,6 +47,15 @@ abstract class AbstractPath extends AbstractBase
     }
 
 
+    public function addParentPath()
+    {
+
+        $this->addPath('..');
+        return $this;
+
+    }
+
+
     public function getPath()
     {
 

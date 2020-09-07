@@ -30,8 +30,27 @@ class NumberDirectory extends AbstractDirectory
     }
 
 
-    public function getStandardAbweichung()
+    public function getStandardDeviation($roundNumber=null)
     {
+
+
+        $sum = array_sum($this->list);
+        $count = count($this->list);
+        $mean =	$sum / $count;
+        $result = 0;
+        foreach ($this->list as $value)
+            $result += pow($value - $mean, 2);
+        unset($value);
+        $count = ($count == 1) ? $count : $count - 1;
+        $deviation= sqrt($result / $count);
+
+        if ($roundNumber!==null) {
+            $deviation =  round($deviation, $roundNumber);
+        }
+
+        return $deviation;
+
+        //return stats_standard_deviation($this->list);
 
 
         // http://www.monkey-business.biz/2985/php-funktion-standardabweichung-stabw/
@@ -39,7 +58,7 @@ class NumberDirectory extends AbstractDirectory
     }
 
 
-    public function getMedian()
+    public function getMedian($roundNumber=null)
     {
 
         $median='No Value';
@@ -58,6 +77,10 @@ class NumberDirectory extends AbstractDirectory
             $high = $tmpList[$middleval + 1];
             $median = (($low + $high) / 2);
         }
+        }
+
+        if ($roundNumber!==null) {
+            $median =  round($median, $roundNumber);
         }
 
         return $median;

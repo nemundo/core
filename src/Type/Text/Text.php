@@ -20,6 +20,14 @@ class Text extends AbstractType
         return $length;
     }
 
+    public function getChecksum()
+    {
+
+        $checksum = md5($this->getValue());
+        return $checksum;
+
+    }
+
 
     public function isNumber()
     {
