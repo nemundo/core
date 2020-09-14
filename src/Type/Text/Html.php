@@ -8,6 +8,16 @@ use Nemundo\Core\Type\AbstractType;
 class Html extends AbstractType
 {
 
+
+    public function importHtml($html)
+    {
+
+        $this->value = htmlspecialchars($html);
+        return $this;
+
+    }
+
+
     public function getValue()
     {
         $value = parent::getValue();
