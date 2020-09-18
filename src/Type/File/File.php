@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Type\File;
 
 use Nemundo\Core\File\FileInformation;
+use Nemundo\Core\File\FileSize;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 
@@ -97,6 +98,15 @@ class File extends AbstractType
         return $filesize;
 
     }
+
+
+    public function getFileSizeText() {
+
+        $filesize=new FileSize(filesize($this->fullFilename));
+        return $filesize->getText();
+
+    }
+
 
     public function getFileExtension()
     {
