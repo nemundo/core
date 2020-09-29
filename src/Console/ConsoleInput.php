@@ -40,10 +40,7 @@ class ConsoleInput extends AbstractBaseClass
         }
 
         $message .= ' : ';
-
-        //do {
         $line = readline($message);
-        //} while ($line == null);
 
         if ($line == null) {
             $line = $this->defaultValue;
@@ -52,6 +49,5 @@ class ConsoleInput extends AbstractBaseClass
         return $line;
 
     }
-
 
 }

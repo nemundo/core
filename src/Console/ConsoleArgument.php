@@ -28,5 +28,4 @@ class ConsoleArgument extends AbstractBaseClass
 
     }
 
-
 }
