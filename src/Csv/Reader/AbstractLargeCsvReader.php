@@ -63,9 +63,6 @@ abstract class AbstractLargeCsvReader extends AbstractBase
         }
 
         $file = fopen($this->filename, 'r');
-
-        //$count = 0;
-        //$dataHeader = [];
         while (($line = fgetcsv($file, 0, $this->separator)) !== false) {
 
             if ($this->count >= $this->lineOfStart) {
@@ -94,7 +91,6 @@ abstract class AbstractLargeCsvReader extends AbstractBase
                         $this->header = $data;
                         $this->onHeader();
 
-
                     } else {
 
                         // Daten anfügen
@@ -117,7 +113,6 @@ abstract class AbstractLargeCsvReader extends AbstractBase
 
                 }
 
-
                 if ($this->limit !== null) {
 
                     if ($this->getCount() === $this->limit) {
@@ -127,7 +122,6 @@ abstract class AbstractLargeCsvReader extends AbstractBase
                     }
 
                 }
-
 
             }
 
