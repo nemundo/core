@@ -2,7 +2,6 @@
 
 namespace Nemundo\Core\WebRequest;
 
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
@@ -37,7 +36,6 @@ class CurlWebRequest extends AbstractWebRequest
      * @var string
      */
     public $proxyPassword;
-
 
     /**
      * @var string

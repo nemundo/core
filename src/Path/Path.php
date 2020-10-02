@@ -7,4 +7,24 @@ namespace Nemundo\Core\Path;
 class Path extends AbstractPath
 {
 
+
+    public function __construct($path = null)
+    {
+
+        parent::__construct();
+
+        if ($path !== null) {
+            $this->addPath($path);
+        }
+
+        //$this->loadPath();
+
+    }
+
+
+    protected function loadPath()
+    {
+
+    }
+
 }

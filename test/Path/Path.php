@@ -5,6 +5,10 @@ use Nemundo\App\ModelDesigner\Path\ModelPath;
 require __DIR__.'/../config.php';
 
 
+// RandomPath
+// DatePath
+
+
 /*
 $filename = (new ModelPath())
     ->addPath( 'bla.json')
@@ -15,7 +19,7 @@ $filename = (new ModelPath())
 
 
 $path=new \Nemundo\Core\Path\Path('C:\test\test123');
-$path->deleteDirectory(true);
+$path->deleteDirectory();
 
 //deleteDirectory(true);
 //$path->createDirectory();
