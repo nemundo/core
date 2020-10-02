@@ -19,7 +19,7 @@ abstract class AbstractPath extends AbstractBase
     /**
      * @var bool
      */
-    private $pathLoaded = false;
+    //private $pathLoaded = false;
 
     abstract protected function loadPath();
 
@@ -44,7 +44,7 @@ abstract class AbstractPath extends AbstractBase
 
         // $this->loadBase();
 
-        //$this->path = new TextDirectory();
+        $this->path = new TextDirectory();
         $this->loadPath();
 
     }
@@ -63,9 +63,9 @@ abstract class AbstractPath extends AbstractBase
 
         $path = rtrim($path, DIRECTORY_SEPARATOR);
 
-        if ($this->path==null) {
+        /*if ($this->path==null) {
             $this->path = new TextDirectory();
-        }
+        }*/
 
         $this->path->addValue($path);
         return $this;
@@ -97,10 +97,10 @@ abstract class AbstractPath extends AbstractBase
     public function getFilename()
     {
 
-        if (!$this->pathLoaded) {
+        /*if (!$this->pathLoaded) {
             //$this->loadPath();
             $this->pathLoaded = true;
-        }
+        }*/
 
         $filename = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR);
         return $filename;
@@ -200,18 +200,24 @@ abstract class AbstractPath extends AbstractBase
     }
 
 
+    /*
     public function getFileList()
     {
 
-    }
+    }*/
+
 
     // getSubDire..
+
+    // --> DirectoryReader
+
+    /*
     public function getSubPathList()
     {
 
 
         /** @var AbstractPath[] $list */
-        $list = [];
+      /*  $list = [];
 
         if ($handle = opendir($this->getPath())) {
 
@@ -265,13 +271,13 @@ abstract class AbstractPath extends AbstractBase
                         }
                     }
                 }*/
-            }
+        /*    }
             closedir($handle);
         }
 
         return $list;
 
-    }
+    }*/
 
 
 }
