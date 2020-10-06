@@ -2,8 +2,6 @@
 
 namespace Nemundo\Core\Http\Request;
 
-
-
 use Nemundo\Core\Base\AbstractBaseClass;
 
 abstract class AbstractRequest extends AbstractBaseClass
@@ -23,24 +21,13 @@ abstract class AbstractRequest extends AbstractBaseClass
     }
 
 
-    /*
-        public function __construct($requestName)
-        {
-
-            $this->requestName = $requestName;
-
-        }
-    */
-
-
-
-    public function notExists()
+    /*public function notExists()
     {
 
         $returnValue = !$this->exists();
         return $returnValue;
 
-    }
+    }*/
 
 
     public function getRequestName()

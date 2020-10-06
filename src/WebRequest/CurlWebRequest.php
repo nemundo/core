@@ -7,7 +7,6 @@ use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
 use Nemundo\Core\System\Delay;
 use Nemundo\Core\Type\File\File;
-use Nemundo\Project\ProjectConfig;
 
 class CurlWebRequest extends AbstractWebRequest
 {
@@ -118,11 +117,6 @@ class CurlWebRequest extends AbstractWebRequest
 
         (new Path($file->getPath()))->createPath();
 
-        /*
-        $directory = new Directory();
-        $directory->path = $file->getPath();
-        $directory->createDirectory();*/
-
         $this->load($url);
 
         $fp = fopen($destinationFilename, 'w+');
@@ -165,8 +159,8 @@ class CurlWebRequest extends AbstractWebRequest
 
             }
 
-            curl_setopt($this->curl, CURLOPT_COOKIEJAR, ProjectConfig::$tmpPath . 'my_cookies.txt');
-            curl_setopt($this->curl, CURLOPT_COOKIEFILE, ProjectConfig::$tmpPath . 'my_cookies.txt');
+            //curl_setopt($this->curl, CURLOPT_COOKIEJAR, ProjectConfig::$tmpPath . 'my_cookies.txt');
+            //curl_setopt($this->curl, CURLOPT_COOKIEFILE, ProjectConfig::$tmpPath . 'my_cookies.txt');
 
         }
 

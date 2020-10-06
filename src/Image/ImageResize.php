@@ -5,7 +5,6 @@ namespace Nemundo\Core\Image;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\Image\Format\AbstractImageFormat;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
 use Nemundo\Core\Image\Format\FixHeightImageFormat;
@@ -48,12 +47,6 @@ class ImageResize extends AbstractBaseClass
         if (!$this->checkObject('format', $this->format, AbstractImageFormat::class)) {
             exit;
         }
-
-        //$file = new File($this->destinationFilename);
-
-        /*$dir = new Directory();
-        $dir->path = $file->getPath();
-        $dir->createDirectory();*/
 
         $sourceFile = new File($this->sourceFilename);
         if (!$sourceFile->fileExists()) {
@@ -131,7 +124,7 @@ class ImageResize extends AbstractBaseClass
         imagecopyresampled($imageDestination, $imageSource, 0, 0, 0, 0, $destinationWidth, $destinationHeight, $sourceWidth, $sourceHeight);
 
         if (!is_resource($imageDestination)) {
-            (new Debug())->write('No Resource. Filename: '.$this->sourceFilename);
+            (new Debug())->write('No Resource. Filename: ' . $this->sourceFilename);
             exit;
         }
 

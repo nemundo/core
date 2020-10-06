@@ -2,8 +2,6 @@
 
 namespace Nemundo\Core\Archive;
 
-
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
@@ -28,7 +26,7 @@ class GzExtractor extends AbstractExtractor
 
 
         if ((new File($this->archiveFilename))->notExists()) {
-            (new LogMessage())->writeError('Filename not exist. '.$this->archiveFilename);
+            (new LogMessage())->writeError('Filename not exist. ' . $this->archiveFilename);
             return null;
         }
 
@@ -36,7 +34,7 @@ class GzExtractor extends AbstractExtractor
 
 
         $bufferSize = 4096;
-        $outputFilename = $this->extractPath .DIRECTORY_SEPARATOR. $this->extractFilename;
+        $outputFilename = $this->extractPath . DIRECTORY_SEPARATOR . $this->extractFilename;
 
         $file = gzopen($this->archiveFilename, 'rb');
         $fileOutput = fopen($outputFilename, 'wb');

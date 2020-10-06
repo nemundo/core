@@ -4,6 +4,7 @@ namespace Nemundo\Core\File;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Path\Path;
 
 class Base64File extends AbstractBaseClass
 {
@@ -38,9 +39,9 @@ class Base64File extends AbstractBaseClass
     public function saveFile($data)
     {
 
-        $dir = new Directory();
-        $dir->path = dirname($this->filename);
-        $dir->createDirectory();
+        (new Path())
+            ->addPath(dirname($this->filename))
+            ->createPath();
 
         $data = base64_decode($data);
         file_put_contents($this->filename, $data);

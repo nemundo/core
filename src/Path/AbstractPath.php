@@ -16,33 +16,11 @@ abstract class AbstractPath extends AbstractBase
      */
     private $path;
 
-    /**
-     * @var bool
-     */
-    //private $pathLoaded = false;
-
     abstract protected function loadPath();
-
-
-    /*
-    public function __construct($path = null)
-    {
-
-        $this->path = new TextDirectory();
-
-        if ($path !== null) {
-            $this->addPath($path);
-        }
-
-        $this->loadPath();
-
-    }*/
 
 
     public function __construct()
     {
-
-        // $this->loadBase();
 
         $this->path = new TextDirectory();
         $this->loadPath();
@@ -50,23 +28,10 @@ abstract class AbstractPath extends AbstractBase
     }
 
 
-    /*
-    protected function loadBase() {
-
-        $this->path = new TextDirectory();
-
-    }*/
-
-
     public function addPath($path)
     {
 
         $path = rtrim($path, DIRECTORY_SEPARATOR);
-
-        /*if ($this->path==null) {
-            $this->path = new TextDirectory();
-        }*/
-
         $this->path->addValue($path);
         return $this;
 
@@ -85,9 +50,6 @@ abstract class AbstractPath extends AbstractBase
     public function getPath()
     {
 
-        //$this->loadPath();
-
-        //$path = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $path = $this->getFilename() . DIRECTORY_SEPARATOR;
         return $path;
 
@@ -96,11 +58,6 @@ abstract class AbstractPath extends AbstractBase
 
     public function getFilename()
     {
-
-        /*if (!$this->pathLoaded) {
-            //$this->loadPath();
-            $this->pathLoaded = true;
-        }*/
 
         $filename = $this->path->getTextWithSeperator(DIRECTORY_SEPARATOR);
         return $filename;
@@ -217,67 +174,67 @@ abstract class AbstractPath extends AbstractBase
 
 
         /** @var AbstractPath[] $list */
-      /*  $list = [];
+    /*  $list = [];
 
-        if ($handle = opendir($this->getPath())) {
+      if ($handle = opendir($this->getPath())) {
 
-            while (false !== ($entry = readdir($handle))) {
-                if (($entry != '.') && ($entry != '..')) {
+          while (false !== ($entry = readdir($handle))) {
+              if (($entry != '.') && ($entry != '..')) {
 
-                    // Pfad anfügen
-                    $filename = $entry;
-                    $fullFilename = $this->getPath() . $entry;
+                  // Pfad anfügen
+                  $filename = $entry;
+                  $fullFilename = $this->getPath() . $entry;
 
-                    //if ($this->includeDirectories) {
-                    if (is_dir($fullFilename)) {
+                  //if ($this->includeDirectories) {
+                  if (is_dir($fullFilename)) {
 
 
-                        $subpath = new Path($fullFilename);
+                      $subpath = new Path($fullFilename);
 
-                        //new FileItem
+                      //new FileItem
 
-                        //$fileItem = new File($fullFilename);
-                        //$item[] = $fileItem;
-                        $list[] = $subpath;
-                    }
-                }
+                      //$fileItem = new File($fullFilename);
+                      //$item[] = $fileItem;
+                      $list[] = $subpath;
+                  }
+              }
 
-                /*
-                    if ($this->includeFiles) {
-                        if (is_file($fullFilename)) {
-                            $fileItem = new File($fullFilename);
+              /*
+                  if ($this->includeFiles) {
+                      if (is_file($fullFilename)) {
+                          $fileItem = new File($fullFilename);
 
-                            $addItem = true;
-                            if (sizeof($this->fileExtensionFilter) > 0) {
-                                $addItem = false;
-                                foreach ($this->fileExtensionFilter as $fileExtension) {
-                                    if ($fileItem->getFileExtension() == $fileExtension) {
-                                        $addItem = true;
-                                    }
-                                }
-                            }
+                          $addItem = true;
+                          if (sizeof($this->fileExtensionFilter) > 0) {
+                              $addItem = false;
+                              foreach ($this->fileExtensionFilter as $fileExtension) {
+                                  if ($fileItem->getFileExtension() == $fileExtension) {
+                                      $addItem = true;
+                                  }
+                              }
+                          }
 
-                            if ($addItem) {
-                                $item[] = $fileItem;
-                            }
+                          if ($addItem) {
+                              $item[] = $fileItem;
+                          }
 
-                        }
-                    }
+                      }
+                  }
 
-                    if ($this->recursiveSearch) {
-                        if (is_dir($fullFilename)) {
-                            $itemRecursiv = $this->getFileListInternal($fullFilename);
-                            $item = array_merge($item, $itemRecursiv);
-                        }
-                    }
-                }*/
-        /*    }
-            closedir($handle);
-        }
+                  if ($this->recursiveSearch) {
+                      if (is_dir($fullFilename)) {
+                          $itemRecursiv = $this->getFileListInternal($fullFilename);
+                          $item = array_merge($item, $itemRecursiv);
+                      }
+                  }
+              }*/
+    /*    }
+        closedir($handle);
+    }
 
-        return $list;
+    return $list;
 
-    }*/
+}*/
 
 
 }

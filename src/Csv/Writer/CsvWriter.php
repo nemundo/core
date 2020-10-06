@@ -5,9 +5,8 @@ namespace Nemundo\Core\Csv\Writer;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Csv\CsvSeperator;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 
 
@@ -29,7 +28,6 @@ class CsvWriter extends AbstractBase
      */
     private $filename;
 
-
     private $file;
 
     public function __construct($filename)
@@ -37,9 +35,9 @@ class CsvWriter extends AbstractBase
 
         $this->filename = $filename;
 
-        $directory = new Directory();
-        $directory->path = (new File($this->filename))->getPath();
-        $directory->createDirectory();
+        (new Path())
+            ->addPath((new File($this->filename))->getPath())
+            ->createPath();
 
         $this->file = @fopen($this->filename, 'w');
         if (!$this->file) {

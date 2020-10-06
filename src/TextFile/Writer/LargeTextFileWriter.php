@@ -3,7 +3,7 @@
 namespace Nemundo\Core\TextFile\Writer;
 
 
-use Nemundo\Core\File\Path;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 
 class LargeTextFileWriter extends AbstractTextFileWriter
@@ -45,7 +45,7 @@ class LargeTextFileWriter extends AbstractTextFileWriter
                 $file = new File($this->filename);
                 (new Path())
                     ->addPath($file->getPath())
-                    ->createDirectory();
+                    ->createPath();
 
             }
 
@@ -70,6 +70,5 @@ class LargeTextFileWriter extends AbstractTextFileWriter
             $this->isOpen = false;
         }
     }
-
 
 }

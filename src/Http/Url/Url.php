@@ -5,8 +5,6 @@ namespace Nemundo\Core\Http\Url;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
 use Nemundo\Core\Type\Text\Text;
-use Nemundo\Web\Parameter\AbstractUrlParameter;
-use Nemundo\Web\WebConfig;
 
 
 

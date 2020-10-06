@@ -3,8 +3,8 @@
 namespace Nemundo\Core\Ftp;
 
 
-use Nemundo\Core\File\Directory;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 
 class FtpDownload
@@ -29,8 +29,15 @@ class FtpDownload
     public function downloadFile()
     {
 
-        $path = (new File($this->destinationFilename))->getPath();
-        (new Directory($path))->createDirectory();
+
+        (new Path())
+            ->addPath(new File($this->destinationFilename))
+            ->createPath();
+
+
+
+        //$path = (new File($this->destinationFilename))->getPath();
+       // (new Directory($path))->createDirectory();
 
 
         $conn_id = ftp_connect($this->host);

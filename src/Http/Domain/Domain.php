@@ -5,7 +5,6 @@ namespace Nemundo\Core\Http\Domain;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Web\WebConfig;
 
 class Domain extends AbstractBaseClass
 {
@@ -24,11 +23,11 @@ class Domain extends AbstractBaseClass
             $domain .= $_SERVER['HTTP_HOST'];
         } else {
 
-            if (WebConfig::$domain !== null) {
+            /*if (WebConfig::$domain !== null) {
                 $domain .= WebConfig::$domain;
             } else {
                 (new LogMessage())->writeError('WebConfig::$domain is not defined.');
-            }
+            }*/
 
         }
 

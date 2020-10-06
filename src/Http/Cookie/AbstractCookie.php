@@ -5,7 +5,6 @@ namespace Nemundo\Core\Http\Cookie;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Http\Session\SessionStart;
-use Nemundo\Web\WebConfig;
 
 abstract class AbstractCookie extends AbstractBaseClass
 {
@@ -79,7 +78,8 @@ abstract class AbstractCookie extends AbstractBaseClass
     private function getPath()
     {
 
-        $path = WebConfig::$webUrl;
+        //$path = WebConfig::$webUrl;
+        $path = '/';
         return $path;
 
     }

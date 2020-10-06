@@ -17,8 +17,6 @@ class Path extends AbstractPath
             $this->addPath($path);
         }
 
-        //$this->loadPath();
-
     }
 
 

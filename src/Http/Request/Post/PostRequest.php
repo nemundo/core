@@ -16,7 +16,7 @@ class PostRequest extends AbstractPostRequest
 
     protected function loadRequest()
     {
-        // TODO: Implement loadRequest() method.
+
     }
 
 }
