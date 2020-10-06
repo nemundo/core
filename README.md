@@ -5,15 +5,10 @@
 composer require nemundo/core
 ```
 
-
-### Pdf File 
+### PdfToText Installation
 ```
-
+sudo apt-get install -y poppler-utils
 ```
-
-
-
-
 
 ### Submodul Installation
 ```
