@@ -5,7 +5,7 @@ namespace Nemundo\Core\Device;
 
 use Nemundo\Core\Base\AbstractBase;
 
-
+// nach System
 class DeviceInformation extends AbstractBase
 {
 
@@ -32,10 +32,14 @@ class DeviceInformation extends AbstractBase
 
     public function getUrlReferer()
     {
-        return $_SERVER['HTTP_REFERER'];
+
+        $urlReferer = '';
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $urlReferer = $_SERVER['HTTP_REFERER'];
+        }
+        return $urlReferer;
+
     }
-
-
 
 
 }
