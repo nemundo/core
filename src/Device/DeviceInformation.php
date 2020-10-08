@@ -5,20 +5,11 @@ namespace Nemundo\Core\Device;
 
 use Nemundo\Core\Base\AbstractBase;
 
-// BroswerInformation
-// Nemundo\Core\Sytem
+
 class DeviceInformation extends AbstractBase
 {
 
-    public function __construct()
-    {
-
-        // Laden der Information
-
-    }
-
-// getBrowserAgent
-    public function getAgent()
+    public function getBrowserAgent()
     {
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         return $userAgent;
@@ -32,25 +23,19 @@ class DeviceInformation extends AbstractBase
     }
 
 
-    // getBrowserLanguage
-    public function getLanguage()
+    public function getBrowserLanguage()
     {
         $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
         return $language;
     }
 
 
-    /*
-    public function isMobile()
+    public function getUrlReferer()
     {
-        $detect = new \Mobile_Detect();
-        return $detect->isMobile();
+        return $_SERVER['HTTP_REFERER'];
     }
 
-    public function isTablet()
-    {
-        $detect = new \Mobile_Detect();
-        return $detect->isTablet();
-    }*/
+
+
 
 }
