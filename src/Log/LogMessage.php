@@ -7,6 +7,7 @@ use Nemundo\Core\Console\ConsoleConfig;
 use Nemundo\Core\Console\ConsoleMode;
 
 use Nemundo\Core\File\FileUtility;
+use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Text;
 
@@ -103,7 +104,12 @@ class LogMessage extends AbstractBase
     {
 
         if (!file_exists(LogConfig::$logPath)) {
-            (new LogPath())->createPath();
+            //(new LogPath())->createPath();
+
+            (new Path())
+                ->addPath(LogConfig::$logPath)
+                ->createPath();
+
         }
 
         $message = date("Y-m-d H:i:s") . "\t" . $message;
