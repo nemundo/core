@@ -11,7 +11,7 @@ use Nemundo\Core\Base\AbstractBase;
 // AbstractNumberList
 // Analog ChartData
 
-class MinMaxNormalization extends AbstractBase
+class Normalizer extends AbstractBase
 {
 
     private $valueList=[];
