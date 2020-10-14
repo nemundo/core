@@ -12,10 +12,11 @@ abstract class AbstractCsvReader extends AbstractDataSource
 
     use CsvTrait;
 
-    protected $header=[];
+    protected $header = [];
 
 
-    public function getHeader() {
+    public function getHeader()
+    {
 
         $this->getData();
         return $this->header;
@@ -23,7 +24,8 @@ abstract class AbstractCsvReader extends AbstractDataSource
     }
 
 
-    protected function checkFileExists() {
+    protected function checkFileExists()
+    {
 
         $file = new File($this->filename);
 
