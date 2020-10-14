@@ -23,7 +23,7 @@ class CsvReader extends AbstractCsvReader
      */
     public $limit;
 
-    protected $header=[];
+    //protected $header=[];
 
     /**
      * @return CsvRow[]
@@ -33,14 +33,13 @@ class CsvReader extends AbstractCsvReader
         return parent::getData();
     }
 
-
+/*
     public function getHeader() {
 
-        //$this->loadData();
         $this->getData();
         return $this->header;
 
-    }
+    }*/
 
 
     public function getHeaderByNumber($number) {
@@ -72,11 +71,6 @@ class CsvReader extends AbstractCsvReader
         $count = 0;
         //$dataHeader = [];
         while (($line = fgetcsv($file, 0, $this->separator)) !== false) {
-
-            //(new Debug())->write($count);
-            //(new Debug())->write($line);
-
-            //exit;
 
             if ($count >= $this->lineOfStart) {
 

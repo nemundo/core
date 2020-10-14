@@ -1,43 +1,48 @@
 <?php
 
-
 namespace Nemundo\Core\Math\Statistic;
-
 
 use Nemundo\Core\Base\AbstractBase;
 
-// MinMaxNormalizedData
-
-// AbstractNumberList
-// Analog ChartData
 
 class Normalizer extends AbstractBase
 {
 
-    private $valueList=[];
+    private $valueList = [];
 
-    public function addValue($value) {
+    public function addValue($value)
+    {
 
-        $this->valueList[]=$value;
+        $this->valueList[] = $value;
         return $this;
 
     }
 
 
-    public function getNormalizedData() {
+    public function getNormalizedData()
+    {
 
-        $min = min($this->valueList);
-        $max=max($this->valueList);
+        if (sizeof($this->valueList) > 0) {
+            $min = min($this->valueList);
+            $max = max($this->valueList);
+        }
 
-        $valueListNew=[];
+        $valueListNew = [];
         foreach ($this->valueList as $value) {
-            $valueListNew[] = ($value-$min)/($max-$min);
+
+            $diff = $max - $min;
+
+            if ($diff !==0) {
+            $valueListNew[] = ($value - $min) / $diff;  // ($max - $min);
+            } else {
+                $valueListNew[] = $value - $min;
+            }
+
+
         }
 
         return $valueListNew;
 
-
     }
-
 
 }

@@ -10,4 +10,15 @@ abstract class AbstractCsvReader extends AbstractDataSource
 
     use CsvTrait;
 
+    protected $header=[];
+
+
+    public function getHeader() {
+
+        $this->getData();
+        return $this->header;
+
+    }
+
+
 }
