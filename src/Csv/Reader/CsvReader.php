@@ -57,14 +57,17 @@ class CsvReader extends AbstractCsvReader
             return;
         }
 
+
+        $this->checkFileExists();
+
         // überprüfen, ob Datei vorhanden ist
-        $file = new File($this->filename);
+        /*$file = new File($this->filename);
 
         // bei Url funktioniert dies nicht!!!
         if (!$file->fileExists()) {
             (new LogMessage())->writeError('File ' . $this->filename . ' does not exists.');
-            return;
-        }
+            exit;
+        }*/
 
         $file = fopen($this->filename, 'r');
 
