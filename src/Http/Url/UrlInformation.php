@@ -9,7 +9,7 @@ use Nemundo\Core\Type\Text\Text;
 
 
 // UrlInformation
-class Url extends AbstractBaseClass
+class UrlInformation extends AbstractBaseClass
 {
 
     /**
@@ -40,53 +40,6 @@ class Url extends AbstractBaseClass
     }
 
 
-    public function getParameterList()
-    {
-        return $this->requestList;
-    }
-
-
-    public function getRequestList($parameter)
-    {
-
-        $value = '';
-        if (isset($this->requestList[$parameter])) {
-            $value = $this->requestList[$parameter];
-        }
-
-        return $value;
-
-    }
-
-
-    public function addRequestValue($requestName, $value = '')
-    {
-        $this->requestList[$requestName] = $value;
-        return $this;
-    }
-
-
-    public function addRequest(AbstractGetRequest $parameter)
-    {
-        $this->requestList[$parameter->getRequestName()] = $parameter->getValue();
-        return $this;
-    }
-
-
-    public function removeParameter(AbstractGetRequest $paramter)
-    {
-        unset($this->requestList[$paramter->getRequestName()]);
-        return $this;
-    }
-
-
-    public function removeAllParameter()
-    {
-        $this->requestList = [];
-        return $this;
-    }
-
-
     public function getUrl()
     {
 
@@ -101,51 +54,6 @@ class Url extends AbstractBaseClass
 
     }
 
-
-    // seperate !!!
-   /* public function getUrlList($removePrefixUrl = '')
-    {
-
-        $requestUri = strtok($this->url, '?');
-
-        $uri = new Text($requestUri);
-        $uri->removeLeft(WebConfig::$webUrl . $removePrefixUrl);
-        $uri->removeRight('/');
-
-        $list = $uri->split('/');
-
-
-        // Home Url
-        if (sizeof($list) == 0) {
-            $list[] = '';
-        }
-
-        return $list;
-
-    }*/
-
-
-    public function getUrlPart($number)
-    {
-
-        $list = $this->getUrlList();
-
-        $part = '';
-        if (isset($list[$number])) {
-            $part = $list[$number];
-        }
-        return $part;
-
-    }
-
-
-    /*
-    public function redirect()
-    {
-
-        (new UrlRedirect())->redirect($this->getUrl());
-
-    }*/
 
 
     public function getUrlWithoutParameter()

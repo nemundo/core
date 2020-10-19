@@ -13,7 +13,7 @@ trait PaginationTrait
     /**
      * @var int
      */
-    public $paginationLimit = 10;
+    public $paginationLimit;
 
     /**
      * @var int

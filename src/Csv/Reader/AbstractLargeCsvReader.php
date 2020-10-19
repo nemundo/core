@@ -21,7 +21,7 @@ abstract class AbstractLargeCsvReader extends AbstractBase
 
     protected $count = 0;
 
-    private $loadReader = false;
+    private $readerLoaded = false;
 
     private $numberOfLines;
 
@@ -34,33 +34,30 @@ abstract class AbstractLargeCsvReader extends AbstractBase
 
     abstract protected function onRow(CsvRow $csvRow);
 
-
     protected function getCount()
     {
-
         return $this->count;
-
     }
 
 
     protected function onHeader()
     {
-
     }
 
     protected function onFinished()
     {
-
     }
 
 
     public function readData()
     {
 
-        if (!$this->loadReader) {
+        if (!$this->readerLoaded) {
             $this->loadReader();
-            $this->loadReader = true;
+            $this->readerLoaded = true;
         }
+
+        $this->checkFileExists();
 
         $file = fopen($this->filename, 'r');
         while (($line = fgetcsv($file, 0, $this->separator)) !== false) {
@@ -82,7 +79,6 @@ abstract class AbstractLargeCsvReader extends AbstractBase
                     $data[] = $item;
 
                 }
-
 
                 if ($this->useFirstRowAsHeader) {
 
@@ -139,9 +135,9 @@ abstract class AbstractLargeCsvReader extends AbstractBase
 
         if ($this->numberOfLines === null) {
 
-            if (!$this->loadReader) {
+            if (!$this->readerLoaded) {
                 $this->loadReader();
-                $this->loadReader = true;
+                $this->readerLoaded = true;
             }
 
             $f = fopen($this->filename, 'rb');

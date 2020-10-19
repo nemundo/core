@@ -1,16 +1,16 @@
 <?php
 
-require __DIR__.'/../config.php';
+require __DIR__ . '/../config.php';
 
 
-$filename = __DIR__.'/test.csv';
+$filename = __DIR__ . '/test.csv';
 
 $writer = new \Nemundo\Core\Csv\Writer\CsvWriter($filename);
 
-$data= [];
-$data[]='Line1';
-$data[]='Line2';
-$data[]='Line3';
+$data = [];
+$data[] = 'Line1';
+$data[] = 'Line2';
+$data[] = 'Line3';
 
 $writer->addRow($data);
 

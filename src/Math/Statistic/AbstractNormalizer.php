@@ -5,24 +5,25 @@ namespace Nemundo\Core\Math\Statistic;
 use Nemundo\Core\Base\AbstractBase;
 
 
-class Normalizer extends AbstractNormalizer
+abstract class AbstractNormalizer extends AbstractBase
 {
 
-    protected function loadNormalizer()
-    {
-
-    }
-
-    public function addValue($value)
-    {
-        return parent::addValue($value);
-    }
-
-
-    /*
     private $valueList = [];
 
-    public function addValue($value)
+    /**
+     * @var bool
+     */
+    private $dataLoaded = false;
+
+    abstract protected function loadNormalizer();
+
+    /*public function __construct()
+    {
+        $this->loadNormalizer();
+    }*/
+
+
+    protected function addValue($value)
     {
 
         $this->valueList[] = $value;
@@ -34,6 +35,11 @@ class Normalizer extends AbstractNormalizer
     public function getNormalizedData()
     {
 
+        if (!$this->dataLoaded) {
+            $this->loadNormalizer();
+            $this->dataLoaded = true;
+        }
+
         if (sizeof($this->valueList) > 0) {
             $min = min($this->valueList);
             $max = max($this->valueList);
@@ -44,17 +50,16 @@ class Normalizer extends AbstractNormalizer
 
             $diff = $max - $min;
 
-            if ($diff !==0) {
-            $valueListNew[] = ($value - $min) / $diff;  // ($max - $min);
+            if ($diff !== 0) {
+                $valueListNew[] = ($value - $min) / $diff;
             } else {
                 $valueListNew[] = $value - $min;
             }
-
 
         }
 
         return $valueListNew;
 
-    }*/
+    }
 
 }

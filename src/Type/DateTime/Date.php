@@ -365,6 +365,12 @@ class Date extends AbstractBaseClass
     public function isWeekDay()
     {
 
+        $returnValue = false;
+        $weekdayNumber = $this->getWeekdayNumber();
+        if ($weekdayNumber <=5) {
+            $returnValue = true;
+        }
+        return $returnValue;
 
     }
 

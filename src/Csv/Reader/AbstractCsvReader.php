@@ -23,18 +23,4 @@ abstract class AbstractCsvReader extends AbstractDataSource
 
     }
 
-
-    protected function checkFileExists()
-    {
-
-        $file = new File($this->filename);
-
-        // bei Url funktioniert dies nicht!!!
-        if (!$file->fileExists()) {
-            (new LogMessage())->writeError('File ' . $this->filename . ' does not exists.');
-            exit;
-        }
-
-    }
-
 }
