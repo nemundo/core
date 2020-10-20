@@ -4,8 +4,8 @@ namespace Nemundo\Core\Math\Statistic;
 
 use Nemundo\Core\Base\AbstractBase;
 
-
-abstract class AbstractNormalizer extends AbstractBase
+// Label
+abstract class AbstractMultiNormalizer extends AbstractBase
 {
 
     private $valueList = [];
@@ -17,16 +17,17 @@ abstract class AbstractNormalizer extends AbstractBase
 
     abstract protected function loadNormalizer();
 
-    protected function addValue($value)
+
+    protected function addValue($label, $xValue, $yValue)
     {
 
-        $this->valueList[] = $value;
+        $this->valueList[$label][$xValue] = $yValue;
         return $this;
 
     }
 
 
-    public function getNormalizedData()
+    public function getNormalizedData($label)
     {
 
         if (!$this->dataLoaded) {
@@ -34,7 +35,7 @@ abstract class AbstractNormalizer extends AbstractBase
             $this->dataLoaded = true;
         }
 
-        if (sizeof($this->valueList) > 0) {
+        if (sizeof($this->valueList[$label]) > 0) {
             $min = min($this->valueList);
             $max = max($this->valueList);
         }

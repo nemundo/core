@@ -3,9 +3,10 @@
 namespace Nemundo\Core\Math\Statistic;
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 
 
-abstract class AbstractNormalizer extends AbstractBase
+abstract class AbstractLabelValueNormalizer extends AbstractBase
 {
 
     private $valueList = [];
@@ -17,10 +18,10 @@ abstract class AbstractNormalizer extends AbstractBase
 
     abstract protected function loadNormalizer();
 
-    protected function addValue($value)
+    protected function addValue($label, $value)
     {
 
-        $this->valueList[] = $value;
+        $this->valueList[$label] = $value;
         return $this;
 
     }
@@ -39,18 +40,32 @@ abstract class AbstractNormalizer extends AbstractBase
             $max = max($this->valueList);
         }
 
+
+        /** @var LabelValue[] $valueListNew */
         $valueListNew = [];
-        foreach ($this->valueList as $value) {
+
+        foreach ($this->valueList as $key => $value) {
 
             $diff = $max - $min;
 
+            $valueNew = null;
+
             if ($diff !== 0) {
-                $valueListNew[] = ($value - $min) / $diff;
+                //$valueListNew[] = ($value - $min) / $diff;
+                $valueNew = ($value - $min) / $diff;
             } else {
-                $valueListNew[] = $value - $min;
+                //$valueListNew[] = $value - $min;
+                $valueNew = $value - $min;
             }
 
+            $labelValue = new LabelValue();
+            $labelValue->label = $key;
+            $labelValue->value = $valueNew;
+            $valueListNew[] = $labelValue;
+
         }
+
+        //(new Debug())->write($valueListNew);
 
         return $valueListNew;
 

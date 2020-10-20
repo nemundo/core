@@ -105,7 +105,13 @@ class CsvReader extends AbstractCsvReader
                         $dataNew = [];
                         $rowCount = 0;
                         foreach ($this->header as $rowHeader) {
+
+                            if (isset($data[$rowCount])) {
                             $dataNew[trim($rowHeader)] = $data[$rowCount];
+                            } else {
+                                $dataNew[trim($rowHeader)]='';
+                            }
+
                             $rowCount++;
                         }
 
