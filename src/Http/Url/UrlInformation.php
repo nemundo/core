@@ -2,11 +2,8 @@
 
 namespace Nemundo\Core\Http\Url;
 
+
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
-use Nemundo\Core\Type\Text\Text;
-
-
 
 // UrlInformation
 class UrlInformation extends AbstractBaseClass
@@ -21,6 +18,10 @@ class UrlInformation extends AbstractBaseClass
      * @var string[]
      */
     protected $requestList;
+
+
+    protected $parameter;
+
 
     function __construct($url = null)
     {
@@ -40,6 +41,13 @@ class UrlInformation extends AbstractBaseClass
     }
 
 
+    public function addParameterValue($parameterName, $value = '')
+    {
+        $this->parameter[$parameterName] = $value;
+        return $this;
+    }
+
+
     public function getUrl()
     {
 
@@ -53,7 +61,6 @@ class UrlInformation extends AbstractBaseClass
         return $url;
 
     }
-
 
 
     public function getUrlWithoutParameter()

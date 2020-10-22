@@ -3,19 +3,13 @@
 namespace Nemundo\Core\Type\Geo;
 
 
-class GeoCoordinateAltitude extends AbstractGeoCoordinateAltitude  // GeoCoordinate
+abstract class AbstractGeoCoordinateAltitude extends AbstractGeoCoordinate  // GeoCoordinate
 {
-
-    protected function loadGeoCoordinate()
-    {
-        // TODO: Implement loadGeoCoordinate() method.
-    }
-
 
     /**
      * @var float
      */
-  /*  public $altitude;
+    public $altitude;
 
 
     public function fromGeoCoordinate(GeoCoordinate $geoCoordinate = null)
@@ -32,6 +26,6 @@ class GeoCoordinateAltitude extends AbstractGeoCoordinateAltitude  // GeoCoordin
     {
         $text = $this->latitude . ',' . $this->longitude . ',' . $this->altitude;
         return $text;
-    }*/
+    }
 
 }
