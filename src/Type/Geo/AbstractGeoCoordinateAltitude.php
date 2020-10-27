@@ -3,7 +3,7 @@
 namespace Nemundo\Core\Type\Geo;
 
 
-abstract class AbstractGeoCoordinateAltitude extends AbstractGeoCoordinate  // GeoCoordinate
+abstract class AbstractGeoCoordinateAltitude extends AbstractGeoCoordinate
 {
 
     /**
