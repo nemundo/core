@@ -2,10 +2,14 @@
 
 require __DIR__.'/../config.php';
 
-$text = new \Nemundo\Core\Type\Text\Text('hello world');
+
+$value = null;
+//$value='hello world';
+
+$text = new \Nemundo\Core\Type\Text\Text($value);
 
 //$text->changeToLowercase();
-$text->changeToUppercase();
+//$text->changeToUppercase();
 
 (new \Nemundo\Core\Debug\Debug())->write($text->getValue());
 

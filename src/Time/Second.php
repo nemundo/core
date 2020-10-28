@@ -5,8 +5,8 @@ namespace Nemundo\Core\Time;
 
 use Nemundo\Core\Base\AbstractBase;
 
-// Second
-class SecondConverter extends AbstractBase
+
+class Second extends AbstractBase
 {
 
     /**
@@ -31,6 +31,32 @@ class SecondConverter extends AbstractBase
 
         //return "$hours:$minutes:$seconds";
 
+        return $value;
+
+
+    }
+
+
+    public function getMinuteSecond()
+    {
+
+        //$hours = floor($this->second / 3600);
+        $minutes = floor(($this->second / 60) % 60);
+        $second = $this->second % 60;
+
+        //$value = $hours . ':' . $minutes;
+
+        $value = $minutes. ':' .$second;
+
+        return $value;
+
+    }
+
+
+
+    public function getText() {
+
+        $value = $this->getMinuteSecond().' min';
         return $value;
 
 

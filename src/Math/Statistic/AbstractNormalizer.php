@@ -26,6 +26,12 @@ abstract class AbstractNormalizer extends AbstractBase
     }
 
 
+
+    public function getData() {
+        return $this->valueList;
+    }
+
+
     public function getNormalizedData()
     {
 
