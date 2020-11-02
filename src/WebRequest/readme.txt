@@ -1,0 +1,2 @@
+namespace Nemund\Core\Web
+
