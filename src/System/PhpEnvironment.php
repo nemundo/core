@@ -31,6 +31,9 @@ class PhpEnvironment extends AbstractBase
         return $version;
     }
 
+    public function getShowError() {
+        return $this->getValue('display_errors');
+    }
 
     public function getMemoryLimit()
     {
