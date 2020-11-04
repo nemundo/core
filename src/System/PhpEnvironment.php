@@ -60,10 +60,14 @@ class PhpEnvironment extends AbstractBase
     }
 
 
-    public static function getPhpExtension()
-    {
+
+    public function getPhpModul() {
+
+        $list = get_loaded_extensions();
+        return $list;
 
     }
+
 
 
     public function getPhpIniFilename()
