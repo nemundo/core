@@ -2,9 +2,11 @@
 
 require __DIR__ . '/../config.php';
 
-
-$filename = 'C:\test\f3972448-a674-4107-b8e3-a46daedc2ec1.jpg';
+$filename = 'D:\Dropbox\Travel Photo\Europa\IMG_9321.jpg';
 
 $exif = new \Nemundo\Core\Image\Exif\Exif($filename);
-
 (new \Nemundo\Core\Debug\Debug())->write('Orientation: ' . $exif->orientation);
+(new \Nemundo\Core\Debug\Debug())->write('Camera: ' . $exif->camera);
+(new \Nemundo\Core\Debug\Debug())->write('Title: ' . $exif->title);
+(new \Nemundo\Core\Debug\Debug())->write('Description: ' . $exif->description);
+(new \Nemundo\Core\Debug\Debug())->write('Date/Time: ' . $exif->dateTime->getShortDateTimeLeadingZeroFormat());

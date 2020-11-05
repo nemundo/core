@@ -4,6 +4,7 @@ namespace Nemundo\Core\Time;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Type\Number\Number;
 
 
 class Second extends AbstractBase
@@ -40,27 +41,21 @@ class Second extends AbstractBase
     public function getMinuteSecond()
     {
 
-        //$hours = floor($this->second / 3600);
         $minutes = floor(($this->second / 60) % 60);
         $second = $this->second % 60;
-
-        //$value = $hours . ':' . $minutes;
-
-        $value = $minutes. ':' .$second;
+        $value = $minutes . ':' .  (new Number( $second))->getFormatWithLeadingZero(2);
 
         return $value;
 
     }
 
 
+    public function getText()
+    {
 
-    public function getText() {
-
-        $value = $this->getMinuteSecond().' min';
+        $value = $this->getMinuteSecond() . ' min';
         return $value;
 
-
     }
-
 
 }

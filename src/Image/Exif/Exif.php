@@ -3,11 +3,18 @@
 namespace Nemundo\Core\Image\Exif;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Image\AbstractImage;
+use Nemundo\Core\Type\DateTime\DateTime;
 
 
 class Exif extends AbstractImage
 {
+
+
+    public $title;
+
+    public $description;
 
     /**
      * @var string
@@ -15,6 +22,11 @@ class Exif extends AbstractImage
     public $camera;
 
     public $orientation;
+
+    /**
+     * @var DateTime
+     */
+    public $dateTime;
 
 
     public function __construct($imageFilename)
@@ -28,20 +40,24 @@ class Exif extends AbstractImage
     {
 
         // Title, Keyword auslesen
-       /* $size = getimagesize($imageFilename, $info);
+        //$size = getimagesize($imageFilename, $info);
+        getimagesize($imageFilename, $info);
 
-        (new Debug())->write($info);
+
+        //(new Debug())->write($info);
 
 
         // Title
-        $title = "";
+        //$title = '';
         if (isset($info['APP13'])) {
             $iptc = iptcparse($info['APP13']);
             if (isset($iptc['2#005'][0])) {
-                $title = $iptc['2#005'][0];
+                $this->title = $iptc['2#005'][0];
             }
         }
-        $gps['title'] = $title;
+
+
+        //$gps['title'] = $title;
 
         // Keywords
         $keywords = "";
@@ -58,18 +74,19 @@ class Exif extends AbstractImage
         //exit;
 
 
-        $gps_int = array(-1, -1);*/
+       // $gps_int = array(-1, -1);*/
 
-        if (exif_imagetype($imageFilename) == IMAGETYPE_JPEG) {
+      if (exif_imagetype($imageFilename) == IMAGETYPE_JPEG) {
             $exif = @exif_read_data($imageFilename);
         }
 
         // Description
         $description = "";
         if (isset($exif['ImageDescription'])) {
-            $description = $exif['ImageDescription'];
+            $this->description = $exif['ImageDescription'];
         }
-        $gps['description'] = $description;
+
+        //$gps['description'] = $description;
 
         // DateTime
         $gpsDateTime = "0000-00-00 00:00:00";
@@ -79,6 +96,7 @@ class Exif extends AbstractImage
             $gpsDateTime = substr_replace($gpsDateTime, "-", 7, 1);
         }
         $gps['datetime'] = $gpsDateTime;
+        $this->dateTime=new DateTime($gpsDateTime);
 
 
         // Camera (Make)
