@@ -35,7 +35,7 @@ abstract class AbstractRow extends AbstractBaseClass
             $value = $this->data[$name];
         } else {
             (new LogMessage())->writeError('Row Column Name ' . $name . ' does not exist.');
-             // Error Raise???
+            // Error Raise???
         }
 
         return $value;
@@ -64,6 +64,12 @@ abstract class AbstractRow extends AbstractBaseClass
     {
 
         return $this->data;
+    }
+
+
+    public function getRowCount()
+    {
+        return sizeof($this->data);
     }
 
 

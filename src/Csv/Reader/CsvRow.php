@@ -8,7 +8,6 @@ use Nemundo\Core\Base\DataSource\AbstractRow;
 class CsvRow extends AbstractRow
 {
 
-
     public function getValue($name)
     {
         return parent::getValue($name);
