@@ -40,7 +40,7 @@ abstract class AbstractHttpResponse extends AbstractResponse
 
         $this->sendStatusCode();
 
-        if ($this->content !== null) {
+        /*if ($this->content !== null) {
             if (is_array($this->content)) {
                 $content = implode(PHP_EOL, $this->content);
             } else {
@@ -49,7 +49,11 @@ abstract class AbstractHttpResponse extends AbstractResponse
             $content = trim($content);
             echo $content;
 
-        }
+        }*/
+
+        $content = $this->content;
+        echo $content;
+
 
     }
 
