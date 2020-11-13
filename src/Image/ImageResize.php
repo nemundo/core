@@ -54,7 +54,7 @@ class ImageResize extends AbstractBaseClass
             return;
         }
 
-        $image = new ImageProperty($this->sourceFilename);
+        $image = new ImageFile($this->sourceFilename);
         if ($image->width == 0 || $image->height == 0) {
             (new LogMessage())->writeError('Width Image Dimension is 0');
         }

@@ -4,6 +4,8 @@
 namespace Nemundo\Core\File\Pdf;
 
 
+use Nemundo\Core\File\AbstractFile;
+
 class PdfFile extends AbstractFile
 {
 

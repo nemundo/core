@@ -22,7 +22,7 @@ class ImageMerge extends AbstractBaseClass
     public function mergeImage($filename)
     {
 
-        $img = new \Nemundo\Core\Image\ImageProperty($this->imageList[0]);
+        $img = new \Nemundo\Core\Image\ImageFile($this->imageList[0]);
         $baseImage = imagecreatetruecolor($img->width, $img->height);
 
         $white = imagecolorallocate($baseImage, 255, 255, 255);

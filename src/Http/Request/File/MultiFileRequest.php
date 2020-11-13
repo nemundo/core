@@ -46,7 +46,7 @@ class MultiFileRequest extends AbstractBaseClass
                     $fileUpload->errorCode = $_FILES[$this->name]['error'][$n];
 
                     $file =new FileInformation($fileUpload->filename);  // new File($fileUpload->filename);
-                    $fileUpload->filenameExtension =$file->getExtension();  //  $file->getFileExtension();
+                    $fileUpload->filenameExtension =$file->getFileExtension();  //  $file->getFileExtension();
 
                     $fileRequestList[] = $fileUpload;
                 }

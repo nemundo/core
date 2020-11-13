@@ -54,7 +54,7 @@ abstract class AbstractFileRequest extends AbstractRequest
             $this->errorCode = $_FILES[$this->requestName]['error'];
 
             $file = new FileInformation($this->filename);
-            $this->filenameExtension = $file->getExtension();
+            $this->filenameExtension = $file->getFileExtension();
 
         }
 

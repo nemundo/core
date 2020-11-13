@@ -16,7 +16,6 @@ class ImageDimension
      */
     public $height;
 
-
     /**
      * @var string
      */

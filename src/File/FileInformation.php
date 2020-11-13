@@ -4,18 +4,20 @@ namespace Nemundo\Core\File;
 
 use Nemundo\Core\Base\AbstractBase;
 
-class FileInformation extends AbstractBase
+class FileInformation extends AbstractFile  // AbstractBase
 {
 
+
+    /*
     private $filename;
 
     public function __construct($filename)
     {
         $this->filename = $filename;
-    }
+    }*/
 
 
-    public function getExtension()
+    public function getFileExtension()
     {
 
         $filename = strtolower($this->filename);
@@ -35,7 +37,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        switch ($this->getExtension()) {
+        switch ($this->getFileExtension()) {
 
             case 'jpeg':
             case 'jpg':
@@ -60,7 +62,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        switch ($this->getExtension()) {
+        switch ($this->getFileExtension()) {
 
             case 'mp3':
             case 'ogg':
@@ -82,7 +84,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        switch ($this->getExtension()) {
+        switch ($this->getFileExtension()) {
 
             case 'mpeg':
             case 'mp4':
@@ -103,7 +105,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        if ($this->getExtension() == 'pdf') {
+        if ($this->getFileExtension() == 'pdf') {
             $value = true;
         }
 
@@ -117,7 +119,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        if ($this->getExtension() == 'xls') {
+        if ($this->getFileExtension() == 'xls') {
             $value = true;
         }
 
@@ -131,7 +133,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        if ($this->getExtension() == 'docx') {
+        if ($this->getFileExtension() == 'docx') {
             $value = true;
         }
 
@@ -145,7 +147,7 @@ class FileInformation extends AbstractBase
 
         $value = false;
 
-        if ($this->getExtension() == 'txt') {
+        if ($this->getFileExtension() == 'txt') {
             $value = true;
         }
 

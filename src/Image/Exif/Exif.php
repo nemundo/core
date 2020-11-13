@@ -11,7 +11,6 @@ use Nemundo\Core\Type\DateTime\DateTime;
 class Exif extends AbstractImage
 {
 
-
     public $title;
 
     public $description;

@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Image;
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\File\AbstractFile;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\File\File;
 
@@ -13,7 +14,9 @@ use Nemundo\Core\Type\File\File;
 // ImageType
 // ImageReader
 
-class ImageProperty extends AbstractBase  // File
+
+// ImageFile
+class ImageFile extends AbstractFile  // AbstractBase  // File
 {
 
     /**
@@ -34,6 +37,8 @@ class ImageProperty extends AbstractBase  // File
 
     public function __construct($filename)
     {
+
+        parent::__construct($filename);
 
         $file = new File($filename);
 

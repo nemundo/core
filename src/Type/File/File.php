@@ -113,7 +113,7 @@ class File extends AbstractType
 
         $fileExtension = null;
         if ($this->fileExists()) {
-            $fileExtension = (new FileInformation($this->filename))->getExtension();
+            $fileExtension = (new FileInformation($this->filename))->getFileExtension();
         }
 
         return $fileExtension;
