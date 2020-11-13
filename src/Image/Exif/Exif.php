@@ -35,6 +35,12 @@ class Exif extends AbstractImage
     }
 
 
+
+/*
+PHP Notice: getimagesize(): Read error! in /srv/web/dev_nemundo_com/lib/core/src/Image/Exif/Exif.php on line 44
+PHP Notice: exif_imagetype(): Read error! in /srv/web/dev_nemundo_com/lib/core/src/Image/Exif/Exif.php on line 79
+  */
+
     private function readExif($imageFilename)
     {
 

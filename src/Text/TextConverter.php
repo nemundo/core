@@ -5,7 +5,8 @@ namespace Nemundo\Core\Text;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 
-class TextConvert extends AbstractBaseClass
+
+class TextConverter extends AbstractBaseClass
 {
 
 
@@ -31,7 +32,7 @@ class TextConvert extends AbstractBaseClass
 
         // Lower Case
         if ($lowerCase) {
-            $text = TextConvert::lowerCase($text);
+            $text = TextConverter::lowerCase($text);
         }
 
         // Remove Space
@@ -97,14 +98,14 @@ class TextConvert extends AbstractBaseClass
 
     static function convertToFilename($text)
     {
-        $text = TextConvert::convertToCode($text);
+        $text = TextConverter::convertToCode($text);
         return $text;
     }
 
 
     static function convertToConstName($text)
     {
-        $text = TextConvert::convertToCode($text, false, false);
+        $text = TextConverter::convertToCode($text, false, false);
         $text = strtoupper($text);
         $text = str_replace(' ', '_', $text);
         return $text;
