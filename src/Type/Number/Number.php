@@ -53,14 +53,14 @@ class Number extends AbstractType
     }
 
 
-    function getFormatWithLeadingZero($length)
+    public function getFormatWithLeadingZero($length)
     {
         $format = str_pad($this->getValue(), $length, '0', STR_PAD_LEFT);
         return $format;
     }
 
 
-    function formatNumber($decimalNumber = 0)
+    public function formatNumber($decimalNumber = 0)
     {
 
         $value = number_format($this->getValue(), $decimalNumber, '.', '\'');
@@ -69,7 +69,7 @@ class Number extends AbstractType
     }
 
 
-    function getFormatNumberAfterDecimal($decimalNumber = 0)
+    public function getFormatNumberAfterDecimal($decimalNumber = 0)
     {
 
         $value = number_format($this->getValue(), $decimalNumber);
@@ -78,11 +78,30 @@ class Number extends AbstractType
     }
 
 
-    function roundNumber($anzahlDezimalStellen = 2)
+    public function roundNumber($anzahlDezimalStellen = 2)
     {
 
         $value = round($this->value, $anzahlDezimalStellen);
         return $value;
+
+    }
+
+
+    public function isEven() {
+
+            $value=false;
+            if($this->value % 2 == 0){
+                $value=true;
+            }
+
+            return $value;
+
+    }
+
+
+    public function isOdd() {
+
+        return !$this->isEven();
 
     }
 
