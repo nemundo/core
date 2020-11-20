@@ -10,7 +10,7 @@ class TextConverter extends AbstractBaseClass
 {
 
 
-    static function lowerCase($text)
+    public function lowerCase($text)
     {
 
         // nicht standardmässig installiert!
@@ -32,7 +32,7 @@ class TextConverter extends AbstractBaseClass
 
         // Lower Case
         if ($lowerCase) {
-            $text = TextConverter::lowerCase($text);
+            $text = $this->lowerCase($text);
         }
 
         // Remove Space
@@ -96,6 +96,7 @@ class TextConverter extends AbstractBaseClass
     }
 
 
+    /*
     static function convertToFilename($text)
     {
         $text = TextConverter::convertToCode($text);
@@ -130,7 +131,7 @@ class TextConverter extends AbstractBaseClass
      * @param $text
      * @return string
      */
-    static function removeHtmlTag($text)
+   /* static function removeHtmlTag($text)
     {
 
         $text = htmlspecialchars_decode($text);
@@ -156,7 +157,7 @@ class TextConverter extends AbstractBaseClass
         $number = str_pad($number, $length, '0', STR_PAD_LEFT);
         return $number;
 
-    }
+    }*/
 
 
 }
