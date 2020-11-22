@@ -40,4 +40,14 @@ class Stopwatch extends AbstractBaseClass
         (new Debug())->write($this->logName . ': ' . $this->stop().' sec');
     }
 
+
+    public function stopAndGetMessage()
+    {
+
+        $message = $this->logName . ': ' . $this->stop().' sec';
+        return $message;
+
+    }
+
+
 }
