@@ -26,7 +26,7 @@ class ZipExtractor extends AbstractExtractor
         }
 
 
-        $this->extractPath = FileUtility::appendDirectorySeparatorIfNotExists($this->extractPath);
+        $this->extractPath = FileUtility::appendDirectorySeparatorIfNotExistsOld($this->extractPath);
 
         (new Path($this->extractPath))
             ->createPath();

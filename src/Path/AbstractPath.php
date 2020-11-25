@@ -136,7 +136,7 @@ abstract class AbstractPath extends AbstractBase
 
                 if ($filename !== '.' && $filename !== '..') {
 
-                    $fullFilename = FileUtility::appendDirectorySeparatorIfNotExists($path) . $filename;
+                    $fullFilename = FileUtility::appendDirectorySeparatorIfNotExistsOld($path) . $filename;
 
                     if (is_dir($fullFilename)) {
                         $this->rmdir($fullFilename, true);

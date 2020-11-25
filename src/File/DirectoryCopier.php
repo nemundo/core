@@ -28,8 +28,8 @@ class DirectoryCopier extends AbstractBaseClass
     public function copyDirectory()
     {
 
-        $this->sourcePath = FileUtility::appendDirectorySeparatorIfNotExists($this->sourcePath);
-        $this->destinationPath = FileUtility::appendDirectorySeparatorIfNotExists($this->destinationPath);
+        $this->sourcePath = FileUtility::appendDirectorySeparatorIfNotExistsOld($this->sourcePath);
+        $this->destinationPath = FileUtility::appendDirectorySeparatorIfNotExistsOld($this->destinationPath);
 
         $directoryReader = new DirectoryReader();
         $directoryReader->path = $this->sourcePath;

@@ -13,7 +13,7 @@ class FileCount extends AbstractBase
     public function getFolderCount($path)
     {
 
-        $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
+        $path = FileUtility::appendDirectorySeparatorIfNotExistsOld($path);
         $folderCount = 0;
 
         //(new Debug())->write($path);
@@ -48,7 +48,7 @@ class FileCount extends AbstractBase
     {
 
         $count = 0;
-        $path = FileUtility::appendDirectorySeparatorIfNotExists($path);
+        $path = FileUtility::appendDirectorySeparatorIfNotExistsOld($path);
 
         if (file_exists($path)) {
 

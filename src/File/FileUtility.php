@@ -4,10 +4,13 @@ namespace Nemundo\Core\File;
 
 
 
-class FileUtility
+use Nemundo\Core\Base\AbstractBase;
+
+class FileUtility extends AbstractBase
 {
 
-    public static function appendDirectorySeparatorIfNotExists($path)
+
+    public function appendDirectorySeparatorIfNotExists($path)
     {
         $path = rtrim($path, '/');
         $path = rtrim($path, '\\');
@@ -16,6 +19,18 @@ class FileUtility
     }
 
 
+
+
+    public static function appendDirectorySeparatorIfNotExistsOld($path)
+    {
+        $path = rtrim($path, '/');
+        $path = rtrim($path, '\\');
+        $path = $path . DIRECTORY_SEPARATOR;
+        return $path;
+    }
+
+
+    /*
     public static function getFileExtension($filename)
     {
         $filename = strtolower($filename);
@@ -24,7 +39,7 @@ class FileUtility
         $extension = $extensionList[$pointCount];
 
         return $extension;
-    }
+    }*/
 
 
 
