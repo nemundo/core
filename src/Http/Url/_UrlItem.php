@@ -9,7 +9,7 @@ use Nemundo\Core\Type\Text\Text;
 
 
 // UrlInformation
-class UrlItem extends AbstractBaseClass
+class _UrlItem extends AbstractBaseClass
 {
 
     /**

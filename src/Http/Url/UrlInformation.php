@@ -41,11 +41,12 @@ class UrlInformation extends AbstractBaseClass
     }
 
 
+    /*
     public function addParameterValue($parameterName, $value = '')
     {
         $this->parameter[$parameterName] = $value;
         return $this;
-    }
+    }*/
 
 
     public function getUrl()
@@ -75,6 +76,8 @@ class UrlInformation extends AbstractBaseClass
     // class UrlInformation
 
 
+
+
     public function getHost()
     {
         $host = parse_url($this->url, PHP_URL_HOST);
@@ -87,6 +90,20 @@ class UrlInformation extends AbstractBaseClass
         $protocol = parse_url($this->url, PHP_URL_SCHEME);
         return $protocol;
     }
+
+
+    public function getParameterValue($parameterName)
+    {
+
+        $value = '';
+        if (isset($this->requestList[$parameterName])) {
+            $value = $this->requestList[$parameterName];
+        }
+
+        return $value;
+
+    }
+
 
 
     public function getFilenameExtension()
