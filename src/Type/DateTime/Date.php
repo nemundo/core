@@ -43,6 +43,9 @@ class Date extends AbstractBaseClass
     }
 
 
+
+    // hasNoValue
+    // isEmpty
     public function isNull()
     {
 
@@ -55,8 +58,8 @@ class Date extends AbstractBaseClass
 
     }
 
-
-    public function isNotNull()
+    // hasValue
+    public function hasValue()
     {
 
         $value = true;
@@ -252,8 +255,12 @@ class Date extends AbstractBaseClass
 
     public function getLongFormat()
     {
-        $date = $this->getDayOfMonth() . '. ' . $this->getMonth() . ' ' . $this->getYear();
-        return $date;
+
+        $text='';
+        if ($this->hasValue()) {
+        $text = $this->getDayOfMonth() . '. ' . $this->getMonth() . ' ' . $this->getYear();
+        }
+        return $text;
     }
 
 
