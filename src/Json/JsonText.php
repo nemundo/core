@@ -1,11 +1,13 @@
 <?php
 
-namespace Nemundo\Core\Json\Document;
+
+namespace Nemundo\Core\Json;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 
-class AbstractJson extends AbstractBase
+class JsonText extends AbstractBase
 {
 
     /**
@@ -13,7 +15,7 @@ class AbstractJson extends AbstractBase
      */
     public $formatJson = true;
 
-    protected $data = [];
+    protected $data;// = [];
 
     public function addRow($row)
     {
@@ -22,14 +24,17 @@ class AbstractJson extends AbstractBase
 
 
     // brauchts es das
-    public function setData($data)
+    public function addData($data)
     {
         $this->data = $data;
     }
 
 
-    protected function getContent()
+    public function getJson()
     {
+
+
+        //(new Debug())->write($this->data);
 
         $option = null;
 

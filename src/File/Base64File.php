@@ -39,9 +39,9 @@ class Base64File extends AbstractBaseClass
     public function saveFile($data)
     {
 
-        (new Path())
+        /*(new Path())
             ->addPath(dirname($this->filename))
-            ->createPath();
+            ->createPath();*/
 
         $data = base64_decode($data);
         file_put_contents($this->filename, $data);
