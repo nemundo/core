@@ -105,6 +105,14 @@ class UrlInformation extends AbstractBaseClass
     }
 
 
+    public function getFilename()
+    {
+
+        $filename = basename($this->getUrlWithoutParameter());  //url, '?' . $_SERVER['QUERY_STRING']);
+return $filename;
+
+    }
+
 
     public function getFilenameExtension()
     {
