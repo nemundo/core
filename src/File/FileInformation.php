@@ -2,8 +2,6 @@
 
 namespace Nemundo\Core\File;
 
-use Nemundo\Core\Base\AbstractBase;
-
 class FileInformation extends AbstractFile  // AbstractBase
 {
 
@@ -43,6 +41,7 @@ class FileInformation extends AbstractFile  // AbstractBase
             case 'jpg':
             case 'png':
             case 'gif':
+            case 'webp':
                 $value = true;
                 break;
 
@@ -53,8 +52,6 @@ class FileInformation extends AbstractFile  // AbstractBase
 
 
     }
-
-
 
 
     public function isAudio()
@@ -76,7 +73,6 @@ class FileInformation extends AbstractFile  // AbstractBase
 
 
     }
-
 
 
     public function isVideo()
