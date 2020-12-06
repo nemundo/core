@@ -31,8 +31,6 @@ class FileInformation extends AbstractFile  // AbstractBase
     public function isImage()
     {
 
-        // svg
-
         $value = false;
 
         switch ($this->getFileExtension()) {
@@ -42,14 +40,13 @@ class FileInformation extends AbstractFile  // AbstractBase
             case 'png':
             case 'gif':
             case 'webp':
+            case 'svg':
                 $value = true;
                 break;
 
         }
 
-
         return $value;
-
 
     }
 
