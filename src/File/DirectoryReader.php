@@ -83,7 +83,7 @@ class DirectoryReader extends AbstractDataSource
     private function getFileListInternal($path)
     {
 
-        $path = FileUtility::appendDirectorySeparatorIfNotExistsOld($path);
+        $path = (new FileUtility())->appendDirectorySeparatorIfNotExists($path);
 
         $item = array();
 

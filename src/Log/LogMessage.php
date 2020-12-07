@@ -113,7 +113,7 @@ class LogMessage extends AbstractBase
         }
 
         $message = date("Y-m-d H:i:s") . "\t" . $message;
-        $file = fopen(FileUtility::appendDirectorySeparatorIfNotExistsOld(LogConfig::$logPath) . $filename, "a");
+        $file = fopen((new FileUtility())->appendDirectorySeparatorIfNotExists(LogConfig::$logPath) . $filename, "a");
         fwrite($file, $message . PHP_EOL);
         fclose($file);
 

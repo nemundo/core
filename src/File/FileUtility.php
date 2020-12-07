@@ -21,6 +21,7 @@ class FileUtility extends AbstractBase
 
 
 
+    /*
     public static function appendDirectorySeparatorIfNotExistsOld($path)
     {
         $path = rtrim($path, '/');
