@@ -76,7 +76,7 @@ abstract class AbstractFileRequest extends AbstractRequest
     public function saveAsUniqueFilename($path)
     {
 
-        $path = (new FileUtility())->appendDirectorySeparatorIfNotExistsOld($path);
+        $path = (new FileUtility())->appendDirectorySeparatorIfNotExists($path);
 
         $filename = (new UniqueFilename())->getUniqueFilename($this->filenameExtension);
 
