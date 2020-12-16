@@ -25,6 +25,22 @@ abstract class AbstractRow extends AbstractBaseClass
         return $list;
     }
 
+
+    protected function hasValue($name)
+    {
+
+        $value=false;
+
+        $name = strtolower($name);
+        if (array_key_exists($name, $this->data)) {
+            $value =true;
+        }
+
+        return $value;
+
+    }
+
+
     protected function getValue($name)
     {
 

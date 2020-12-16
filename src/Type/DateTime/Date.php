@@ -5,6 +5,7 @@ namespace Nemundo\Core\Type\DateTime;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Date\Month\Month;
+use Nemundo\Core\Date\Week\WeekYearNumber;
 use Nemundo\Core\Date\Weekday\Weekday;
 use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
@@ -313,6 +314,24 @@ class Date extends AbstractBaseClass
 
         $weekNumber = (int)$this->getFormat('W');
         return $weekNumber;
+
+    }
+
+
+    public function getWeekYearNumber() {
+
+        $number= (new WeekYearNumber())->getWeekYearNumber($this->getWeekNumber(),$this->getYear());
+        return $number;
+
+    }
+
+
+    public function getMonthYearNumber() {
+
+        //$number= (new WeekYearNumber())->getWeekYearNumber($this->getWeekNumber(),$this->getYear());
+
+        $number = ($this->getYear() * 12) + $this->getMonthNumber();
+        return $number;
 
     }
 
