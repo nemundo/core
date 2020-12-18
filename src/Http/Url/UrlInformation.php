@@ -5,7 +5,6 @@ namespace Nemundo\Core\Http\Url;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 
-// UrlInformation
 class UrlInformation extends AbstractBaseClass
 {
 

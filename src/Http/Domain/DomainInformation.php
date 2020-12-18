@@ -6,8 +6,18 @@ namespace Nemundo\Core\Http\Domain;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Log\LogMessage;
 
-class Domain extends AbstractBaseClass
+class DomainInformation extends AbstractBaseClass
 {
+
+
+    public function getHost() {
+
+        //$host= gethostname();
+        $host=$_SERVER['SERVER_NAME'];
+        return $host;
+
+    }
+
 
     public function getDomain()
     {
