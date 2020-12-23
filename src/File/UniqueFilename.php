@@ -8,10 +8,15 @@ use Nemundo\Core\Random\UniqueId;
 class UniqueFilename
 {
 
-    public function getUniqueFilename($fileExtension)
+    public function getUniqueFilename($fileExtension=null)
     {
 
-        $filename = (new UniqueId())->getUniqueId() . '.' . $fileExtension;
+        $filename = (new UniqueId())->getUniqueId();  // . '.' . $fileExtension;
+
+        if ($fileExtension!==null) {
+            $filename.= '.' . $fileExtension;
+        }
+
         return $filename;
     }
 

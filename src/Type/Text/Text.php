@@ -32,7 +32,6 @@ class Text extends AbstractType
     public function isNumber()
     {
 
-
         return is_numeric($this->value);
 
     }
