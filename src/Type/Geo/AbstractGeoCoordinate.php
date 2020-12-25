@@ -42,6 +42,17 @@ abstract class AbstractGeoCoordinate extends AbstractBaseClass
 
     }
 
+
+    public function hasValue() {
+
+        $value = false;
+        if (($this->latitude !=='') && ($this->latitude !==null) && ($this->longitude!=='')&& ($this->longitude!==null)) {
+            $value=true;
+        }
+        return $value;
+
+    }
+
     public function getText()
     {
 
