@@ -4,6 +4,7 @@ namespace Nemundo\Core\WebRequest;
 
 
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Type\Text\Text;
 
 
 class WebRequest extends AbstractWebRequest
@@ -119,6 +120,21 @@ class WebRequest extends AbstractWebRequest
         return $responseCode;
 
     }
+
+
+
+    public function getMimeType($url)
+    {
+
+        $responseCode = get_headers($url)[6];
+
+        $responseCode = (new Text($responseCode))->removeLeft('Content-Type:')->split('/')[1];
+
+        //$responseCode = (int)substr($responseCode, 9, 3);
+        return $responseCode;
+
+    }
+
 
 
     private function load()

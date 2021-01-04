@@ -11,7 +11,7 @@ class UniqueFilename
     public function getUniqueFilename($fileExtension=null)
     {
 
-        $filename = (new UniqueId())->getUniqueId();  // . '.' . $fileExtension;
+        $filename = (new UniqueId())->getUniqueId();
 
         if ($fileExtension!==null) {
             $filename.= '.' . $fileExtension;

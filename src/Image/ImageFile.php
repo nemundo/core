@@ -67,4 +67,14 @@ class ImageFile extends AbstractFile  // AbstractBase  // File
 
     }
 
+
+    public function getImageFileExtension() {
+
+
+
+
+
+    }
+
+
 }

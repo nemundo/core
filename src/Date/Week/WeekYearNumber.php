@@ -18,6 +18,18 @@ class WeekYearNumber extends AbstractBase
     }
 
 
+
+    public function getMonthYearNumber($month, $year)
+    {
+
+        $monthYear = ($year * 12) + $month;
+        return $monthYear;
+
+    }
+
+
+
+
     public function getText()
     {
 
