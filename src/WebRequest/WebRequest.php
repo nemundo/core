@@ -3,6 +3,7 @@
 namespace Nemundo\Core\WebRequest;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\Text\Text;
 
@@ -24,6 +25,8 @@ class WebRequest extends AbstractWebRequest
     private $loaded = false;
 
     private $context;
+
+    private $headerList;
 
 
     // constructor mit url parameter ???
@@ -112,11 +115,27 @@ class WebRequest extends AbstractWebRequest
     }
 
 
+    private function getHeader($url) {
+
+        if ($this->headerList== null) {
+
+            $this->headerList =  get_headers($url,1);
+
+        }
+
+        //$type = get_headers($url, 1)["Content-Type"];
+
+    }
+
+
+
     public function getResponseCode($url)
     {
 
-        $responseCode = get_headers($url)[0];
-        $responseCode = (int)substr($responseCode, 9, 3);
+        $this->getHeader($url);
+        //$responseCode = get_headers($url)[0];
+        //$responseCode = (int)substr($responseCode, 9, 3);
+        $responseCode = (int)substr($this->headerList[0], 9, 3);
         return $responseCode;
 
     }
@@ -126,11 +145,8 @@ class WebRequest extends AbstractWebRequest
     public function getMimeType($url)
     {
 
-        $responseCode = get_headers($url)[6];
-
-        $responseCode = (new Text($responseCode))->removeLeft('Content-Type:')->split('/')[1];
-
-        //$responseCode = (int)substr($responseCode, 9, 3);
+        $this->getHeader($url);
+        $responseCode = (new Text($this->headerList['Content-Type']))->split('/')[1];
         return $responseCode;
 
     }
