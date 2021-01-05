@@ -41,8 +41,16 @@ class DomainInformation extends AbstractBaseClass
 
         }
 
-
         return $domain;
     }
+
+
+    public function getPort() {
+
+        $port=$_SERVER['SERVER_PORT'];
+        return $port;
+
+    }
+
 
 }
