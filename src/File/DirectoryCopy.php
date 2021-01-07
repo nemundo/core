@@ -5,8 +5,7 @@ namespace Nemundo\Core\File;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Type\Text\Text;
 
-// DirecotryoryCopy
-class DirectoryCopier extends AbstractBaseClass
+class DirectoryCopy extends AbstractBaseClass
 {
 
     /**

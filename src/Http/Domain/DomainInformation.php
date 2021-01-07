@@ -13,7 +13,11 @@ class DomainInformation extends AbstractBaseClass
     public function getHost() {
 
         //$host= gethostname();
+        $host='';
+        if (isset($_SERVER['SERVER_NAME'])) {
         $host=$_SERVER['SERVER_NAME'];
+        }
+
         return $host;
 
     }
@@ -47,7 +51,12 @@ class DomainInformation extends AbstractBaseClass
 
     public function getPort() {
 
-        $port=$_SERVER['SERVER_PORT'];
+
+        $port = 0;
+        if (isset($_SERVER['SERVER_PORT'])) {
+            $port=$_SERVER['SERVER_PORT'];
+        }
+
         return $port;
 
     }
