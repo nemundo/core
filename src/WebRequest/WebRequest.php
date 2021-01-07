@@ -11,7 +11,6 @@ use Nemundo\Core\Type\Text\Text;
 class WebRequest extends AbstractWebRequest
 {
 
-
     /**
      * @var string
      */
@@ -145,9 +144,28 @@ class WebRequest extends AbstractWebRequest
     public function getMimeType($url)
     {
 
+
         $this->getHeader($url);
-        $responseCode = (new Text($this->headerList['Content-Type']))->split('/')[1];
-        return $responseCode;
+
+        (new Debug())->write($this->headerList);
+//exit;
+
+
+$type = '';
+$list = (new Text($this->headerList['Content-Type']))->split('/');
+
+if (isset($list[1])) {
+    $type = $list[1];
+}
+
+
+
+
+
+        //$responseCode = (new Text($this->headerList['Content-Type']))->split('/')[1];
+        //return $responseCode;
+
+        return $type;
 
     }
 
