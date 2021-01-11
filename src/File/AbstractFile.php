@@ -5,6 +5,7 @@ namespace Nemundo\Core\File;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Type\DateTime\DateTime;
 
 abstract class AbstractFile extends AbstractBase
 {
@@ -42,6 +43,32 @@ abstract class AbstractFile extends AbstractBase
         return $filesize;
 
     }
+
+
+    public function getCreateDateTime()
+    {
+
+
+        $timestamp =  filemtime($this->filename);
+        $dateTime = (new DateTime())->fromTimestamp($timestamp);
+
+
+       //$dateTime=new DateTime(    filemtime($this->filename))->fromUn;
+       return $dateTime;
+
+
+        //return DateTime
+
+    }
+
+
+    public function getModifyDateTime()
+    {
+
+
+    }
+
+
 
 
     // abstract getText()

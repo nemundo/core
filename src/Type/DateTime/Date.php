@@ -301,7 +301,9 @@ class Date extends AbstractBaseClass
     {
 
         // plus 1 !!!!!!!!!!
-        return $this->getFormat('z');
+
+        $dayOfYear = $this->getFormat('z');
+        return $dayOfYear;
 
 
         //$dayOfYear = $this->date->format('z') + 1;

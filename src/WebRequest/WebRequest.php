@@ -114,18 +114,18 @@ class WebRequest extends AbstractWebRequest
     }
 
 
-    private function getHeader($url) {
+    private function getHeader($url)
+    {
 
-        if ($this->headerList== null) {
+        if ($this->headerList == null) {
 
-            $this->headerList =  get_headers($url,1);
+            $this->headerList = get_headers($url, 1);
 
         }
 
         //$type = get_headers($url, 1)["Content-Type"];
 
     }
-
 
 
     public function getResponseCode($url)
@@ -140,26 +140,26 @@ class WebRequest extends AbstractWebRequest
     }
 
 
-
     public function getMimeType($url)
     {
 
 
         $this->getHeader($url);
 
-        (new Debug())->write($this->headerList);
+        //(new Debug())->write($this->headerList);
 //exit;
 
 
-$type = '';
-$list = (new Text($this->headerList['Content-Type']))->split('/');
+        $type = '';
+        $list = (new Text($this->headerList['Content-Type']))->split('/');
 
-if (isset($list[1])) {
-    $type = $list[1];
-}
+        if (isset($list[1])) {
+            $type = $list[1];
+        }
 
 
-
+        //(new Debug())->write($type);
+        //exit;
 
 
         //$responseCode = (new Text($this->headerList['Content-Type']))->split('/')[1];
@@ -168,7 +168,6 @@ if (isset($list[1])) {
         return $type;
 
     }
-
 
 
     private function load()
