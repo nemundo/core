@@ -93,7 +93,12 @@ abstract class AbstractLargeCsvReader extends AbstractBase
                         $dataNew = [];
                         $rowCount = 0;
                         foreach ($this->header as $rowHeader) {
-                            $dataNew[trim($rowHeader)] = $data[$rowCount];
+
+                            if (isset($data[$rowCount])) {
+                                $dataNew[trim($rowHeader)] = $data[$rowCount];
+                            } else {
+                                $dataNew[trim($rowHeader)] = null;
+                            }
                             $rowCount++;
                         }
 

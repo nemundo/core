@@ -26,8 +26,8 @@ abstract class AbstractNormalizer extends AbstractBase
     }
 
 
-
-    public function getData() {
+    public function getData()
+    {
         return $this->valueList;
     }
 
@@ -41,19 +41,26 @@ abstract class AbstractNormalizer extends AbstractBase
         }
 
         if (sizeof($this->valueList) > 0) {
-            $min = min($this->valueList);
-            $max = max($this->valueList);
+            $valueListTmp = array_diff($this->valueList, [null]);
+            $min = min($valueListTmp);
+            $max = max($valueListTmp);
         }
 
         $valueListNew = [];
         foreach ($this->valueList as $value) {
 
-            $diff = $max - $min;
+            if ($value !== null) {
 
-            if ($diff !== 0) {
-                $valueListNew[] = ($value - $min) / $diff;
+                $diff = $max - $min;
+
+                if ($diff !== 0) {
+                    $valueListNew[] = ($value - $min) / $diff;
+                } else {
+                    $valueListNew[] = $value - $min;
+                }
+
             } else {
-                $valueListNew[] = $value - $min;
+                $valueListNew[] = null;
             }
 
         }
