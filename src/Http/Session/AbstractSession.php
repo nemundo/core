@@ -32,6 +32,9 @@ abstract class AbstractSession extends AbstractBaseClass
     }
 
 
+    // hasValue
+
+
     public function exists()
     {
 

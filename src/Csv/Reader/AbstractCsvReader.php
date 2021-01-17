@@ -5,7 +5,6 @@ namespace Nemundo\Core\Csv\Reader;
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Core\Type\File\File;
 
 abstract class AbstractCsvReader extends AbstractDataSource
 {
@@ -22,5 +21,21 @@ abstract class AbstractCsvReader extends AbstractDataSource
         return $this->header;
 
     }
+
+
+    public function getHeaderByNumber($number)
+    {
+
+        $label = '';
+        if (isset($this->getHeader()[$number])) {
+            $label = $this->getHeader()[$number];
+        } else {
+            (new LogMessage())->writeError('Header Number ' . $number . ' does not exist.');
+        }
+
+        return $label;
+
+    }
+
 
 }

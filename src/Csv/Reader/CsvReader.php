@@ -23,8 +23,6 @@ class CsvReader extends AbstractCsvReader
      */
     public $limit;
 
-    //protected $header=[];
-
     /**
      * @return CsvRow[]
      */
@@ -33,21 +31,19 @@ class CsvReader extends AbstractCsvReader
         return parent::getData();
     }
 
-/*
-    public function getHeader() {
-
-        $this->getData();
-        return $this->header;
-
-    }*/
 
 
+    /*
     public function getHeaderByNumber($number) {
 
+
+        if (isset())
+
         $label = $this->getHeader()[$number];
+
         return $label;
 
-    }
+    }*/
 
 
     protected function loadData()
