@@ -46,6 +46,27 @@ abstract class AbstractSession extends AbstractBaseClass
     }
 
 
+    public function hasValue()
+    {
+
+        $returnValue = true;
+
+        //$value =$this->getValue();
+
+        $value = $this->defaultValue;
+        if (isset($_SESSION[$this->sessionName])) {
+            $value = $_SESSION[$this->sessionName];
+        }
+
+        if (($value == '') || ($value == null)) {
+            $returnValue = false;
+        }
+
+        return $returnValue;
+
+    }
+
+
     public function getValue()
     {
 

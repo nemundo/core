@@ -17,7 +17,7 @@ class GetRequest extends AbstractGetRequest
 
     protected function loadRequest()
     {
-        // TODO: Implement loadRequest() method.
+
     }
 
 }

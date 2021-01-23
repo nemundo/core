@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Type\Text;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\AbstractType;
 
 class Text extends AbstractType
@@ -32,7 +33,12 @@ class Text extends AbstractType
     public function isNumber()
     {
 
-        return is_numeric($this->value);
+        //(new Debug())->write($this->value);
+
+        $value = ctype_digit($this->value);
+        return $value;
+
+        //return is_numeric((int)$this->value);
 
     }
 
