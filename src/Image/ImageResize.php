@@ -60,20 +60,20 @@ class ImageResize extends AbstractBaseClass
         }
 
         $fileExtension = $image->imageType;
-
+        //(new Debug())->write('extension'.$fileExtension);
         switch ($fileExtension) {
 
             case 'jpg':
             case 'jpeg':
-                $imageSource = imagecreatefromjpeg($this->sourceFilename);
+                $imageSource = \imagecreatefromjpeg($this->sourceFilename);
                 break;
 
             case 'png':
-                $imageSource = imagecreatefrompng($this->sourceFilename);
+                $imageSource = \imagecreatefrompng($this->sourceFilename);
                 break;
 
             case 'gif':
-                $imageSource = imagecreatefromgif($this->sourceFilename);
+                $imageSource = \imagecreatefromgif($this->sourceFilename);
                 break;
 
             default:
@@ -86,8 +86,8 @@ class ImageResize extends AbstractBaseClass
         $destinationWidth = 0;
         $destinationHeight = 0;
 
-        $sourceWidth = imageSX($imageSource);
-        $sourceHeight = imageSY($imageSource);
+        $sourceWidth = \imageSX($imageSource);
+        $sourceHeight = \imageSY($imageSource);
 
         switch ($this->format->getClassName()) {
 
@@ -114,34 +114,37 @@ class ImageResize extends AbstractBaseClass
                 break;
         }
 
-        $imageDestination = imagecreatetruecolor($destinationWidth, $destinationHeight);
+        $imageDestination = \imagecreatetruecolor($destinationWidth, $destinationHeight);
 
-        imagealphablending($imageDestination, false);
-        imagesavealpha($imageDestination, true);
+        \imagealphablending($imageDestination, false);
+        \imagesavealpha($imageDestination, true);
 
-        $transparent = imagecolorallocatealpha($imageDestination, 255, 255, 255, 127);
-        imagefilledrectangle($imageDestination, 0, 0, $destinationWidth, $destinationHeight, $transparent);
-        imagecopyresampled($imageDestination, $imageSource, 0, 0, 0, 0, $destinationWidth, $destinationHeight, $sourceWidth, $sourceHeight);
+        $transparent = \imagecolorallocatealpha($imageDestination, 255, 255, 255, 127);
+        \imagefilledrectangle($imageDestination, 0, 0, $destinationWidth, $destinationHeight, $transparent);
+        \imagecopyresampled($imageDestination, $imageSource, 0, 0, 0, 0, $destinationWidth, $destinationHeight, $sourceWidth, $sourceHeight);
 
-        if (!is_resource($imageDestination)) {
+
+        /*
+         * problem ???
+        if (!\is_resource($imageDestination)) {
             (new Debug())->write('No Resource. Filename: ' . $this->sourceFilename);
-            exit;
+            //exit;
+        }*/
+
+        if (\preg_match('/jpg|jpeg/', $fileExtension)) {
+            \imagejpeg($imageDestination, $this->destinationFilename, $this->jpegQuality);
         }
 
-        if (preg_match('/jpg|jpeg/', $fileExtension)) {
-            imagejpeg($imageDestination, $this->destinationFilename, $this->jpegQuality);
+        if (\preg_match('/png/', $fileExtension)) {
+            \imagepng($imageDestination, $this->destinationFilename);
         }
 
-        if (preg_match('/png/', $fileExtension)) {
-            imagepng($imageDestination, $this->destinationFilename);
+        if (\preg_match('/gif/', $fileExtension)) {
+            \imagegif($imageDestination, $this->destinationFilename);
         }
 
-        if (preg_match('/gif/', $fileExtension)) {
-            imagegif($imageDestination, $this->destinationFilename);
-        }
-
-        imagedestroy($imageDestination);
-        imagedestroy($imageSource);
+        \imagedestroy($imageDestination);
+        \imagedestroy($imageSource);
 
     }
 
