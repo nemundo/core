@@ -148,6 +148,9 @@ class CurlWebRequest extends AbstractWebRequest
             curl_setopt($this->curl, CURLOPT_USERAGENT, $this->userAgent);
             curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
 
+            // Error: dh key too small
+            curl_setopt($this->curl, CURLOPT_SSL_CIPHER_LIST, 'DEFAULT@SECLEVEL=1');
+
 
             if ($this->proxy) {
 
