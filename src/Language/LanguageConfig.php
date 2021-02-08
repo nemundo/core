@@ -24,7 +24,7 @@ class LanguageConfig extends AbstractBase
     public static $currentLanguageCode = LanguageCode::EN;
 
 
-    //public static $languageList = array();
+    public static $languageList = [LanguageCode::EN,LanguageCode::DE];
 
 
 }
