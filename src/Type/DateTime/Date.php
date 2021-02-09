@@ -5,10 +5,12 @@ namespace Nemundo\Core\Type\DateTime;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Date\Month\Month;
+use Nemundo\Core\Date\Month\MonthNumber;
 use Nemundo\Core\Date\Week\WeekYearNumber;
 use Nemundo\Core\Date\Weekday\Weekday;
 use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Type\Text\Text;
 
 
 class Date extends AbstractBaseClass
@@ -94,7 +96,8 @@ class Date extends AbstractBaseClass
     }
 
 
-    public function channgeToLastDayOfMonth() {
+    public function channgeToLastDayOfMonth()
+    {
 
         //$date = new DateTime('now');
         $this->date->modify('last day of this month');
@@ -103,7 +106,6 @@ class Date extends AbstractBaseClass
 
 
     }
-
 
 
     public function setValue($date)
@@ -142,7 +144,8 @@ class Date extends AbstractBaseClass
     }
 
 
-    public function fromDateTime(DateTime $dateTime) {
+    public function fromDateTime(DateTime $dateTime)
+    {
         $this->fromIsoFormat($dateTime->getIsoDateTimeFormat());
         return $this;
     }
@@ -165,6 +168,64 @@ class Date extends AbstractBaseClass
         $this->date = new \DateTime($dateTime);
         return $this;
     }
+
+
+    public function fromGermanLongFormat($date)
+    {
+
+        //$this->date = new \DateTime($dateTime);
+
+
+        //'8. Februar 2021'
+
+        $dateList = (new Text($date))
+            ->remove('.')
+            ->split(' ');
+
+        //(new Debug())->write($dateList);
+
+        //$valid=true;
+
+        if (isset($dateList[0])) {
+            $number = new Text($dateList[0]);
+            if ($number->isNumber()) {
+                $this->setDay($dateList[0]);
+            } else {
+                (new LogMessage())->writeError('No valid Number for Day. Value: ' . $dateList[0]);
+                //  $valid=false;
+            }
+        }
+
+        if (isset($dateList[1])) {
+            $number = new Text((new MonthNumber())->getMonthNumber($dateList[1]));
+            if ($number->isNumber()) {
+                $this->setMonth((new MonthNumber())->getMonthNumber($dateList[1]));
+            } else {
+                (new LogMessage())->writeError('No valid Month. Value: ' . $dateList[1]);
+                //$valid=false;
+            }
+        }
+
+        if (isset($dateList[2])) {
+            $number = new Text($dateList[2]);
+            if ($number->isNumber()) {
+                $this->setYear($dateList[2]);
+            } else {
+                (new LogMessage())->writeError('No valid Number for YearDay. Value: ' . $dateList[1]);
+                //$valid=false;
+            }
+        }
+
+        /*
+        $this
+            ->setDay($dateList[0])
+            ->setMonth((new MonthNumber())->getMonthNumber( $dateList[1]))
+            ->setYear($dateList[2]);3/
+*/
+
+        return $this;
+    }
+
 
     public function setDay($day)
     {
@@ -245,7 +306,6 @@ class Date extends AbstractBaseClass
     }
 
 
-
     // getIsoDate
     public function getIsoDateFormat()
     {
@@ -257,9 +317,9 @@ class Date extends AbstractBaseClass
     public function getLongFormat()
     {
 
-        $text='';
+        $text = '';
         if ($this->hasValue()) {
-        $text = $this->getDayOfMonth() . '. ' . $this->getMonth() . ' ' . $this->getYear();
+            $text = $this->getDayOfMonth() . '. ' . $this->getMonth() . ' ' . $this->getYear();
         }
         return $text;
     }
@@ -320,15 +380,17 @@ class Date extends AbstractBaseClass
     }
 
 
-    public function getWeekYearNumber() {
+    public function getWeekYearNumber()
+    {
 
-        $number= (new WeekYearNumber())->getWeekYearNumber($this->getWeekNumber(),$this->getYear());
+        $number = (new WeekYearNumber())->getWeekYearNumber($this->getWeekNumber(), $this->getYear());
         return $number;
 
     }
 
 
-    public function getMonthYearNumber() {
+    public function getMonthYearNumber()
+    {
 
         //$number= (new WeekYearNumber())->getWeekYearNumber($this->getWeekNumber(),$this->getYear());
 
@@ -395,7 +457,7 @@ class Date extends AbstractBaseClass
 
         $returnValue = false;
         $weekdayNumber = $this->getWeekdayNumber();
-        if ($weekdayNumber <=5) {
+        if ($weekdayNumber <= 5) {
             $returnValue = true;
         }
         return $returnValue;

@@ -4,6 +4,9 @@ require __DIR__.'/../config.php';
 
 (new \Nemundo\Core\Debug\Debug())->write((new \Nemundo\Core\Date\Month\MonthNumber())->getMonthNumber('Jun'));
 
+(new \Nemundo\Core\Debug\Debug())->write((new \Nemundo\Core\Date\Month\MonthNumber())->getMonthNumber('Februar'));
+
+
 
 /*
 Jan 09
