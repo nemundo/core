@@ -41,6 +41,11 @@ class CurlWebRequest extends AbstractWebRequest
      */
     public $referrerUrl;
 
+    /**
+     * @var bool
+     */
+    public $sslVerification = true;
+
     private $loaded = false;
 
     private $curl;
@@ -143,13 +148,22 @@ class CurlWebRequest extends AbstractWebRequest
 
             $this->curl = curl_init();
 
-            //curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+
+            if (!$this->sslVerification) {
+            curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+            }
+
+            /*
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            */
+
 
             curl_setopt($this->curl, CURLOPT_USERAGENT, $this->userAgent);
             curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
 
             // Error: dh key too small
-            curl_setopt($this->curl, CURLOPT_SSL_CIPHER_LIST, 'DEFAULT@SECLEVEL=1');
+            //curl_setopt($this->curl, CURLOPT_SSL_CIPHER_LIST, 'DEFAULT@SECLEVEL=1');
 
 
             if ($this->proxy) {

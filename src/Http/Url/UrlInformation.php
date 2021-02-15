@@ -75,8 +75,6 @@ class UrlInformation extends AbstractBaseClass
     // class UrlInformation
 
 
-
-
     public function getHost()
     {
         $host = parse_url($this->url, PHP_URL_HOST);
@@ -108,7 +106,7 @@ class UrlInformation extends AbstractBaseClass
     {
 
         $filename = basename($this->getUrlWithoutParameter());  //url, '?' . $_SERVER['QUERY_STRING']);
-return $filename;
+        return $filename;
 
     }
 
