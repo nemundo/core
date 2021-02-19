@@ -45,6 +45,14 @@ abstract class AbstractFile extends AbstractBase
     }
 
 
+    public function getFileSize2() {
+
+$fileSize = new FileSize($this->getFileSize());
+return $fileSize;
+
+    }
+
+
     public function getCreateDateTime()
     {
 
