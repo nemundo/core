@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Http\Response;
 
 
+// ResponseType
 class ContentType
 {
 
