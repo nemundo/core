@@ -25,6 +25,7 @@ class Stopwatch extends AbstractBaseClass
         $this->time = microtime(true);
     }
 
+    // stopAndGetSecond
     public function stop()
     {
 

@@ -48,7 +48,7 @@ abstract class AbstractRow extends AbstractBaseClass
 
         $value = '';
         if (array_key_exists($name, $this->data)) {
-            $value = $this->data[$name];
+            $value = trim($this->data[$name]);
         } else {
             (new LogMessage())->writeError('Row Column Name ' . $name . ' does not exist.');
             // Error Raise???
