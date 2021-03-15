@@ -5,7 +5,7 @@ namespace Nemundo\Core\Type\File;
 
 use Nemundo\Core\Image\ImageDimension;
 
-class ImageFile extends File
+class __outdatedImageFile extends File
 {
 
     public function getImageDimension()

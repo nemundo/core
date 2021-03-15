@@ -31,6 +31,7 @@ abstract class AbstractFile extends AbstractBase
     }
 
 
+    // getFileSizeInByte
     public function getFileSize()
     {
 
