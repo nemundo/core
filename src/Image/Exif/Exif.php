@@ -24,6 +24,11 @@ class Exif extends AbstractImage
     public $orientation;
 
     /**
+     * @var bool
+     */
+    public $hasDateTime=false;
+
+    /**
      * @var DateTime
      */
     public $dateTime;
@@ -82,14 +87,18 @@ class Exif extends AbstractImage
             $this->description = $exif['ImageDescription'];
         }
 
-        $gpsDateTime = '0000-00-00 00:00:00';
+        //$gpsDateTime = '0000-00-00 00:00:00';
         if (isset($exif['DateTimeOriginal'])) {
             $gpsDateTime = $exif['DateTimeOriginal'];
             $gpsDateTime = substr_replace($gpsDateTime, '-', 4, 1);
             $gpsDateTime = substr_replace($gpsDateTime, '-', 7, 1);
+
+            $gps['datetime'] = $gpsDateTime;
+            $this->hasDateTime=true;
+            $this->dateTime = new DateTime($gpsDateTime);
+
         }
-        $gps['datetime'] = $gpsDateTime;
-        $this->dateTime = new DateTime($gpsDateTime);
+
 
         $camera = '';
         if (isset($exif['Make'])) {
