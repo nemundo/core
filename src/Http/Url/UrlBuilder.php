@@ -6,19 +6,20 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
 
 
-class UrlBuilder extends AbstractBaseClass
+class UrlBuilder extends AbstractUrlBuilder  // AbstractBaseClass
 {
 
     /**
      * @var string
      */
-    private $url;
+    //private $url;
 
     /**
      * @var string[]
      */
-    protected $requestList;
+    //protected $requestList;
 
+    /*
     function __construct($url = null)
     {
 
@@ -34,7 +35,7 @@ class UrlBuilder extends AbstractBaseClass
 
         parse_str(parse_url($this->url, PHP_URL_QUERY), $this->requestList);
 
-    }
+    }*/
 
 
     public function addRequestValue($requestName, $value = '')
@@ -65,6 +66,7 @@ class UrlBuilder extends AbstractBaseClass
     }
 
 
+    /*
     public function getUrl()
     {
 
@@ -77,9 +79,10 @@ class UrlBuilder extends AbstractBaseClass
 
         return $url;
 
-    }
+    }*/
 
 
+    /*
     public function getUrlWithoutEncoding()
     {
 
@@ -98,7 +101,7 @@ class UrlBuilder extends AbstractBaseClass
         return $url;
 
 
-    }
+    }*/
 
 
 }

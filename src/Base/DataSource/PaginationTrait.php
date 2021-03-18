@@ -124,7 +124,7 @@ trait PaginationTrait
 
         $parameter = new PageParameter($this->currentPage + 1);
 
-        $url = new \Nemundo\Web\Url\Url();
+        $url = new \Nemundo\Web\Url\UrlBuilder();
         $url->addParameter($parameter);
 
         return $url->getUrl();
