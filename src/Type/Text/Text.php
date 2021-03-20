@@ -3,7 +3,6 @@
 namespace Nemundo\Core\Type\Text;
 
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\AbstractType;
 
 class Text extends AbstractType
@@ -33,12 +32,8 @@ class Text extends AbstractType
     public function isNumber()
     {
 
-        //(new Debug())->write($this->value);
-
         $value = ctype_digit($this->value);
         return $value;
-
-        //return is_numeric((int)$this->value);
 
     }
 
@@ -69,7 +64,6 @@ class Text extends AbstractType
         $this->value = $substring;
 
         return $this;
-
 
     }
 
@@ -102,8 +96,8 @@ class Text extends AbstractType
 
         return $position;
 
-
     }
+
 
     public function split($delimiter)
     {
@@ -130,8 +124,13 @@ class Text extends AbstractType
 
     public function uppercaseFirstLetter()
     {
-        $this->value[0] = strtoupper($this->value[0]);
+
+        if (isset($this->value[0])) {
+            $this->value[0] = strtoupper($this->value[0]);
+        }
+
         return $this;
+
     }
 
 
