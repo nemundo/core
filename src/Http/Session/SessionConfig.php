@@ -14,7 +14,7 @@ class SessionConfig
     /**
      * @var string
      */
-    public static $path;
+    public static $path = '/';
 
 
 }

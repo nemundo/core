@@ -3,7 +3,6 @@
 namespace Nemundo\Core\Http\Url;
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
 
 
 abstract class AbstractUrlBuilder extends AbstractBaseClass
@@ -28,10 +27,6 @@ abstract class AbstractUrlBuilder extends AbstractBaseClass
             $this->url = $_SERVER['REQUEST_URI'];
         }
 
-        // temporäres GET Array
-        //$this->get = $_GET;
-        // muss aus parse_url ausgelesen werden!!!
-
         parse_str(parse_url($this->url, PHP_URL_QUERY), $this->requestList);
 
     }
@@ -50,6 +45,5 @@ abstract class AbstractUrlBuilder extends AbstractBaseClass
         return $url;
 
     }
-
 
 }

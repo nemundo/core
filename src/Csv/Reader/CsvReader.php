@@ -4,9 +4,6 @@ namespace Nemundo\Core\Csv\Reader;
 
 
 use Nemundo\Core\Csv\CsvSeperator;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\Log\LogMessage;
-use Nemundo\Core\Type\File\File;
 
 
 // Ableitung von AbstractLargeCsvReader
@@ -30,20 +27,6 @@ class CsvReader extends AbstractCsvReader
     {
         return parent::getData();
     }
-
-
-
-    /*
-    public function getHeaderByNumber($number) {
-
-
-        if (isset())
-
-        $label = $this->getHeader()[$number];
-
-        return $label;
-
-    }*/
 
 
     protected function loadData()
@@ -92,34 +75,30 @@ class CsvReader extends AbstractCsvReader
 
                 if ($this->useFirstRowAsHeader) {
 
-                    // Header anfügen
                     if ($count == $this->lineOfStart) {
                         $this->header = $data;
                     } else {
 
-                        // Daten anfügen
                         $dataNew = [];
                         $rowCount = 0;
                         foreach ($this->header as $rowHeader) {
 
                             if (isset($data[$rowCount])) {
-                            $dataNew[trim($rowHeader)] = $data[$rowCount];
+                                $dataNew[trim($rowHeader)] = $data[$rowCount];
                             } else {
-                                $dataNew[trim($rowHeader)]='';
+                                $dataNew[trim($rowHeader)] = '';
                             }
 
                             $rowCount++;
                         }
 
                         $csvRow = new CsvRow($dataNew);
-                        //$this->list[] = $csvRow;
                         $this->addItem($csvRow);
 
                     }
 
                 } else {
 
-                    //$this->list[] = new CsvRow($data);
                     $this->addItem(new CsvRow($data));
 
                 }
@@ -128,10 +107,10 @@ class CsvReader extends AbstractCsvReader
 
             $count++;
 
-            if ($this->limit !==null) {
+            if ($this->limit !== null) {
 
-                if ($count>$this->limit) {
-                   return;
+                if ($count > $this->limit) {
+                    return;
                 }
 
             }

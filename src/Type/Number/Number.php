@@ -2,7 +2,6 @@
 
 namespace Nemundo\Core\Type\Number;
 
-use Nemundo\Core\Log\LogFile;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 
@@ -15,11 +14,9 @@ class Number extends AbstractType
         if (is_numeric($value)) {
             $this->value = $value;
         } else {
-            //(new LogMessage())->writeError('Number is not valid');
 
             $message = 'Number is not valid. Value: ' . $value;
             (new LogMessage())->writeError($message);
-            //throw new \Exception($message);
 
         }
 
@@ -35,7 +32,8 @@ class Number extends AbstractType
     }
 
 
-    public function getAbsoluteNumber() {
+    public function getAbsoluteNumber()
+    {
         return abs($this->getValue());
     }
 
@@ -87,19 +85,21 @@ class Number extends AbstractType
     }
 
 
-    public function isEven() {
+    public function isEven()
+    {
 
-            $value=false;
-            if($this->value % 2 == 0){
-                $value=true;
-            }
+        $value = false;
+        if ($this->value % 2 == 0) {
+            $value = true;
+        }
 
-            return $value;
+        return $value;
 
     }
 
 
-    public function isOdd() {
+    public function isOdd()
+    {
 
         return !$this->isEven();
 

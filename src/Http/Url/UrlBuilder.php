@@ -9,34 +9,6 @@ use Nemundo\Core\Http\Request\Get\AbstractGetRequest;
 class UrlBuilder extends AbstractUrlBuilder  // AbstractBaseClass
 {
 
-    /**
-     * @var string
-     */
-    //private $url;
-
-    /**
-     * @var string[]
-     */
-    //protected $requestList;
-
-    /*
-    function __construct($url = null)
-    {
-
-        $this->url = $url;
-
-        if ($this->url == null) {
-            $this->url = $_SERVER['REQUEST_URI'];
-        }
-
-        // temporäres GET Array
-        //$this->get = $_GET;
-        // muss aus parse_url ausgelesen werden!!!
-
-        parse_str(parse_url($this->url, PHP_URL_QUERY), $this->requestList);
-
-    }*/
-
 
     public function addRequestValue($requestName, $value = '')
     {

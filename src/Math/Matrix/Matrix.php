@@ -3,8 +3,6 @@
 namespace Nemundo\Core\Math\Matrix;
 
 
-use Nemundo\Html\Table\Table;
-use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Structure\ForLoop;
@@ -93,6 +91,7 @@ class Matrix extends AbstractBase
     }
 
 
+    /*
     public function printMatrix()
     {
 
@@ -121,7 +120,7 @@ class Matrix extends AbstractBase
 
         echo $table->getContent();
 
-    }
+    }*/
 
 
 }

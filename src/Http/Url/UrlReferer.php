@@ -4,7 +4,7 @@ namespace Nemundo\Core\Http\Url;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Web\Parameter\AbstractUrlParameter;
+
 
 class UrlReferer extends AbstractBaseClass
 {
@@ -31,10 +31,10 @@ class UrlReferer extends AbstractBaseClass
 
     }
 
-
+/*
     public function removeParameter(AbstractUrlParameter $parameter) {
 
-    }
+    }*/
 
     public function removeAllParameter()
     {

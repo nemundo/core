@@ -4,7 +4,6 @@ namespace Nemundo\Core\Http\Request\Get;
 
 
 use Nemundo\Core\Http\Request\AbstractGetPostRequest;
-use Nemundo\Core\Http\Request\AbstractRequest;
 
 abstract class AbstractGetRequest extends AbstractGetPostRequest
 {
