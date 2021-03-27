@@ -8,6 +8,7 @@ use Nemundo\Core\Base\AbstractBase;
 
 // PhpConfig
 // PhpSystem
+// PhpInformation
 class PhpEnvironment extends AbstractBase
 {
 
