@@ -3,7 +3,9 @@
 namespace Nemundo\Core\Log;
 
 
-class LogConfig
+use Nemundo\Core\Base\AbstractBase;
+
+class LogConfig extends AbstractBase
 {
 
     /**
