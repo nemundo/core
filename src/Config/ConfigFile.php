@@ -41,13 +41,30 @@ class ConfigFile extends AbstractBase
     {
 
         $value = null;
-        if (isset($this->dataList[$name])) {
+        //if (isset($this->dataList[$name])) {
+        if ($this->existsValue($name)) {
             $value = $this->dataList[$name];
         }
 
         return $value;
 
     }
+
+
+    public function existsValue($name)
+    {
+
+        $value = false;
+        if (isset($this->dataList[$name])) {
+            $value = true;
+        }
+
+        return $value;
+
+    }
+
+
+
 
 
     public function writeFile()
