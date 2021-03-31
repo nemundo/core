@@ -118,6 +118,8 @@ class CurlWebRequest extends AbstractWebRequest
     public function downloadUrl($url, $destinationFilename)
     {
 
+        $value = true;
+
         $file = new File($destinationFilename);
 
         (new Path($file->getPath()))->createPath();
@@ -127,6 +129,7 @@ class CurlWebRequest extends AbstractWebRequest
         $fp = fopen($destinationFilename, 'w+');
         if ($fp === false) {
             $this->writeError('Curl. Could not open: ' . $destinationFilename);
+            $value=false;
         }
 
         curl_setopt($this->curl, CURLOPT_FILE, $fp);
@@ -134,7 +137,10 @@ class CurlWebRequest extends AbstractWebRequest
 
         if ($response === false) {
             $this->writeError('Curl Download Fehler: ' . curl_error($this->curl));
+            $value=false;
         }
+
+        return $value;
 
     }
 

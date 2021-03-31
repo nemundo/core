@@ -78,12 +78,7 @@ class WebRequest extends AbstractWebRequest
     public function downloadUrl($url, $destinationFilename)
     {
 
-        //$file = new File($destinationFilename);
-
-
-        /*$directory = new Directory();
-        $directory->path = $file->path;
-        $directory->createDirectory();*/
+        $value = true;
 
         $this->load();
 
@@ -100,7 +95,8 @@ class WebRequest extends AbstractWebRequest
 
             (new LogMessage())->writeError($errorMessage);
 
-            return null;
+            //return null;
+            return false;
         }
 
 
@@ -109,7 +105,10 @@ class WebRequest extends AbstractWebRequest
         if ($result === false) {
             $errorMessage = 'Http Download Error. Message: ' . error_get_last()['message'];
             (new LogMessage())->writeError($errorMessage);
+            $value = false;
         }
+
+        return  $value;
 
     }
 
