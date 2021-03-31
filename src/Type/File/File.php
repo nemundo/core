@@ -100,9 +100,10 @@ class File extends AbstractType
     }
 
 
-    public function getFileSizeText() {
+    public function getFileSizeText()
+    {
 
-        $filesize=new FileSize(filesize($this->fullFilename));
+        $filesize = new FileSize(filesize($this->fullFilename));
         return $filesize->getText();
 
     }
@@ -277,6 +278,23 @@ class File extends AbstractType
             (new LogMessage())->writeError('File does not exist');
         }
         return $hash;
+
+    }
+
+
+    public function isImage()
+    {
+
+        $value = true;
+        if ($this->fileExists()) {
+            if (exif_imagetype($this->fullFilename) == false) {
+                $value = false;
+            }
+        } else {
+            $value = false;
+        }
+
+        return $value;
 
     }
 
