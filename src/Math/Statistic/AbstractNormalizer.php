@@ -33,6 +33,14 @@ abstract class AbstractNormalizer extends AbstractBase
 
     public function normalizeValue($value) {
 
+
+        if ($this->minValue==null) {
+            $valueListTmp = array_diff($this->valueList, [null]);
+            $this->minValue = min($valueListTmp);
+            $this->maxValue = max($valueListTmp);
+        }
+
+
         $valueNew = null;
 
         if ($value !== null) {
