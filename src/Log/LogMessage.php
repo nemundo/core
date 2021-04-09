@@ -7,6 +7,7 @@ use Nemundo\Core\Console\ConsoleMode;
 use Nemundo\Core\File\FileUtility;
 use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\DateTime\Date;
+use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Core\Type\Text\Text;
 
 
@@ -34,7 +35,10 @@ class LogMessage extends AbstractBase
                     break;
 
                 case LogType::CONSOLE:
-                    echo $message . PHP_EOL;
+
+                    $dateTimeText = (new DateTime())->setNow()->getIsoDateTimeFormat();
+                    $message =$dateTimeText.' '. $message . PHP_EOL;
+                    echo $message;
                     break;
 
                 case LogType::FILE:

@@ -9,11 +9,38 @@ namespace Nemundo\Core\Base;
 abstract class AbstractDocument extends AbstractBaseClass
 {
 
+
+    /**
+     * @var bool
+     */
+    public $overwriteExistingFile = false;
+
+    /**
+     * @var bool
+     */
+    public $appendToExistingFile = false;
+
+    public $createDirectory = false;
+
     /**
      * @var string
      */
-    public $filename;
+    //*public $filename;
 
+
+    /**
+     * @var string
+     */
+    protected $filename;
+
+    public function __construct($filename)
+    {
+        $this->filename = $filename;
+    }
+
+
+
+    // writeFile
     abstract public function saveFile();
 
 

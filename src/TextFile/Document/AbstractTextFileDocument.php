@@ -1,45 +1,51 @@
 <?php
 
-namespace Nemundo\Core\TextFile\Writer;
 
+namespace Nemundo\Core\TextFile\Document;
+
+
+use Nemundo\Core\Base\AbstractDocument;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Path\Path;
 use Nemundo\Core\Type\File\File;
 
-
-class TextFileWriter extends AbstractTextFileWriter
+abstract class AbstractTextFileDocument extends AbstractDocument
 {
-
-    /**
-     * @var bool
-     */
-    public $overwriteExistingFile = false;
-
-    /**
-     * @var bool
-     */
-    public $appendToExistingFile = false;
-
-    public $createDirectory = false;
 
     /**
      * @var string[]
      */
     private $lineList = [];
 
-
     public function addLine($line)
     {
 
-        if (is_array($line)) {
+        /*if (is_array($line)) {
             $this->lineList = array_merge($this->lineList, $line);
-        } else {
+        } else {*/
             $this->lineList[] = $line;
-        }
+        //}
 
         return $this;
 
     }
+
+
+    public function addLineList($lineList)
+    {
+
+        //if (is_array($line)) {
+            $this->lineList = array_merge($this->lineList, $lineList);
+        /*} else {
+            $this->lineList[] = $line;
+        }*/
+
+        return $this;
+
+    }
+
+
+
 
 
     public function setContent($content) {
@@ -47,7 +53,8 @@ class TextFileWriter extends AbstractTextFileWriter
     }
 
 
-    // writeFile
+
+
     public function saveFile()
     {
 
@@ -95,6 +102,8 @@ class TextFileWriter extends AbstractTextFileWriter
             (new LogMessage())->writeError('TextFileWriter Error. Filename: ' . $this->filename);
         }
 
+
+        // TODO: Implement saveFile() method.
     }
 
 }

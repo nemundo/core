@@ -129,7 +129,7 @@ class CurlWebRequest extends AbstractWebRequest
         $fp = fopen($destinationFilename, 'w+');
         if ($fp === false) {
             $this->writeError('Curl. Could not open: ' . $destinationFilename);
-            $value=false;
+            $value = false;
         }
 
         curl_setopt($this->curl, CURLOPT_FILE, $fp);
@@ -137,7 +137,7 @@ class CurlWebRequest extends AbstractWebRequest
 
         if ($response === false) {
             $this->writeError('Curl Download Fehler: ' . curl_error($this->curl));
-            $value=false;
+            $value = false;
         }
 
         return $value;
@@ -154,16 +154,9 @@ class CurlWebRequest extends AbstractWebRequest
 
             $this->curl = curl_init();
 
-
             if (!$this->sslVerification) {
-            curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
             }
-
-            /*
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-            */
-
 
             curl_setopt($this->curl, CURLOPT_USERAGENT, $this->userAgent);
             curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
@@ -181,9 +174,6 @@ class CurlWebRequest extends AbstractWebRequest
                 curl_setopt($this->curl, CURLOPT_PROXYUSERPWD, $proxyLogin);
 
             }
-
-            //curl_setopt($this->curl, CURLOPT_COOKIEJAR, ProjectConfig::$tmpPath . 'my_cookies.txt');
-            //curl_setopt($this->curl, CURLOPT_COOKIEFILE, ProjectConfig::$tmpPath . 'my_cookies.txt');
 
         }
 
@@ -205,7 +195,6 @@ class CurlWebRequest extends AbstractWebRequest
 
     private function writeError($message)
     {
-
 
         if ($this->throwException) {
             (new LogFile())->writeError($message);

@@ -22,7 +22,7 @@ class DirectoryReader extends AbstractDataSource
     public $includeDirectories = false;
 
     /**
-     * @var string|array
+     * @var string
      */
     public $path;
 
@@ -52,19 +52,24 @@ class DirectoryReader extends AbstractDataSource
     protected function loadData()
     {
 
-        $item = array();
+
+
+        $item = [];
 
         if (!$this->checkProperty('path')) {
             return $item;
         }
 
+        /*
         if (is_array($this->path)) {
             foreach ($this->path as $path) {
                 $item = array_merge($item, $this->getFileListInternal($path));
             }
         } else {
             $item = $this->getFileListInternal($this->path);
-        }
+        }*/
+
+        $item = $this->getFileListInternal($this->path);
 
         $this->list = $item;
 

@@ -15,6 +15,10 @@ abstract class AbstractNormalizer extends AbstractBase
      */
     private $dataLoaded = false;
 
+    public $minValue;
+
+    public $maxValue;
+
     abstract protected function loadNormalizer();
 
     protected function addValue($value)
@@ -22,6 +26,30 @@ abstract class AbstractNormalizer extends AbstractBase
 
         $this->valueList[] = $value;
         return $this;
+
+    }
+
+
+
+    public function normalizeValue($value) {
+
+        $valueNew = null;
+
+        if ($value !== null) {
+
+            $diff = $this->maxValue - $this->minValue;
+
+            if ($diff !== 0) {
+                $valueNew = ($value - $this->minValue) / $diff;
+            } else {
+                $valueNew = $value - $this->minValue;
+            }
+
+        } else {
+            $valueNew = null;
+        }
+
+        return $valueNew;
 
     }
 
@@ -42,13 +70,18 @@ abstract class AbstractNormalizer extends AbstractBase
 
         if (sizeof($this->valueList) > 0) {
             $valueListTmp = array_diff($this->valueList, [null]);
-            $min = min($valueListTmp);
-            $max = max($valueListTmp);
+            $this->minValue = min($valueListTmp);
+            $this->maxValue = max($valueListTmp);
         }
 
         $valueListNew = [];
         foreach ($this->valueList as $value) {
 
+
+            $valueListNew[] =$this->normalizeValue($value);
+
+
+            /*
             if ($value !== null) {
 
                 $diff = $max - $min;
@@ -61,7 +94,7 @@ abstract class AbstractNormalizer extends AbstractBase
 
             } else {
                 $valueListNew[] = null;
-            }
+            }*/
 
         }
 

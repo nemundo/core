@@ -3,7 +3,6 @@
 namespace Nemundo\Core\Math\Statistic;
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\Debug\Debug;
 
 
 abstract class AbstractLabelValueNormalizer extends AbstractBase
@@ -51,10 +50,8 @@ abstract class AbstractLabelValueNormalizer extends AbstractBase
             $valueNew = null;
 
             if ($diff !== 0) {
-                //$valueListNew[] = ($value - $min) / $diff;
                 $valueNew = ($value - $min) / $diff;
             } else {
-                //$valueListNew[] = $value - $min;
                 $valueNew = $value - $min;
             }
 
@@ -64,8 +61,6 @@ abstract class AbstractLabelValueNormalizer extends AbstractBase
             $valueListNew[] = $labelValue;
 
         }
-
-        //(new Debug())->write($valueListNew);
 
         return $valueListNew;
 
