@@ -30,23 +30,26 @@ class GeoCoordinateAltitudeCenter extends AbstractBase
     public function getCenter()
     {
 
+        $center = new GeoCoordinateAltitude();
 
-        $latList = new NumberDirectory();
-        $lonList = new NumberDirectory();
-        $altList = new NumberDirectory();
+        if (sizeof($this->coordinateList) > 0) {
+            $latList = new NumberDirectory();
+            $lonList = new NumberDirectory();
+            $altList = new NumberDirectory();
 
-        foreach ($this->coordinateList as $geoCoordinate) {
+            foreach ($this->coordinateList as $geoCoordinate) {
 
-            $latList->addValue($geoCoordinate->latitude);
-            $lonList->addValue($geoCoordinate->longitude);
-            $altList->addValue($geoCoordinate->altitude);
+                $latList->addValue($geoCoordinate->latitude);
+                $lonList->addValue($geoCoordinate->longitude);
+                $altList->addValue($geoCoordinate->altitude);
+
+            }
+
+            $center->latitude = $latList->getMedian();
+            $center->longitude = $lonList->getMedian();
+            $center->altitude = $altList->getMedian();
 
         }
-
-        $center = new GeoCoordinateAltitude();
-        $center->latitude = $latList->getMedian();
-        $center->longitude = $lonList->getMedian();
-        $center->altitude = $altList->getMedian();
 
         return $center;
 
