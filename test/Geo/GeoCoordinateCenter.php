@@ -3,7 +3,7 @@
 require __DIR__ . '/../config.php';
 
 
-$geoCoordinateDistance = new \Nemundo\Core\Geo\GeoCoordinateCenter();
+$geoCoordinateDistance = new \Nemundo\Core\Geo\Center\GeoCoordinateCenter();
 
 $coordinate = new \Nemundo\Core\Type\Geo\GeoCoordinate();
 $coordinate->latitude = 1;
@@ -18,7 +18,7 @@ $geoCoordinateDistance->addCoordinate($coordinate);
 (new \Nemundo\Core\Debug\Debug())->write($geoCoordinateDistance->getCenter());
 
 
-$geoCoordinateDistance = new \Nemundo\Core\Geo\GeoCoordinateAltitudeCenter();
+$geoCoordinateDistance = new \Nemundo\Core\Geo\Center\GeoCoordinateAltitudeCenter();
 
 $coordinate = new \Nemundo\Core\Type\Geo\GeoCoordinateAltitude();
 $coordinate->latitude = 1;

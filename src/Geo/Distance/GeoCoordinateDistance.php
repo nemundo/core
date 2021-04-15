@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Core\Geo;
+namespace Nemundo\Core\Geo\Distance;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
@@ -8,7 +8,7 @@ use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
 use Nemundo\Core\Type\Number\Number;
 
 
-class GeoCoordinateDistance extends AbstractBase
+class GeoCoordinateDistance extends AbstractGeoCoordinateDistance
 {
 
     /**
@@ -24,12 +24,12 @@ class GeoCoordinateDistance extends AbstractBase
     /**
      * @var bool
      */
-    public $roundNumber = false;
+    //public $roundNumber = false;
 
     /**
      * @var int
      */
-    public $roundDecimal = 2;
+    //public $roundDecimal = 2;
 
 
     const EARTH_RADIUS = 6371;
@@ -68,14 +68,14 @@ class GeoCoordinateDistance extends AbstractBase
 
     }
 
-
+/*
     public function getDistanceInMetre()
     {
 
         $distance = round($this->getDistance() * 1000, 0);
         return $distance;
 
-    }
+    }*/
 
 
     public function getVerticalDistance()

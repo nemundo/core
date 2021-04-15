@@ -1,24 +1,24 @@
 <?php
 
 
-namespace Nemundo\Core\Geo;
+namespace Nemundo\Core\Geo\Center;
 
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Math\NumberDirectory;
-use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
-use Nemundo\Core\Type\Geo\GeoCoordinate;
+use Nemundo\Core\Type\Geo\AbstractGeoCoordinateAltitude;
+use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
 
 
-class GeoCoordinateCenter extends AbstractBase
+class GeoCoordinateAltitudeCenter extends AbstractBase
 {
 
     /**
-     * @var GeoCoordinate[]
+     * @var GeoCoordinateAltitude[]
      */
     private $coordinateList = [];
 
-    public function addCoordinate(AbstractGeoCoordinate $geoCoordinate)
+    public function addCoordinate(AbstractGeoCoordinateAltitude $geoCoordinate)
     {
 
         $this->coordinateList[] = $geoCoordinate;
@@ -30,22 +30,24 @@ class GeoCoordinateCenter extends AbstractBase
     public function getCenter()
     {
 
-        $center = new GeoCoordinate();
+        $center = new GeoCoordinateAltitude();
 
         if (sizeof($this->coordinateList) > 0) {
-
             $latList = new NumberDirectory();
             $lonList = new NumberDirectory();
+            $altList = new NumberDirectory();
 
             foreach ($this->coordinateList as $geoCoordinate) {
 
                 $latList->addValue($geoCoordinate->latitude);
                 $lonList->addValue($geoCoordinate->longitude);
+                $altList->addValue($geoCoordinate->altitude);
 
             }
 
             $center->latitude = $latList->getMedian();
             $center->longitude = $lonList->getMedian();
+            $center->altitude = $altList->getMedian();
 
         }
 
