@@ -51,6 +51,7 @@ class Number extends AbstractType
     }
 
 
+    // getFormatNumberWithLeadingZero
     public function getFormatWithLeadingZero($length)
     {
         $format = str_pad($this->getValue(), $length, '0', STR_PAD_LEFT);
@@ -58,6 +59,7 @@ class Number extends AbstractType
     }
 
 
+    // getFormatNumber
     public function formatNumber($decimalNumber = 0)
     {
 
@@ -76,6 +78,7 @@ class Number extends AbstractType
     }
 
 
+    // getRoundNumber
     public function roundNumber($anzahlDezimalStellen = 2)
     {
 

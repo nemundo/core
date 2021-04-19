@@ -2,11 +2,9 @@
 
 namespace Nemundo\Core\Geo\Distance;
 
-use Nemundo\Core\Base\AbstractBase;
-
+use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
 use Nemundo\Core\Type\Geo\GeoCoordinate;
 use Nemundo\Core\Type\Geo\GeoCoordinateAltitude;
-use Nemundo\Core\Type\Number\Number;
 
 
 class GeoCoordinateListDistance extends AbstractGeoCoordinateDistance
@@ -15,7 +13,7 @@ class GeoCoordinateListDistance extends AbstractGeoCoordinateDistance
     /**
      * @var GeoCoordinate[]|GeoCoordinateAltitude[]
      */
-    public $geoCoordinateList=[];
+    public $geoCoordinateList = [];
 
     /**
      * @var GeoCoordinate|GeoCoordinateAltitude
@@ -36,17 +34,13 @@ class GeoCoordinateListDistance extends AbstractGeoCoordinateDistance
     //const EARTH_RADIUS = 6371;
 
 
+    public function addGeoCoordinate(AbstractGeoCoordinate $geoCoordinate)
+    {
 
-
-    public function addGeoCoordinate(GeoCoordinate $geoCoordinate) {
-
-        $this->geoCoordinateList[]=$geoCoordinate;
+        $this->geoCoordinateList[] = $geoCoordinate;
         return $this;
 
     }
-
-
-
 
 
     public function getDistance()

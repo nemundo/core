@@ -72,6 +72,8 @@ class CurlWebRequest extends AbstractWebRequest
     public function getUrl($url)
     {
 
+        $response=new WebResponse();
+
         $this->load($url);
 
         if (sizeof($this->header)) {
@@ -80,20 +82,33 @@ class CurlWebRequest extends AbstractWebRequest
 
         $html = curl_exec($this->curl);
         if ($html === false) {
-            $this->writeError('Curl-Fehler: ' . curl_error($this->curl));
+            //$this->writeError('Curl-Fehler: ' . curl_error($this->curl));
+
         }
 
         $httpCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $response->statusCode = $httpCode;
         if ($httpCode !== 200) {
-            $this->writeError('Curl. Http Code: ' . $httpCode . ' Url: ' . $url);
+
+            $response->errorMessage=curl_error($this->curl);
+
+           // $this->writeError('Curl-Fehler: ' . curl_error($this->curl));
+
+            //$this->writeError('Curl. Http Code: ' . $httpCode . ' Url: ' . $url);
             $html = '';
         }
+
+        $response->html=$html;
+        $response->url = curl_getinfo($this->curl, CURLINFO_EFFECTIVE_URL);
 
         if ($this->delayRequest) {
             (new Delay())->delay($this->delayInSecond);
         }
 
-        return $html;
+        return $response;
+
+        //return $html;
+
 
     }
 
