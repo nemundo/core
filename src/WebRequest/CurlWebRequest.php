@@ -100,6 +100,7 @@ class CurlWebRequest extends AbstractWebRequest
 
         $response->html=$html;
         $response->url = curl_getinfo($this->curl, CURLINFO_EFFECTIVE_URL);
+        // CURLINFO_REDIRECT_URL
 
         if ($this->delayRequest) {
             (new Delay())->delay($this->delayInSecond);

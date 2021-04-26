@@ -7,7 +7,7 @@ use Nemundo\Core\File\FileSize;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\AbstractType;
 
-
+// Move to File
 class File extends AbstractType
 {
 
