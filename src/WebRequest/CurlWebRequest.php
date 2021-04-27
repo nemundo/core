@@ -72,7 +72,7 @@ class CurlWebRequest extends AbstractWebRequest
     public function getUrl($url)
     {
 
-        $response=new WebResponse();
+        $response = new WebResponse();
 
         $this->load($url);
 
@@ -90,15 +90,12 @@ class CurlWebRequest extends AbstractWebRequest
         $response->statusCode = $httpCode;
         if ($httpCode !== 200) {
 
-            $response->errorMessage=curl_error($this->curl);
-
-           // $this->writeError('Curl-Fehler: ' . curl_error($this->curl));
-
-            //$this->writeError('Curl. Http Code: ' . $httpCode . ' Url: ' . $url);
+            $response->errorMessage = curl_error($this->curl);
             $html = '';
+
         }
 
-        $response->html=$html;
+        $response->html = $html;
         $response->url = curl_getinfo($this->curl, CURLINFO_EFFECTIVE_URL);
         // CURLINFO_REDIRECT_URL
 
@@ -107,9 +104,6 @@ class CurlWebRequest extends AbstractWebRequest
         }
 
         return $response;
-
-        //return $html;
-
 
     }
 
