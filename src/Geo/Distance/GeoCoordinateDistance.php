@@ -68,6 +68,18 @@ class GeoCoordinateDistance extends AbstractGeoCoordinateDistance
 
     }
 
+
+
+    public function getDistanceText() {
+
+        $text=$this->getDistance().' km';
+        return $text;
+
+
+    }
+
+
+
 /*
     public function getDistanceInMetre()
     {

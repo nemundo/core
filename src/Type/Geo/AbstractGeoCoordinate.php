@@ -35,19 +35,24 @@ abstract class AbstractGeoCoordinate extends AbstractBaseClass
         $text = new Text($text);
         $list = $text->split(',');
 
-        $this->latitude = $list[0];
-        $this->longitude = $list[1];
+        /*$this->latitude = $list[0];
+        $this->longitude = $list[1];*/
+
+
+        $this->latitude = trim($list[0]);
+        $this->longitude = trim($list[1]);
 
         return $this;
 
     }
 
 
-    public function hasValue() {
+    public function hasValue()
+    {
 
         $value = false;
-        if (($this->latitude !=='') && ($this->latitude !==null) && ($this->longitude!=='')&& ($this->longitude!==null)) {
-            $value=true;
+        if (($this->latitude !== '') && ($this->latitude !== null) && ($this->longitude !== '') && ($this->longitude !== null)) {
+            $value = true;
         }
         return $value;
 

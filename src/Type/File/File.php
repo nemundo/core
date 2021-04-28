@@ -79,11 +79,7 @@ class File extends AbstractType
     }*/
 
 
-    public function getFilenameWithoutFileExtension()
-    {
-        $filename = basename($this->filename, '.' . $this->getFileExtension());
-        return $filename;
-    }
+
 
 
     public function getFileSize()
@@ -120,6 +116,15 @@ class File extends AbstractType
         return $fileExtension;
 
     }
+
+
+
+    public function getFilenameWithoutFileExtension()
+    {
+        $filename = basename($this->filename, '.' . $this->getFileExtension());
+        return $filename;
+    }
+
 
 
     public function getFilenameWithoutExtension()
