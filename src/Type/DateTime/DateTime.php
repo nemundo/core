@@ -109,6 +109,13 @@ class DateTime extends Date
     }
 
 
+    public function getIsoTimePrefixZero()
+    {
+        return $this->getFormat('H:i');
+    }
+
+
+
     public function getIsoTimeWithSecond()
     {
         return $this->getFormat('G:i:s');
