@@ -71,6 +71,33 @@ class ImageFile extends AbstractFile  // AbstractBase  // File
     public function getImageFileExtension() {
 
 
+        $imageType = exif_imagetype($this->filename);
+
+        $extension = null;
+
+        switch ($imageType) {
+
+            case IMAGETYPE_JPEG:
+                $extension='.jpeg';
+
+                break;
+
+            case IMAGETYPE_PNG:
+                $extension='.png';
+                break;
+
+            case IMAGETYPE_GIF:
+                $extension='.gif';
+                break;
+
+            default:
+                (new LogMessage())->writeError('No valid File Extension. Filename: ' . $this->sourceFilename);
+                break;
+
+        }
+
+        return $extension;
+
 
 
 

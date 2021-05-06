@@ -256,7 +256,10 @@ class File extends AbstractType
 
     public function renameFile($newFilename)
     {
-        rename($this->filename, $newFilename);
+        rename($this->fullFilename, $newFilename);
+
+        //$this->filename=$newFilename;
+
         return $this;
     }
 
