@@ -95,10 +95,8 @@ class DateTime extends Date
     }
 
 
-    // getIsoDateTime
-    public function getIsoDateTimeFormat()
+    public function getIsoDateTime()
     {
-        //return $this->getFormat('Y-m-d G:i:s');
         return $this->getFormat('Y-m-d H:i:s');
     }
 

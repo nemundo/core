@@ -36,7 +36,7 @@ class LogMessage extends AbstractBase
 
                 case LogType::CONSOLE:
 
-                    $dateTimeText = (new DateTime())->setNow()->getIsoDateTimeFormat();
+                    $dateTimeText = (new DateTime())->setNow()->getIsoDateTime();
                     $message =$dateTimeText.' '. $message . PHP_EOL;
                     echo $message;
                     break;

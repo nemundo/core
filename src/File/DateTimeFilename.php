@@ -14,7 +14,7 @@ class DateTimeFilename extends AbstractBase
     public function getDateFilename($fileExtension)
     {
 
-        $dateTime = new Text((new DateTime())->setNow()->getIsoDateTimeFormat());
+        $dateTime = new Text((new DateTime())->setNow()->getIsoDateTime());
         $dateTime->replace('-', '_');
         $dateTime->replace(':', '_');
         $dateTime->replace(' ', '_');
@@ -30,7 +30,7 @@ class DateTimeFilename extends AbstractBase
     {
 
 
-        $dateTime = new Text((new DateTime())->setNow()->getIsoDateTimeFormat());
+        $dateTime = new Text((new DateTime())->setNow()->getIsoDateTime());
         $dateTime->replace('-', '_');
         $dateTime->replace(':', '_');
         $dateTime->replace(' ', '_');

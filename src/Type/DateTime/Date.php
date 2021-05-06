@@ -146,7 +146,7 @@ class Date extends AbstractBaseClass
 
     public function fromDateTime(DateTime $dateTime)
     {
-        $this->fromIsoFormat($dateTime->getIsoDateTimeFormat());
+        $this->fromIsoFormat($dateTime->getIsoDateTime());
         return $this;
     }
 

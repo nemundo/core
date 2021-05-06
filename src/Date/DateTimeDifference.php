@@ -78,7 +78,7 @@ class DateTimeDifference extends AbstractBaseClass
         $difference = 0;
 
         if (($this->dateFrom !== null) && ($this->dateUntil !== null)) {
-            $difference = date_diff(date_create($this->dateFrom->getIsoDateTimeFormat()), date_create($this->dateUntil->getIsoDateTimeFormat()));
+            $difference = date_diff(date_create($this->dateFrom->getIsoDateTime()), date_create($this->dateUntil->getIsoDateTime()));
         }
 
         return $difference;
