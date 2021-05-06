@@ -6,7 +6,7 @@ namespace Nemundo\Core\Local;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
 
-class LocalCommand extends AbstractBaseClass
+class LocalCommand extends AbstractLocalCommand   // AbstractBaseClass
 {
 
     /**
@@ -15,9 +15,20 @@ class LocalCommand extends AbstractBaseClass
     public $showOutput = false;
 
 
+    protected function loadCommand()
+    {
+        // TODO: Implement loadCommand() method.
+    }
+
+
     public function runLocalCommand($command)
     {
 
+        $this->addCommand($command);
+        $output=$this->runCommand();
+
+
+        /*
         $newCommand = '';
 
         if (is_array($command)) {
@@ -30,7 +41,7 @@ class LocalCommand extends AbstractBaseClass
 
         if ($this->showOutput) {
             (new Debug())->write($output);
-        }
+        }*/
 
         return $output;
 
