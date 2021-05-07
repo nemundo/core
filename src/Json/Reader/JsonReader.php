@@ -55,7 +55,11 @@ class JsonReader extends AbstractDataSource
     protected function loadData()
     {
 
-        $text = (new ByteOrderMarkText())->removeByteOrderMark($this->text);
+
+        //$text = (new ByteOrderMarkText())->removeByteOrderMark($this->text);
+        $text = $this->text;
+
+
         $this->list = json_decode($text, true);
 
         switch (json_last_error()) {
