@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Json\Reader;
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Text\ByteOrderMarkText;
 use Nemundo\Core\TextFile\Reader\TextFileReader;
@@ -55,9 +56,8 @@ class JsonReader extends AbstractDataSource
     protected function loadData()
     {
 
-
-        //$text = (new ByteOrderMarkText())->removeByteOrderMark($this->text);
-        $text = $this->text;
+        $text = (new ByteOrderMarkText())->removeByteOrderMark($this->text);
+        //$text = $this->text;
 
 
         $this->list = json_decode($text, true);
@@ -76,6 +76,7 @@ class JsonReader extends AbstractDataSource
                 break;
             case JSON_ERROR_SYNTAX:
                 echo ' - Syntaxfehler, ungültiges JSON';
+                //(new Debug())->write($text);
                 break;
             case JSON_ERROR_UTF8:
                 echo ' - Missgestaltete UTF-8 Zeichen, möglicherweise fehlerhaft kodiert';

@@ -82,7 +82,7 @@ class CurlWebRequest extends AbstractWebRequest
 
         $html = curl_exec($this->curl);
         if ($html === false) {
-            //$this->writeError('Curl-Fehler: ' . curl_error($this->curl));
+            $this->writeError('Curl-Fehler: ' . curl_error($this->curl));
 
         }
 

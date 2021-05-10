@@ -33,9 +33,6 @@ class JsonText extends AbstractBase
     public function getJson()
     {
 
-
-        //(new Debug())->write($this->data);
-
         $option = null;
 
         if ($this->formatJson) {
