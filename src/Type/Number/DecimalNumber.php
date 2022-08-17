@@ -1,12 +1,1 @@
-<?php
-
-namespace Nemundo\Core\Type\Number;
-
-
-class DecimalNumber
-{
-
-
-    // round
-
-}
+<?phpnamespace Nemundo\Core\Type\Number;class DecimalNumber{    // round}

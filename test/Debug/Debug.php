@@ -1,6 +1,1 @@
-<?php
-
-require __DIR__.'/../config.php';
-
-(new \Nemundo\Core\Debug\Debug())->write('hello world');
-
+<?phprequire __DIR__.'/../config.php';(new \Nemundo\Core\Debug\Debug())->write('hello world');

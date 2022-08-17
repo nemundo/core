@@ -1,18 +1,1 @@
-{
-  "name": "nemundo/core",
-  "description": "Core",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Urs Lang",
-      "email": "urs.lang@gmail.com"
-    }
-  ],
-  "require": {
-  },
-  "autoload": {
-    "psr-4": {
-      "Nemundo\\Core\\": "src/"
-    }
-  }
-}
+{  "name": "nemundo/core",  "description": "Core",  "license": "MIT",  "authors": [    {      "name": "Urs Lang",      "email": "urs.lang@nemundo.org"    }  ],  "require": {  },  "autoload": {    "psr-4": {      "Nemundo\\Core\\": "src/"    }  }}

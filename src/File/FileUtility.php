@@ -1,19 +1,1 @@
-<?php
-
-namespace Nemundo\Core\File;
-
-
-use Nemundo\Core\Base\AbstractBase;
-
-class FileUtility extends AbstractBase
-{
-
-    public function appendDirectorySeparatorIfNotExists($path)
-    {
-        $path = rtrim($path, '/');
-        $path = rtrim($path, '\\');
-        $path = $path . DIRECTORY_SEPARATOR;
-        return $path;
-    }
-
-}
+<?phpnamespace Nemundo\Core\File;use Nemundo\Core\Base\AbstractBase;// Filenameclass FileUtility extends AbstractBase{    // appendSeparatorIfNotExists    public function appendDirectorySeparatorIfNotExists($path)    {        $path = rtrim($path, '/');        $path = rtrim($path, '\\');        $path = $path . DIRECTORY_SEPARATOR;        return $path;    }    // appendSeparatorIfNotExists    public function appendSlashIfNotExists($path)    {        $path = rtrim($path, '/');        $path = rtrim($path, '\\');        $path = $path . '/';        return $path;    }}

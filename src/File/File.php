@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Core\File;// Move to Fileclass File extends AbstractFile  // AbstractType{}

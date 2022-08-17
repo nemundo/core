@@ -1,12 +1,1 @@
-<?php
-
-namespace Nemundo\Core\Unit;
-
-
-class TemperaturConverter
-{
-
-    // Fahrenheit, Celsius, Kelvin
-
-
-}
+<?phpnamespace Nemundo\Core\Unit;class TemperaturConverter{    // Fahrenheit, Celsius, Kelvin}

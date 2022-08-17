@@ -1,5 +1,1 @@
-<?php
-
-require '../../../../../config.php';
-
-(new \Nemundo\Core\System\Delay())->delay(2);
+<?phprequire '../../../../../config.php';(new \Nemundo\Core\System\Delay())->delay(2);

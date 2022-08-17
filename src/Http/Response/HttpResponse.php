@@ -1,26 +1,1 @@
-<?php
-
-namespace Nemundo\Core\Http\Response;
-
-
-class HttpResponse extends AbstractHttpResponse
-{
-
-    /**
-     * @var string
-     */
-    public $content;
-
-    /**
-     * @var string
-     */
-    public $contentType = ContentType::HTML;
-
-    /**
-     * @var string
-     */
-    public $attachmentFilename;
-
-    public $filesize;
-
-}
+<?phpnamespace Nemundo\Core\Http\Response;// WebResponseclass HttpResponse extends AbstractHttpResponse{    /**     * @var string     */    public $content;    /**     * @var string     */    public $contentType = ResponseType::HTML;    /**     * @var string     */    public $attachmentFilename;    public $filesize;}
