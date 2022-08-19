@@ -1,1 +1,1 @@
-<?phprequire __DIR__ . '/../config.php';$url = 'https://paranautik.ch';$html = (new \Nemundo\Core\WebRequest\CurlWebRequest())->getUrl($url);(new \Nemundo\Core\Debug\Debug())->write($html);
+<?phprequire __DIR__ . '/../config.php';$url = 'https://paranautik.ch';$filename = 'test.txt';$html = (new \Nemundo\Core\WebRequest\WebRequest())->getUrl($url);(new \Nemundo\Core\Debug\Debug())->write($html);(new \Nemundo\Core\WebRequest\WebRequest())->downloadUrl($url, $filename);
