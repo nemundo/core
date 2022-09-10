@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Core\Image\Base;use Nemundo\Core\Base\AbstractBase;use Nemundo\Core\Debug\Debug;use Nemundo\Core\Image\ImageFile;use Nemundo\Core\Log\LogMessage;abstract class AbstractImageTransformation extends AbstractBase{    /**     * @var string     */    public $sourceFilename;    /**     * @var string     */    public $destinationFilename;}

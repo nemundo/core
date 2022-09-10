@@ -5,6 +5,8 @@ namespace Nemundo\Core\Image\Cropping;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Image\ImageFile;
 
+
+// AutoImageCropping
 class MaxImageCropping extends AbstractBase
 {
 
