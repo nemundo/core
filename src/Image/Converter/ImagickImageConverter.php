@@ -1,10 +1,11 @@
 <?php
 
-namespace Nemundo\Core\Image\Resize;
+namespace Nemundo\Core\Image\Converter;
 
+use Nemundo\Core\Image\Resize\AbstractImageResize;
 use Nemundo\Core\Image\Type\ImageType;
 
-class ImagickImageResize extends AbstractImageResize
+class ImagickImageConverter extends AbstractImageResize
 {
 
     public $imageType = ImageType::JPG;
@@ -12,10 +13,7 @@ class ImagickImageResize extends AbstractImageResize
     public function resizeImage()
     {
 
-        $dimension = $this->getImageDimension();
-
         $image = new \Imagick($this->sourceFilename);
-        $image->resizeImage($dimension->width, $dimension->height, \Imagick::FILTER_LANCZOS, 1);
         $image->setImageFormat($this->imageType);
         $image->writeImage($this->destinationFilename);
 
