@@ -34,7 +34,7 @@ abstract class AbstractImageResize extends AbstractImageTransformation
         $sourceWidth = $image->getImageWidth();
         $sourceHeight = $image->getImageHeight();
 
-        (new Debug())->write($dimension);
+        //(new Debug())->write($dimension);
 
 
         /*$img=new ImageFile($this->sourceFilename);
