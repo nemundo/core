@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Core\Http\Response;// ResponseStatusCode// HttpStatusCodeclass StatusCode{    const OK = 200;    const REDIRECT = 301;    const FORBIDDEN = 403;    const NOT_FOUND = 404;    const SERVER_ERROR = 500;}
+<?phpnamespace Nemundo\Core\Http\Response;// ResponseStatusCode// HttpStatusCodeclass StatusCode{    const OK = 200;    const REDIRECT = 301;    const TEMP_REDIRECT = 307;    const FORBIDDEN = 403;    const NOT_FOUND = 404;    const SERVER_ERROR = 500;}
