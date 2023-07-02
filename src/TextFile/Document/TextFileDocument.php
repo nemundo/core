@@ -1,1 +1,1 @@
-<?phpnamespace Nemundo\Core\TextFile\Document;class TextFileDocument extends AbstractTextFileDocument{}
+<?phpnamespace Nemundo\Core\TextFile\Document;// TextDocumentclass TextFileDocument extends AbstractTextFileDocument{    public $filename;}
