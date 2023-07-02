@@ -17,6 +17,10 @@ class JsonFileWriter extends AbstractWriter
      */
     public $jsonData = [];
 
+    /**
+     * @var bool
+     */
+    public $formatJson = true;
 
 
     public function writeFile()
@@ -24,6 +28,7 @@ class JsonFileWriter extends AbstractWriter
 
 
         $data = new JsonText();
+        $data->formatJson=$this->formatJson;
         $data->addData($this->jsonData);
 
 
