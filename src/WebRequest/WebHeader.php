@@ -32,6 +32,15 @@ class WebHeader extends AbstractBase
     }
 
 
+    public function getResponseCode()
+    {
+
+        //$this->getHeader($url);
+        $responseCode = (int)substr($this->headerList[0], 9, 3);
+        return $responseCode;
+
+    }
+
     public function getHeader() {
 
         return $this->headerList;
