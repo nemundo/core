@@ -7,17 +7,24 @@ use Nemundo\Core\Base\AbstractBase;
 class WebHeader extends AbstractBase
 {
 
-    private $headerList=[];
+    private $headerList = [];
 
-    public function __construct($url) {
+    public function __construct($url)
+    {
 
-        $this->headerList = get_headers($url, true);
-        $this->headerList = array_change_key_case($this->headerList);
+
+        $header = get_headers($url, true);
+
+        if ($header !== false) {
+            $this->headerList = get_headers($url, true);
+            $this->headerList = array_change_key_case($this->headerList);
+        }
 
     }
 
 
-    public function getContentType() {
+    public function getContentType()
+    {
 
         $contentType = null;
         if (isset($this->headerList['content-type'])) {
@@ -36,12 +43,17 @@ class WebHeader extends AbstractBase
     {
 
         //$this->getHeader($url);
-        $responseCode = (int)substr($this->headerList[0], 9, 3);
+        $responseCode = null;
+        if (isset($this->headerList[0])) {
+            $responseCode = (int)substr($this->headerList[0], 9, 3);
+        }
+
         return $responseCode;
 
     }
 
-    public function getHeader() {
+    public function getHeader()
+    {
 
         return $this->headerList;
 
