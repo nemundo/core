@@ -2,7 +2,6 @@
 
 namespace Nemundo\Core\Image\Resize;
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Image\Base\AbstractImageTransformation;
 use Nemundo\Core\Image\Format\AbstractImageFormat;
 use Nemundo\Core\Image\Format\AutoSizeImageFormat;
@@ -34,14 +33,6 @@ abstract class AbstractImageResize extends AbstractImageTransformation
         $sourceWidth = $image->getImageWidth();
         $sourceHeight = $image->getImageHeight();
 
-        //(new Debug())->write($dimension);
-
-
-        /*$img=new ImageFile($this->sourceFilename);
-
-        $sourceWidth =$img->width;
-        $sourceHeight = $img->height;*/
-
         switch ($this->format->getClassName()) {
 
             case AutoSizeImageFormat::class:
@@ -70,6 +61,5 @@ abstract class AbstractImageResize extends AbstractImageTransformation
         return $dimension;
 
     }
-
 
 }
