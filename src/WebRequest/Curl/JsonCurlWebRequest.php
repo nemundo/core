@@ -2,8 +2,6 @@
 
 namespace Nemundo\Core\WebRequest\Curl;
 
-use Nemundo\Core\WebRequest\CurlWebRequest;
-
 class JsonCurlWebRequest extends CurlWebRequest
 {
 

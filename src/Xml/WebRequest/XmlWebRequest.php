@@ -2,16 +2,11 @@
 
 namespace Nemundo\Core\Xml\WebRequest;
 
-use Nemundo\Core\WebRequest\CurlWebRequest;
-
-class XmlWebRequest extends CurlWebRequest
+class XmlWebRequest extends AbstractXmlWebRequest
 {
 
-    public function __construct()
+    protected function loadRequest()
     {
-
-        parent::__construct();
-        $this->addHeader('Content-Type: application/xml');
 
     }
 
