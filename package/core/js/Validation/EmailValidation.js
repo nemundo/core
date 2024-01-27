@@ -7,7 +7,7 @@ export default class EmailValidation {
         let valid = false;
         var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-        if (email.value.match(validRegex)) {
+        if (email.match(validRegex)) {
             valid = true;
         }
 
