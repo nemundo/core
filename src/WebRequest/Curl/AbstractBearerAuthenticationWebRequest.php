@@ -2,12 +2,12 @@
 
 namespace Nemundo\Core\WebRequest\Curl;
 
-class BearerAuthenticationWebRequest extends AbstractBearerAuthenticationWebRequest
+abstract class AbstractBearerAuthenticationWebRequest extends AbstractJsonCurlWebRequest
 {
 
-    public $bearerAuthentication;
+    protected $bearerAuthentication;
 
-    /*private $loadedAuthentication = false;
+    private $loadedAuthentication = false;
 
     protected function loadRequest()
     {
@@ -39,7 +39,7 @@ class BearerAuthenticationWebRequest extends AbstractBearerAuthenticationWebRequ
             $this->addHeader('Authorization: Bearer ' . $this->bearerAuthentication);
             $this->loadedAuthentication = true;
         }
-    }*/
+    }
 
 
 }
