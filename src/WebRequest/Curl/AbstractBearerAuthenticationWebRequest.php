@@ -28,7 +28,7 @@ abstract class AbstractBearerAuthenticationWebRequest extends AbstractJsonCurlWe
     {
 
         $this->authentication();
-        return parent::getUrl($url);
+        return parent::postUrl($url, $data);
 
     }
 
