@@ -9,7 +9,18 @@ class JsonCurlWebRequest extends CurlWebRequest
     {
 
         parent::__construct();
+
         $this->addHeader('accept: application/json');
+
+
+        /*->addHeader('Content-Type' => 'application/json'');
+
+
+
+        'Accept' => 'application/json',
+    'Authorization' => 'Bearer {access-token}',
+    'Content-Type' => 'application/json',
+);*/
 
     }
 
