@@ -33,6 +33,13 @@ abstract class AbstractBearerAuthenticationWebRequest extends AbstractJsonCurlWe
     }
 
 
+    public function deleteUrl($url)
+    {
+        $this->authentication();
+        return parent::deleteUrl($url);
+
+    }
+
     private function authentication()
     {
         if (!$this->loadedAuthentication) {
