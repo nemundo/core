@@ -1,0 +1,1 @@
+<?phprequire __DIR__.'/../config.php';$difference = new \Nemundo\Core\Date\DateTimeDifference();(new \Nemundo\Core\Debug\Debug())->write($difference->getDifferenceInMinute());
