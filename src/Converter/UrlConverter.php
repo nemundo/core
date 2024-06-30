@@ -19,6 +19,8 @@ class UrlConverter extends AbstractBase
     public function getText() {
 
         $text = (new Text($this->url))
+            ->replaceLeft('https://www.','')
+            ->replaceLeft('http://www.','')
             ->replaceLeft('https://','')
             ->replaceLeft('http://','')
             ->replaceRight('/','')
