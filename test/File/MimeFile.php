@@ -1,0 +1,1 @@
+<?phpuse Nemundo\Core\File\MimeFile;require __DIR__ . '/../config.php';$filename = 'C:\git\web_crawler\tmp\bild.jpg';$mimeFile = new MimeFile($filename);(new \Nemundo\Core\Debug\Debug())->write($mimeFile);
