@@ -7,6 +7,8 @@ use Nemundo\Core\Base\AbstractBase;
 class WebHeader extends AbstractBase
 {
 
+    //public $location;
+
     private $headerList = [];
 
     public function __construct($url)
@@ -56,6 +58,26 @@ class WebHeader extends AbstractBase
     {
 
         return $this->headerList;
+
+    }
+
+
+    public function getLocationList()
+    {
+
+        $list = [];
+        if (isset($this->headerList['location'])) {
+            $location = $this->headerList['location'];
+
+            if (is_array($location)) {
+                $list = $location;
+            } else {
+                $list[] = $location;
+            }
+
+        }
+
+        return $list;
 
     }
 
