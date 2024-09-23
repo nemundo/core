@@ -1,32 +1,40 @@
 <?php
 
-require __DIR__.'/../config.php';
+require __DIR__ . '/../config.php';
 
-$path = 'c:/test/poi.xml';
+$filename = 'c:/test/poi.xml';
 
 $xml = new \Nemundo\Core\Xml\Document\XmlDocument();
 $xml->filename = 'poi.xml';
 $xml->overwriteExistingFile = true;
 $xml->formatOutput = true;
 
-/*
+
 $poiList = new \Nemundo\Core\Xml\Document\XmlItem($xml);
-$poiList->tagName = 'Pois';
+$poiList->tagName = 'item';
+$poiList->value = 'ddd';
 $poiList->namespace = 'urn:schemas-etourist:SchemaExtension';
+$poiList->addAttribute('id', 123);
+
+
+//$poiList->namespace = 'urn:schemas-etourist:SchemaExtension';
 
 
 $item = new \Nemundo\Core\Xml\Document\XmlItem($poiList);
 $item->tagName = 'Poi';
 $item->addAttribute('PID',12123);
+//$item->value = 'helloone';
+
 
 
 $objectTextName = new \Nemundo\Core\Xml\Document\XmlItem($item);
 $objectTextName->tagName = 'Object';
 
+/*
 $stringXml = new \Nemundo\Core\Xml\Document\XmlItem($objectTextName);
 $stringXml->tagName = 'OBJECT_TEXTNAME';
 $stringXml->value = 'Brändlen';
-//$stringXml->namespace = 'urn:schemas-etourist:SchemaExtension';
+$stringXml->namespace = 'urn:schemas-etourist:SchemaExtension';
 
 
 /*
@@ -40,10 +48,5 @@ $stringXml->value = 'Brändlen';
 */
 
 
-
-
-
-
-
-$xml-> writeFile($path);
+$xml->writeFile($filename);
 
