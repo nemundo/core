@@ -9,6 +9,7 @@ $xml->filename = 'poi.xml';
 $xml->overwriteExistingFile = true;
 $xml->formatOutput = true;
 
+/*
 $poiList = new \Nemundo\Core\Xml\Document\XmlItem($xml);
 $poiList->tagName = 'Pois';
 $poiList->namespace = 'urn:schemas-etourist:SchemaExtension';
