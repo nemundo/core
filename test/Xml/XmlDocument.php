@@ -8,7 +8,7 @@ $filename = 'c:/test/poi.xml';
 $xml = new \Nemundo\Core\Xml\Document\XmlDocument();
 $xml->filename = 'poi.xml';
 $xml->overwriteExistingFile = true;
-$xml->formatOutput = true;
+//$xml->formatOutput = true;
 
 
 $poiList = new \Nemundo\Core\Xml\Document\XmlItem($xml);
@@ -23,13 +23,24 @@ $poiList->addAttribute('id', 123);
 
 $item = new \Nemundo\Core\Xml\Document\XmlItem($poiList);
 $item->tagName = 'Poi';
-$item->addAttribute('PID',12123);
+$item
+    ->addAttribute('PID',12123)
+->addAttribute('wert',true);
+
 //$item->value = 'helloone';
 
 
 
 $objectTextName = new \Nemundo\Core\Xml\Document\XmlItem($item);
+$objectTextName->namespace ='blaspace';
 $objectTextName->tagName = 'Object';
+$objectTextName->value = false;
+
+$objectTextName = new \Nemundo\Core\Xml\Document\XmlItem($item);
+$objectTextName->namespace ='blaspace';
+$objectTextName->tagName = 'Object';
+$objectTextName->value = 'Bridge';
+
 
 /*
 $stringXml = new \Nemundo\Core\Xml\Document\XmlItem($objectTextName);
@@ -47,6 +58,9 @@ $stringXml->namespace = 'urn:schemas-etourist:SchemaExtension';
         </OBJECT_TEXT_NAME>
         <OBJECT_TEXT_NAME_SORTIERUNG xmlns="urn:schemas-etourist:Poi"/>
 */
+
+
+(new \Nemundo\Core\Debug\Debug())->write($xml->getXml());
 
 
 $xml->writeFile($filename);
