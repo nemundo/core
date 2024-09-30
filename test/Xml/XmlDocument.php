@@ -2,6 +2,7 @@
 
 require __DIR__ . '/../config.php';
 
+
 $filename = 'c:/test/poi.xml';
 
 $xml = new \Nemundo\Core\Xml\Document\XmlDocument();
