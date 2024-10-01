@@ -11,7 +11,7 @@ $xml->overwriteExistingFile = true;
 //$xml->formatOutput = true;
 
 
-$poiList = new \Nemundo\Core\Xml\Document\XmlItem($xml);
+$poiList = new \Nemundo\Core\Xml\Document\Item\XmlItem($xml);
 $poiList->tagName = 'item';
 $poiList->value = 'ddd';
 $poiList->namespace = 'urn:schemas-etourist:SchemaExtension';
@@ -21,7 +21,7 @@ $poiList->addAttribute('id', 123);
 //$poiList->namespace = 'urn:schemas-etourist:SchemaExtension';
 
 
-$item = new \Nemundo\Core\Xml\Document\XmlItem($poiList);
+$item = new \Nemundo\Core\Xml\Document\Item\XmlItem($poiList);
 $item->tagName = 'Poi';
 $item
     ->addAttribute('PID',12123)
@@ -31,12 +31,12 @@ $item
 
 
 
-$objectTextName = new \Nemundo\Core\Xml\Document\XmlItem($item);
+$objectTextName = new \Nemundo\Core\Xml\Document\Item\XmlItem($item);
 $objectTextName->namespace ='blaspace';
 $objectTextName->tagName = 'Object';
 $objectTextName->value = false;
 
-$objectTextName = new \Nemundo\Core\Xml\Document\XmlItem($item);
+$objectTextName = new \Nemundo\Core\Xml\Document\Item\XmlItem($item);
 $objectTextName->namespace ='blaspace';
 $objectTextName->tagName = 'Object';
 $objectTextName->value = 'Bridge';

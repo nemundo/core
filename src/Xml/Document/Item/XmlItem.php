@@ -1,0 +1,1 @@
+<?phpnamespace Nemundo\Core\Xml\Document\Item;class XmlItem extends AbstractXmlItem{    public $tagName;    public $namespace;    public $value;    protected function loadItem()    {    }}
