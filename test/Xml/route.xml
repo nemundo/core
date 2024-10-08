@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gpx creator="MySchweizMobil - https://map.schweizmobil.ch/" version="1.1" xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+    <metadata>
+        <name>Hike One</name>
+        <bounds maxlat="46.113334511279426" maxlon="9.06360351819853" minlat="46.096799511154224"
+                minlon="9.045000518465006"/>
+    </metadata>
+    <trk>
+        <name>Hike One</name>
+        <trkseg>
+            <trkpt lat="46.09680151115419" lon="9.06360351819853">
+                <ele>1043.54</ele>
+            </trkpt>
+            <trkpt lat="46.096799511154224" lon="9.063603518198516">
+                <ele>1043.54</ele>
+            </trkpt>
+            <trkpt lat="46.096868511154405" lon="9.063597518199167">
+                <ele>1046.0</ele>
+            </trkpt>
+            <trkpt lat="46.0969315111547" lon="9.063568518199917">
+                <ele>1048.21</ele>
+            </trkpt>
+            <trkpt lat="46.096972511155236" lon="9.063464518200947">
+                <ele>1051.12</ele>
+            </trkpt>
+            <trkpt lat="46.09705351115551" lon="9.063451518201754">
+                <ele>1053.8</ele>
+            </trkpt>
+        </trkseg>
+    </trk>
+</gpx>
