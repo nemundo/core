@@ -2,12 +2,8 @@
 
 namespace Nemundo\Core\GeoJson\Feature;
 
-use Nemundo\Core\Type\Geo\AbstractGeoCoordinate;
-use Nemundo\Core\Type\Geo\GeoCoordinate;
-
 class LineFeature extends AbstractLineFeature
 {
-
 
     protected function loadFeature()
     {
@@ -17,7 +13,6 @@ class LineFeature extends AbstractLineFeature
     }
 
 
-
     public function getData()
     {
 
@@ -25,29 +20,12 @@ class LineFeature extends AbstractLineFeature
 
         $geoCoordinateData = [];
         foreach ($this->geoCoordinateList as $geoCoordinate) {
-            $geoCoordinateData[] = [(float)$geoCoordinate->latitude, (float)$geoCoordinate->longitude];
+            $geoCoordinateData[] = [(float)$geoCoordinate->longitude, (float)$geoCoordinate->latitude];
         }
-        $data['geometry']['coordinates'] =$geoCoordinateData;
+        $data['geometry']['coordinates'] = $geoCoordinateData;
 
         return $data;
 
     }
-
-
-
-   /* public function getData()
-    {
-
-        $data = $this->getBaseData();  // [];
-        //$data['type'] = 'Feature';
-        //$data['properties'] = $this->getPropertyList();
-        $data['geometry']['coordinates'] = [$this->geoCoordinate->latitude, $this->geoCoordinate->longitude];
-        //$data['geometry']['type'] = $this->type;
-        //$data['id'] = $this->id;
-
-        return $data;
-
-    }*/
-
 
 }

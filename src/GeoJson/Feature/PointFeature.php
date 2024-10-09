@@ -27,11 +27,10 @@ class PointFeature extends AbstractFeature
     {
 
         $data = $this->getBaseData();
-        $data['geometry']['coordinates'] = [$this->geoCoordinate->latitude, $this->geoCoordinate->longitude];
+        $data['geometry']['coordinates'] = [ (float)$this->geoCoordinate->longitude,(float)$this->geoCoordinate->latitude];
 
         return $data;
 
     }
-
 
 }
