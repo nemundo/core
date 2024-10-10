@@ -4,6 +4,7 @@ namespace Nemundo\Core\GeoJson\Feature;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\GeoJson\Document\AbstractGeoJsonDocument;
+use Nemundo\Core\Json\JsonText;
 
 abstract class AbstractFeature extends AbstractBase
 {
@@ -58,5 +59,15 @@ abstract class AbstractFeature extends AbstractBase
         return $this->propertyList;
 
     }
+
+
+    public function getJson()
+    {
+
+
+        $json = json_encode($this->getData());
+        return $json;
+    }
+
 
 }
