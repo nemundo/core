@@ -28,20 +28,4 @@ class PolygonFeature extends AbstractLineFeature
 
     }
 
-
-    /* public function getData()
-     {
-
-         $data = $this->getBaseData();  // [];
-         //$data['type'] = 'Feature';
-         //$data['properties'] = $this->getPropertyList();
-         $data['geometry']['coordinates'] = [$this->geoCoordinate->latitude, $this->geoCoordinate->longitude];
-         //$data['geometry']['type'] = $this->type;
-         //$data['id'] = $this->id;
-
-         return $data;
-
-     }*/
-
-
 }

@@ -64,10 +64,9 @@ abstract class AbstractFeature extends AbstractBase
     public function getJson()
     {
 
-
         $json = json_encode($this->getData());
         return $json;
-    }
 
+    }
 
 }

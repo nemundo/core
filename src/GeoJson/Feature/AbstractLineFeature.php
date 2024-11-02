@@ -20,20 +20,4 @@ abstract class AbstractLineFeature extends AbstractFeature
 
     }
 
-
-    /*public function getData()
-    {
-
-        $data = $this->getBaseData();
-
-        $geoCoordinateData = [];
-        foreach ($this->geoCoordinateList as $geoCoordinate) {
-            $geoCoordinateData[] = [(float)$geoCoordinate->latitude, (float)$geoCoordinate->longitude];
-        }
-        $data['geometry']['coordinates'][] =$geoCoordinateData;
-
-        return $data;
-
-    }*/
-
 }

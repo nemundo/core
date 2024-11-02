@@ -1,0 +1,1 @@
+<?phpuse Nemundo\Core\Date\Timezone\Timezone;use Nemundo\Core\Type\DateTime\DateTime;require __DIR__.'/../config.php';$value = null;(new \Nemundo\Core\Debug\Debug())->write((new \Nemundo\Core\Type\Number\Number($value))->getFormatNumber());
