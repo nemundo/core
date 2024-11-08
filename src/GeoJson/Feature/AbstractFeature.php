@@ -5,7 +5,6 @@ namespace Nemundo\Core\GeoJson\Feature;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\GeoJson\Document\AbstractGeoJsonDocument;
-use Nemundo\Core\Json\JsonText;
 
 abstract class AbstractFeature extends AbstractBase
 {
@@ -51,6 +50,18 @@ abstract class AbstractFeature extends AbstractBase
 
         $this->propertyList[$field] = $value;
         return $this;
+
+    }
+
+
+    public function existsPropertyValue($field)
+    {
+        $value = false;
+        if (isset($this->propertyList[$field])) {
+            $value = true;
+        }
+
+        return $value;
 
     }
 
