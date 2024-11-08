@@ -31,7 +31,7 @@ abstract class AbstractGeoJsonReader extends AbstractDataSource
 
                     $feature = new PointFeature();
                     $feature->geoCoordinate->latitude = $featureJson['geometry']['coordinates'][0];
-                    $feature->geoCoordinate->longitude = $featureJson['geometry']['coordinates'][0];
+                    $feature->geoCoordinate->longitude = $featureJson['geometry']['coordinates'][1];
 
                     foreach ($featureJson['properties'] as $key => $value) {
                         $feature->addProperty($key, $value);
