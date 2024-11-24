@@ -3,6 +3,7 @@
 namespace Nemundo\Core\GeoJson\Reader;
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\GeoJson\Feature\AbstractFeature;
 use Nemundo\Core\GeoJson\Feature\PointFeature;
 use Nemundo\Core\GeoJson\Feature\PolygonFeature;
@@ -20,6 +21,9 @@ abstract class AbstractGeoJsonReader extends AbstractDataSource
         $jsonReader = new JsonReader();
         $jsonReader->fromFilename($this->filename);
         $jsonData = $jsonReader->getData();
+
+
+        //(new Debug())->write($jsonData);
 
         if (isset($jsonData['features'])) {
 

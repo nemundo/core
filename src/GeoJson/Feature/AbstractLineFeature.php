@@ -10,7 +10,7 @@ abstract class AbstractLineFeature extends AbstractFeature
     /**
      * @var AbstractGeoCoordinate[]
      */
-    public $geoCoordinateList = [];
+    private $geoCoordinateList = [];
 
     public function addGeoCoordinate(AbstractGeoCoordinate $geoCoordinate)
     {
@@ -18,6 +18,10 @@ abstract class AbstractLineFeature extends AbstractFeature
         $this->geoCoordinateList[] = $geoCoordinate;
         return $this;
 
+    }
+
+    public function getGeoCoordinateList() {
+        return $this->geoCoordinateList;
     }
 
 }

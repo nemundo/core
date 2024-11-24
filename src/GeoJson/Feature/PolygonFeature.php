@@ -2,6 +2,8 @@
 
 namespace Nemundo\Core\GeoJson\Feature;
 
+use Nemundo\Core\Type\Geo\GeoCoordinate;
+
 class PolygonFeature extends AbstractLineFeature
 {
 
