@@ -8,6 +8,7 @@ use Nemundo\Core\Image\Format\AutoSizeImageFormat;
 use Nemundo\Core\Image\Format\FixHeightImageFormat;
 use Nemundo\Core\Image\Format\FixWidthImageFormat;
 use Nemundo\Core\Image\ImageDimension;
+use Nemundo\Core\Image\ImageFile;
 
 abstract class AbstractImageResize extends AbstractImageTransformation
 {
@@ -27,11 +28,24 @@ abstract class AbstractImageResize extends AbstractImageTransformation
         $dimension->width = 0;
         $dimension->height = 0;
 
+        $sourceWidth = null;
+        $sourceHeight = null;
 
-        $image = new \Imagick($this->sourceFilename);
+        if (class_exists('Imagick')) {
 
-        $sourceWidth = $image->getImageWidth();
-        $sourceHeight = $image->getImageHeight();
+            $image = new \Imagick($this->sourceFilename);
+
+            $sourceWidth = $image->getImageWidth();
+            $sourceHeight = $image->getImageHeight();
+
+        } else {
+
+            $image = new ImageFile($this->sourceFilename);
+
+            $sourceWidth = $image->width;
+            $sourceHeight = $image->height;
+
+        }
 
         switch ($this->format->getClassName()) {
 
