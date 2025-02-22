@@ -8,18 +8,18 @@ export default class JsonRequest {
 
     onDataRow = null;
 
-    onError=null;
+    onError = null;
 
     _url = null;
 
     _data;
 
-    _count=null;
+    _count = null;
 
     constructor(url) {
+
         this._url = url;
         this._data = new FormData();
-
 
     }
 
@@ -52,7 +52,7 @@ export default class JsonRequest {
         }).then(response => response.json())
             .then(function (data) {
 
-                local._count= data.length;
+                local._count = data.length;
 
                 if (local.onLoaded !== null) {
                     local.onLoaded(data);
@@ -69,18 +69,13 @@ export default class JsonRequest {
                 }
             })
             .catch(error => {
-                (new Debug).write("Json Request Error: "+error);
+                (new Debug).write("Json Request Error: " + error);
 
-                if (local.onError!==null) {
+                if (local.onError !== null) {
                     local.onError(error);
                 }
 
-
-
-                //element.parentElement.innerHTML = `Error: ${error}`;
-                //console.error('There was an error!', error);
             });
-
 
     }
 
