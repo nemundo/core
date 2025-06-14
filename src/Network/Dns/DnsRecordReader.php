@@ -3,6 +3,7 @@
 namespace Nemundo\Core\Network\Dns;
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Debug\Debug;
 
 class DnsRecordReader extends AbstractDataSource
 {
@@ -12,16 +13,7 @@ class DnsRecordReader extends AbstractDataSource
     protected function loadData()
     {
 
-        /*
-[host] => luzern.com
-[class] => IN
-[ttl] => 300
-[type] => NS
-[target] => ns1.frey-net.ch
-*/
-
-
-        $recordList = dns_get_record($this->domain);
+        $recordList = dns_get_record($this->domain, DNS_ALL);
 
         foreach ($recordList as $record) {
 
@@ -30,15 +22,18 @@ class DnsRecordReader extends AbstractDataSource
             $dnsRecord->ttl = $record['ttl'];
             $dnsRecord->type = $record['type'];
 
+            if (isset($record['txt'])) {
+                $dnsRecord->txt = $record['txt'];
+            }
+
             if (isset($record['target'])) {
-            $dnsRecord->target = $record['target'];
+                $dnsRecord->target = $record['target'];
             }
             $this->addItem($dnsRecord);
 
+            //(new Debug())->write($record);
 
         }
-
-        //print_r($result);
 
     }
 

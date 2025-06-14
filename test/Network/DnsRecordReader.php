@@ -4,8 +4,7 @@ require __DIR__ . '/../config.php';
 
 
 $reader = new \Nemundo\Core\Network\Dns\DnsRecordReader();
-$reader->domain = 'nemundo.com';
-//$reader->domain = 'luzern.com';
+$reader->domain = 'google.com';
 
 foreach ($reader->getData() as $record) {
 

@@ -17,6 +17,8 @@ class DnsRecord extends AbstractBase
 
     public $target;
 
+    public $txt;
+
     /*
 [host] => luzern.com
 [class] => IN
