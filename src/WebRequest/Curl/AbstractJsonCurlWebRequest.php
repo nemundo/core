@@ -9,7 +9,12 @@ abstract class AbstractJsonCurlWebRequest extends AbstractCurlWebRequest
     {
 
         parent::__construct();
-        $this->addHeader('accept: application/json');
+        //$this->addHeader('accept: application/json');
+
+        $this
+            ->addHeader('Accept: application/json')
+            ->addHeader('Content-Type: application/json');
+
 
     }
 

@@ -2,10 +2,10 @@
 
 namespace Nemundo\Core\WebRequest\Curl;
 
-class JsonCurlWebRequest extends CurlWebRequest
+class JsonCurlWebRequest extends AbstractJsonCurlWebRequest  // CurlWebRequest
 {
 
-    public function __construct()
+    /*public function __construct()
     {
 
         parent::__construct();
@@ -13,6 +13,12 @@ class JsonCurlWebRequest extends CurlWebRequest
         $this
             ->addHeader('Accept: application/json')
             ->addHeader('Content-Type: application/json');
+
+    }*/
+
+
+    protected function loadRequest()
+    {
 
     }
 
