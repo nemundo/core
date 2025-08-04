@@ -15,7 +15,6 @@ abstract class AbstractJsonCurlWebRequest extends AbstractCurlWebRequest
             ->addHeader('Accept: application/json')
             ->addHeader('Content-Type: application/json');
 
-
     }
 
 }
