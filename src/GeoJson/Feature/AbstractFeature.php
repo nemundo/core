@@ -20,7 +20,7 @@ abstract class AbstractFeature extends AbstractBase
     abstract public function getData();
 
 
-    public function __construct(AbstractGeoJsonDocument $geoJsonDocument = null)
+    public function __construct(?AbstractGeoJsonDocument $geoJsonDocument = null)
     {
 
         $this->loadFeature();
