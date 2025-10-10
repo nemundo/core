@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Core\WebRequest\Curl;
+namespace Nemundo\Core\WebRequest\Json;
 
 class JsonCurlWebRequest extends AbstractJsonCurlWebRequest
 {

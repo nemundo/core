@@ -1,9 +1,14 @@
 <?php
 
-namespace Nemundo\Core\WebRequest\Curl;
+namespace Nemundo\Core\WebRequest\Json;
+
+use Nemundo\Core\WebRequest\Curl\AbstractCurlWebRequest;
+use Nemundo\Core\WebRequest\HeaderTrait;
 
 abstract class AbstractJsonCurlWebRequest extends AbstractCurlWebRequest
 {
+
+    use HeaderTrait;
 
     public function __construct()
     {
@@ -11,9 +16,11 @@ abstract class AbstractJsonCurlWebRequest extends AbstractCurlWebRequest
         parent::__construct();
         //$this->addHeader('accept: application/json');
 
-        $this
+        $this->loadJson();
+
+        /*$this
             ->addHeader('Accept: application/json')
-            ->addHeader('Content-Type: application/json');
+            ->addHeader('Content-Type: application/json');*/
 
     }
 

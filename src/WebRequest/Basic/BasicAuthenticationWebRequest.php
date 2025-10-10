@@ -1,6 +1,8 @@
 <?php
 
-namespace Nemundo\Core\WebRequest\Curl;
+namespace Nemundo\Core\WebRequest\Basic;
+
+use Nemundo\Core\WebRequest\Curl\AbstractBasicAuthenticationWebRequest;
 
 class BasicAuthenticationWebRequest extends AbstractBasicAuthenticationWebRequest
 {

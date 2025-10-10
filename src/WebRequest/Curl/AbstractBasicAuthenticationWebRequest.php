@@ -2,6 +2,8 @@
 
 namespace Nemundo\Core\WebRequest\Curl;
 
+use Nemundo\Core\WebRequest\Json\AbstractJsonCurlWebRequest;
+
 abstract class AbstractBasicAuthenticationWebRequest extends AbstractJsonCurlWebRequest
 {
 
