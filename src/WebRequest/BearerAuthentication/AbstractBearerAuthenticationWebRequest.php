@@ -4,7 +4,7 @@ namespace Nemundo\Core\WebRequest\BearerAuthentication;
 
 use Nemundo\Core\WebRequest\Curl\AbstractCurlWebRequest;
 
-abstract class AbstractBearerAuthenticationWebRequest extends AbstractCurlWebRequest  // AbstractJsonCurlWebRequest
+abstract class AbstractBearerAuthenticationWebRequest extends AbstractCurlWebRequest
 {
 
     protected $bearerAuthentication;

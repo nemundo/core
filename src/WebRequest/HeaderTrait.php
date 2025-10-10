@@ -11,10 +11,6 @@ trait HeaderTrait
         $this->loadFormat('json');
         return $this;
 
-        /*$this
-            ->addHeader('Accept: application/json')
-        ->addHeader('Content-Type: application/json');*/
-
     }
 
     protected function loadXml()
@@ -22,13 +18,6 @@ trait HeaderTrait
 
         $this->loadFormat('xml');
         return $this;
-
-        /*$this
-            ->addHeader('Accept: application/xml')
-            ->addHeader('Content-Type: application/xml');*/
-
-        //$request->addHeader('Content-Type: application/xml');
-
 
     }
 
