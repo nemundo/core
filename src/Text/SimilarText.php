@@ -11,8 +11,13 @@ class SimilarText extends AbstractBase
     public function getSimilarity($text1, $text2)
     {
 
-        similar_text($text1, $text2, $percent);
-        $percent = (new Number($percent))->getRoundedNumber(0);
+        $percent = 0;
+
+        if (($text1 !== null) && ($text2 !== null)) {
+            similar_text($text1, $text2, $percent);
+            $percent = (new Number($percent))->getRoundedNumber(0);
+        }
+
         return $percent;
 
     }
