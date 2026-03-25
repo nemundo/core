@@ -35,8 +35,17 @@ abstract class AbstractBearerAuthenticationWebRequest extends AbstractCurlWebReq
     }
 
 
+    public function putUrl($url, $data)
+    {
+
+        $this->authentication();
+        return parent::putUrl($url, $data);
+
+    }
+
     public function deleteUrl($url)
     {
+
         $this->authentication();
         return parent::deleteUrl($url);
 
@@ -44,11 +53,12 @@ abstract class AbstractBearerAuthenticationWebRequest extends AbstractCurlWebReq
 
     private function authentication()
     {
+
         if (!$this->loadedAuthentication) {
             $this->addHeader('Authorization: Bearer ' . $this->bearerAuthentication);
             $this->loadedAuthentication = true;
         }
-    }
 
+    }
 
 }
