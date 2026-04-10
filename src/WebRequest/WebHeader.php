@@ -43,12 +43,28 @@ class WebHeader extends AbstractBase
     }
 
 
+    public function getValue($name)
+    {
+
+        $value = null;
+        if (isset($this->headerList[$name])) {
+            $value = $this->headerList[$name];
+            /*if (is_array($contentType)) {
+                $contentType = $contentType[0];
+            }*/
+        }
+
+        return $value;
+
+    }
+
+
     public function getContentType()
     {
 
         $contentType = null;
-        if (isset($this->headerList['content-type'])) {
-            $contentType = $this->headerList['content-type'];
+        if (isset($this->headerList['content_type'])) {
+            $contentType = $this->headerList['content_type'];
             if (is_array($contentType)) {
                 $contentType = $contentType[0];
             }
