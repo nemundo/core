@@ -25,9 +25,9 @@ class WebHeader extends AbstractBase
             CURLOPT_REFERER => $url,
         ]);
 
-        $response = curl_exec($ch);
+        //$response = curl_exec($ch);
         $this->headerList = curl_getinfo($ch);  //, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+        //curl_close($ch);
 
 
         /*$header = @get_headers($url, true);
