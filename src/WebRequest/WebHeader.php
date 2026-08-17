@@ -3,18 +3,14 @@
 namespace Nemundo\Core\WebRequest;
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\Debug\Debug;
 
 class WebHeader extends AbstractBase
 {
-
-    //public $location;
 
     private $headerList = [];
 
     public function __construct($url)
     {
-
 
         $ch = curl_init($url);
         curl_setopt_array($ch, [
@@ -25,20 +21,8 @@ class WebHeader extends AbstractBase
             CURLOPT_REFERER => $url,
         ]);
 
-        //$response = curl_exec($ch);
-        $this->headerList = curl_getinfo($ch);  //, CURLINFO_HTTP_CODE);
-        //curl_close($ch);
-
-
-        /*$header = @get_headers($url, true);
-
-        if ($header !== false) {
-            $this->headerList = get_headers($url, true);
-            $this->headerList = array_change_key_case($this->headerList);
-        } else {
-            $error = error_get_last();
-            (new Debug())->write('Web Header Error: ' . $error['message']);
-        }*/
+        curl_exec($ch);
+        $this->headerList = curl_getinfo($ch);
 
     }
 
@@ -49,9 +33,6 @@ class WebHeader extends AbstractBase
         $value = null;
         if (isset($this->headerList[$name])) {
             $value = $this->headerList[$name];
-            /*if (is_array($contentType)) {
-                $contentType = $contentType[0];
-            }*/
         }
 
         return $value;
@@ -78,12 +59,6 @@ class WebHeader extends AbstractBase
     public function getResponseCode()
     {
 
-        //$this->getHeader($url);
-        /*$responseCode = null;
-        if (isset($this->headerList[0])) {
-            $responseCode = (int)substr($this->headerList[0], 9, 3);
-        }*/
-
         $responseCode = $this->headerList['http_code'];
         return $responseCode;
 
@@ -101,18 +76,7 @@ class WebHeader extends AbstractBase
     {
 
         $list = [];
-        $list[]= $this->headerList['url'];
-
-        /*if (isset($this->headerList['location'])) {
-            $location = $this->headerList['location'];
-
-            if (is_array($location)) {
-                $list = $location;
-            } else {
-                $list[] = $location;
-            }
-
-        }*/
+        $list[] = $this->headerList['url'];
 
         return $list;
 
